@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://1adwrb5j8rgk"]
+
+[ext_resource type="Texture2D" uid="uid://cmp74aib55wr7" path="res://Assets/PlaceHolderAssets/button_rectangle_depth_flat.png" id="1_s02pu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayeso"]
+texture = ExtResource("1_s02pu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_goquy"]
+texture = ExtResource("1_s02pu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b2hk"]
+texture = ExtResource("1_s02pu")
+
+[node name="DashBoard" type="Control" unique_id=1198593103]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerInfoPanel" type="PanelContainer" parent="." unique_id=529991284]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 104.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerInfoPanel" unique_id=1930609315]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1841345367]
+layout_mode = 2
+text = "名前：未設定"
+
+[node name="ScoreLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1110945872]
+layout_mode = 2
+text = "総スコア：０"
+
+[node name="RankLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1615763449]
+layout_mode = 2
+text = "順位：-"
+
+[node name="LoginDaysLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1842502661]
+layout_mode = 2
+text = "連続ログイン日数：０日"
+
+[node name="RankingPanel" type="PanelContainer" parent="." unique_id=1020886390]
+layout_mode = 0
+offset_left = 675.0
+offset_top = 78.0
+offset_right = 1118.0
+offset_bottom = 612.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="RankingPanel" unique_id=310574960]
+layout_mode = 2
+
+[node name="RankingContainer" type="VBoxContainer" parent="RankingPanel/ScrollContainer" unique_id=287539411]
+layout_mode = 2
+
+[node name="StagePanel" type="PanelContainer" parent="." unique_id=557733990]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 231.0
+offset_right = 483.0
+offset_bottom = 557.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StagePanel" unique_id=705720969]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="DailyStageButton" type="Button" parent="StagePanel/VBoxContainer" unique_id=1573045925]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_ayeso")
+text = "デイリー"
+
+[node name="NomalStageButton" type="Button" parent="StagePanel/VBoxContainer" unique_id=638358640]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_goquy")
+text = "ノーマル"
+
+[node name="ReviewStageButton" type="Button" parent="StagePanel/VBoxContainer" unique_id=1713757497]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_7b2hk")
+text = "復習"
