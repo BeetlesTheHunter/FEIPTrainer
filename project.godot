@@ -13,6 +13,8 @@ config_version=5
 config/name="Test3"
 run/main_scene="uid://cvkne8yxk2lsw"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+run/main_scene="uid://b67diqwdmo4x0"
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
