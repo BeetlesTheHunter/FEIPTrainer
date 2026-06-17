@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cwbawd0ne4f6c"]
+
+[ext_resource type="Texture2D" uid="uid://ck3pyxrj8o5ct" path="res://Assets/PlaceHolderAssets/スクリーンショット_2026-06-17_132513-removebg-preview.png" id="1_fguls"]
+[ext_resource type="Texture2D" uid="uid://boh8l5h0u5y7h" path="res://Assets/PlaceHolderAssets/arrow_basic_n_small.png" id="2_tb3wv"]
+[ext_resource type="Texture2D" uid="uid://cujdvmbnhhxm2" path="res://Assets/PlaceHolderAssets/arrow_basic_s_small.png" id="3_2iawn"]
+
+[sub_resource type="Theme" id="Theme_032cv"]
+
+[node name="Results" type="Control" unique_id=1914941142]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=625284805]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MainLayout" type="HBoxContainer" parent="MainMargin" unique_id=918744500]
+layout_mode = 2
+
+[node name="CenterScoreColumn" type="VBoxContainer" parent="MainMargin/MainLayout" unique_id=1791766836]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ScoreStack" type="VBoxContainer" parent="MainMargin/MainLayout/CenterScoreColumn" unique_id=746104890]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 80
+
+[node name="results" type="Label" parent="MainMargin/MainLayout/CenterScoreColumn/ScoreStack" unique_id=772560909]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "リザルト
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CorrectAnswerRate" type="Label" parent="MainMargin/MainLayout/CenterScoreColumn/ScoreStack" unique_id=1924136973]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "正答率：p
+"
+horizontal_alignment = 1
+
+[node name="score" type="Label" parent="MainMargin/MainLayout/CenterScoreColumn/ScoreStack" unique_id=1569533950]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "獲得スコア：xxxxxxxxx
+"
+horizontal_alignment = 1
+
+[node name="RightSideColumn" type="VBoxContainer" parent="MainMargin/MainLayout" unique_id=388096197]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="VBoxContainer" parent="MainMargin/MainLayout/RightSideColumn" unique_id=720325156]
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 5.92
+
+[node name="TextureRect" type="TextureRect" parent="MainMargin/MainLayout/RightSideColumn/Control" unique_id=1613581401]
+custom_minimum_size = Vector2(250, 250)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_032cv")
+texture = ExtResource("1_fguls")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMargin/MainLayout/RightSideColumn" unique_id=1248065709]
+layout_mode = 2
+
+[node name="spacer2" type="Control" parent="MainMargin/MainLayout/RightSideColumn/HBoxContainer" unique_id=433772109]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NextStage" type="Button" parent="MainMargin/MainLayout/RightSideColumn/HBoxContainer/spacer2" unique_id=1266762570]
+layout_mode = 0
+offset_left = 196.0
+offset_top = -46.0
+offset_right = 335.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 23
+text = "次のステージへ
+"
+
+[node name="ArrowBasicNSmall" type="Sprite2D" parent="." unique_id=1268154102]
+position = Vector2(1054, 33)
+texture = ExtResource("2_tb3wv")
+
+[node name="ArrowBasicSSmall" type="Sprite2D" parent="." unique_id=655796265]
+position = Vector2(788, 309)
+texture = ExtResource("3_2iawn")

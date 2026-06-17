@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="558px" height="495px" viewBox="0 0 558 495" enable-background="new 0 0 558 495" xml:space="preserve">
+<polygon fill="none" stroke="#000000" points="235.549,349.136 278.85,274.136 322.152,349.136 "/>
+<polygon fill="none" stroke="#000000" points="192.248,372.776 278.85,222.776 365.453,372.776 "/>
+<polygon fill="none" stroke="#000000" points="148.946,397.776 278.85,172.776 408.753,397.776 "/>
+<polygon fill="none" stroke="#000000" points="105.645,422.776 278.85,122.776 452.055,422.776 "/>
+<polygon fill="none" stroke="#000000" points="62.344,449.136 278.85,74.136 495.357,449.136 "/>
+<polygon fill="none" stroke="#000000" points="19.042,473.457 278.85,23.457 538.658,473.457 "/>
+<line fill="none" stroke="#000000" x1="322.152" y1="349.136" x2="538.658" y2="473.457"/>
+<line fill="none" stroke="#000000" x1="235.549" y1="349.136" x2="19.042" y2="473.457"/>
+<line fill="none" stroke="#000000" x1="278.85" y1="274.136" x2="278.85" y2="23.457"/>
+<circle fill="#0081CD" stroke="#000000" cx="278.85" cy="274.136" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="278.85" cy="222.776" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="278.85" cy="172.776" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="278.85" cy="122.776" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="278.85" cy="74.136" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="278.85" cy="23.457" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="236.137" cy="348.117" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="191.658" cy="373.797" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="148.357" cy="398.797" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="105.056" cy="423.797" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="62.932" cy="448.117" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="19.042" cy="473.457" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="321.562" cy="348.117" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="366.042" cy="373.796" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="409.343" cy="398.796" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="452.645" cy="423.796" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="494.768" cy="448.117" r="6"/>
+<circle fill="#0081CD" stroke="#000000" cx="538.658" cy="473.457" r="6"/>
+</svg>
