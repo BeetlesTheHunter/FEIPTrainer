@@ -3,11 +3,11 @@ using System;
 
 public partial class GameManager : Node
 {
-    [Export] private PackedScene dashBoardScreen;
-    [Export] private PackedScene quizScreen;
-    [Export] private PackedScene resultsScreen;
+    [Export] public PackedScene dashBoardScreen;
+    [Export] public PackedScene quizScreen;
+    [Export] public PackedScene resultsScreen;
 
-    [Export] private PackedScene ESCMenuOverlay;
+    [Export] public PackedScene ESCMenuOverlay;
 
     [Export] private PackedScene initialScene;
 
@@ -20,7 +20,7 @@ public partial class GameManager : Node
         instance = this;
     }
 
-    private void ReplaceScene(PackedScene scene)
+    public void ReplaceScene(PackedScene scene)
     {
         Node target = scene.Instantiate();
         GetTree().CurrentScene.AddChild(target);
