@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://1adwrb5j8rgk"]
 
+[ext_resource type="Script" uid="uid://b2sia2oilwv8w" path="res://Scenes/DashBoard/DashBoard.cs" id="1_ayeso"]
 [ext_resource type="Texture2D" uid="uid://cmp74aib55wr7" path="res://Assets/PlaceHolderAssets/button_rectangle_depth_flat.png" id="1_s02pu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayeso"]
@@ -11,13 +12,17 @@ texture = ExtResource("1_s02pu")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b2hk"]
 texture = ExtResource("1_s02pu")
 
-[node name="DashBoard" type="Control" unique_id=1198593103]
+[node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ayeso")
+DailyStageButton = NodePath("StagePanel/VBoxContainer/DailyStageButton")
+NomalStageButton = NodePath("StagePanel/VBoxContainer/NomalStageButton")
+ReviewStageButton = NodePath("StagePanel/VBoxContainer/ReviewStageButton")
 
 [node name="PlayerInfoPanel" type="PanelContainer" parent="." unique_id=529991284]
 layout_mode = 0
