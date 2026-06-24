@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b67diqwdmo4x0"]
 
+[ext_resource type="Script" uid="uid://c5dtftw7s84ku" path="res://Scenes/ESCMenu/EscMenu.cs" id="1_ooady"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaous"]
 bg_color = Color(0.29405674, 0.6338508, 0.8407326, 1)
 border_width_left = 30
@@ -19,11 +21,13 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8lpj"]
 bg_color = Color(0.8089983, 0.8089983, 0.80899817, 1)
 
-[node name="ESCMenu" type="Control" unique_id=1768557837]
+[node name="ESCMenu" type="Control" unique_id=1768557837 node_paths=PackedStringArray("ContinueButton")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 763.0
 offset_bottom = 393.0
+script = ExtResource("1_ooady")
+ContinueButton = NodePath("ESCMenu/Continue")
 
 [node name="ESCMenu" type="Panel" parent="." unique_id=719341402]
 layout_mode = 1
@@ -44,7 +48,7 @@ offset_bottom = 75.0
 theme_override_font_sizes/font_size = 44
 text = "ESCメニュー"
 
-[node name="Button" type="Button" parent="ESCMenu" unique_id=1180930624]
+[node name="Continue" type="Button" parent="ESCMenu" unique_id=1180930624]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.28800002
@@ -60,7 +64,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ooady")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m2c2o")
 text = "続ける"
 
-[node name="Button2" type="Button" parent="ESCMenu" unique_id=42203496]
+[node name="Title" type="Button" parent="ESCMenu" unique_id=42203496]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.006
