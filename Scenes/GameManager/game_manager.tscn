@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cqbri5qu1fac6"]
 
 [ext_resource type="Script" uid="uid://cbqmfnwsgbfp1" path="res://Scenes/GameManager/GameManager.cs" id="1_mtm67"]
+[ext_resource type="PackedScene" uid="uid://b67diqwdmo4x0" path="res://Scenes/ESCMenu/ESCMenu.tscn" id="2_ihm82"]
 
 [node name="GameManager" type="Node" unique_id=211893046]
 script = ExtResource("1_mtm67")
+initialScene = ExtResource("2_ihm82")

@@ -11,15 +11,10 @@ config_version=5
 [application]
 
 config/name="Test3"
-<<<<<<< HEAD
-config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-=======
 run/main_scene="uid://cvkne8yxk2lsw"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
-run/main_scene="uid://b67diqwdmo4x0"
-config/features=PackedStringArray("4.6", "Forward Plus")
->>>>>>> 57259f085e27381882e92a325532645302e9d38b
 config/icon="res://icon.svg"
+<<<<<<<HEADconfig/features=PackedStringArray("4.6", "C#", "Forward Plus")
 
 [autoload]
 
