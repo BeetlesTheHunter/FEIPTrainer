@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://cwbawd0ne4f6c"]
 
 [ext_resource type="Texture2D" uid="uid://ck3pyxrj8o5ct" path="res://Assets/PlaceHolderAssets/スクリーンショット_2026-06-17_132513-removebg-preview.png" id="1_fguls"]
+[ext_resource type="Script" uid="uid://j2w07bycb1k2" path="res://Scenes/Results/Results.cs" id="1_tb3wv"]
 [ext_resource type="Texture2D" uid="uid://boh8l5h0u5y7h" path="res://Assets/PlaceHolderAssets/arrow_basic_n_small.png" id="2_tb3wv"]
 [ext_resource type="Texture2D" uid="uid://cujdvmbnhhxm2" path="res://Assets/PlaceHolderAssets/arrow_basic_s_small.png" id="3_2iawn"]
 
 [sub_resource type="Theme" id="Theme_032cv"]
 
-[node name="Results" type="Control" unique_id=1914941142]
+[node name="Results" type="Control" unique_id=1914941142 node_paths=PackedStringArray("_nextStageButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tb3wv")
+_nextStageButton = NodePath("MainMargin/MainLayout/RightSideColumn/HBoxContainer/spacer2/NextStage")
 
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=625284805]
 layout_mode = 1
@@ -104,5 +107,5 @@ position = Vector2(1054, 33)
 texture = ExtResource("2_tb3wv")
 
 [node name="ArrowBasicSSmall" type="Sprite2D" parent="." unique_id=655796265]
-position = Vector2(788, 309)
+position = Vector2(1072, 317)
 texture = ExtResource("3_2iawn")
