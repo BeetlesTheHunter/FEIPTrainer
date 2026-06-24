@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://daclym6d3evff"]
+
+[ext_resource type="Texture2D" uid="uid://cjqe1vr70w4tt" path="res://Assets/PlaceHolderAssets/icon_outline_square.png" id="1_hmjen"]
+[ext_resource type="Texture2D" uid="uid://ttjtvbslhxgj" path="res://Assets/PlaceHolderAssets/icon_square.png" id="2_v6ra0"]
+[ext_resource type="Texture2D" uid="uid://by75mcilgjejf" path="res://Assets/PlaceHolderAssets/button_square_depth_flat.png" id="3_i7ej2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4m83h"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("1_hmjen")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wdgeb"]
+content_margin_left = 10.0
+content_margin_top = 30.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("2_v6ra0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lr7ew"]
+content_margin_left = 100.0
+content_margin_top = 50.0
+content_margin_right = 100.0
+content_margin_bottom = 50.0
+texture = ExtResource("3_i7ej2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfg6r"]
+content_margin_left = 100.0
+content_margin_top = 50.0
+content_margin_right = 100.0
+content_margin_bottom = 50.0
+texture = ExtResource("3_i7ej2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fqllh"]
+content_margin_left = 100.0
+content_margin_top = 50.0
+content_margin_right = 100.0
+content_margin_bottom = 50.0
+texture = ExtResource("3_i7ej2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lq73"]
+content_margin_left = 100.0
+content_margin_top = 50.0
+content_margin_right = 100.0
+content_margin_bottom = 50.0
+texture = ExtResource("3_i7ej2")
+
+[node name="QuizScene" type="Control" unique_id=301261906]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuizText" type="PanelContainer" parent="." unique_id=410314578]
+custom_minimum_size = Vector2(500, 650)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4m83h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="QuizText" unique_id=546752838]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "ハザード回避のためのフォワーディング（データバイパス）の主目的はどれか？"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1441145255]
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -538.0
+offset_top = -327.0
+offset_right = -88.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wdgeb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=175437410]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1515172304]
+layout_mode = 2
+
+[node name="ButtonA" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1515845478]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_lr7ew")
+text = "A"
+
+[node name="ButtonB" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=526479199]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_vfg6r")
+text = "B
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=500712022]
+layout_mode = 2
+
+[node name="ButtonC" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=426416065]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_fqllh")
+text = "C"
+
+[node name="ButtonD" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1104043654]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_3lq73")
+text = "D"
