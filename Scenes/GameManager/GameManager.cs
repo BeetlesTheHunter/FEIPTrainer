@@ -12,11 +12,12 @@ public partial class GameManager : Node
     [Export] private PackedScene initialScene;
 
     private CanvasLayer mainScene;
+    public static GameManager instance;
 
     public override void _Ready()
     {
-        //mainScene = GetTree();
         ReplaceScene(initialScene);
+        instance = this;
     }
 
     private void ReplaceScene(PackedScene scene)
