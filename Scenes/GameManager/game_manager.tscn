@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cbqmfnwsgbfp1" path="res://Scenes/GameManager/GameManager.cs" id="1_mtm67"]
 [ext_resource type="PackedScene" uid="uid://1adwrb5j8rgk" path="res://Scenes/DashBoard/DashBoard.tscn" id="2_tvo5b"]
+[ext_resource type="PackedScene" uid="uid://daclym6d3evff" path="res://Scenes/QuizScene/quiz_scene.tscn" id="3_40gt6"]
+[ext_resource type="PackedScene" uid="uid://cwbawd0ne4f6c" path="res://Scenes/Results/results.tscn" id="4_c15nt"]
+[ext_resource type="PackedScene" uid="uid://b67diqwdmo4x0" path="res://Scenes/ESCMenu/ESCMenu.tscn" id="5_b4vse"]
 
 [node name="GameManager" type="Node" unique_id=211893046]
 script = ExtResource("1_mtm67")
 dashBoardScreen = ExtResource("2_tvo5b")
+quizScreen = ExtResource("3_40gt6")
+resultsScreen = ExtResource("4_c15nt")
+ESCMenuOverlay = ExtResource("5_b4vse")
+initialScene = ExtResource("2_tvo5b")
