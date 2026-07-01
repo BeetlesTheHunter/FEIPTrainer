@@ -8,12 +8,22 @@ public partial class EscMenu : Control
     public override void _Ready()
     {
         ContinueButton.Pressed += HandleContinueButtonPressed;
+
+        Visible = false;
     }
 
     private void HandleContinueButtonPressed()
     {
         GameManager.instance.ReplaceScene(GameManager.instance.dashBoardScreen);
     }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("ui_cancel"))
+        {
+            Visible = !Visible;
 
+            
+        }
+    }
 
 }

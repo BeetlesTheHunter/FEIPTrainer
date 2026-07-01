@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://cvkne8yxk2lsw"]
 
+[ext_resource type="PackedScene" uid="uid://b67diqwdmo4x0" path="res://Scenes/ESCMenu/ESCMenu.tscn" id="1_pp70p"]
+
 [node name="MainCanvas" type="CanvasLayer" unique_id=971846613]
+
+[node name="ESCMenu" parent="." unique_id=1768557837 instance=ExtResource("1_pp70p")]
+visible = false
