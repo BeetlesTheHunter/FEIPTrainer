@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://daclym6d3evff"]
 
 [ext_resource type="Texture2D" uid="uid://cjqe1vr70w4tt" path="res://Assets/PlaceHolderAssets/icon_outline_square.png" id="1_hmjen"]
+[ext_resource type="Script" uid="uid://c37bca2mia24n" path="res://Scenes/QuizScene/QuizScene.cs" id="1_v6ra0"]
 [ext_resource type="Texture2D" uid="uid://ttjtvbslhxgj" path="res://Assets/PlaceHolderAssets/icon_square.png" id="2_v6ra0"]
 [ext_resource type="Texture2D" uid="uid://by75mcilgjejf" path="res://Assets/PlaceHolderAssets/button_square_depth_flat.png" id="3_i7ej2"]
 
@@ -46,13 +47,18 @@ content_margin_right = 100.0
 content_margin_bottom = 50.0
 texture = ExtResource("3_i7ej2")
 
-[node name="QuizScene" type="Control" unique_id=301261906]
+[node name="QuizScene" type="Control" unique_id=301261906 node_paths=PackedStringArray("ButtonA", "ButtonB", "ButtonC", "ButtonD")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v6ra0")
+ButtonA = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonA")
+ButtonB = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonB")
+ButtonC = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonC")
+ButtonD = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonD")
 
 [node name="QuizText" type="PanelContainer" parent="." unique_id=410314578]
 custom_minimum_size = Vector2(500, 650)

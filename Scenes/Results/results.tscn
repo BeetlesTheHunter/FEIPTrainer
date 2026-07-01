@@ -96,8 +96,11 @@ size_flags_horizontal = 3
 layout_mode = 0
 offset_left = 196.0
 offset_top = -46.0
-offset_right = 335.0
-offset_bottom = -6.0
+offset_right = 370.0
+offset_bottom = 25.0
+tooltip_text = "Go to dash board"
+theme_override_colors/font_hover_color = Color(0.25490198, 0.7529412, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.35686275, 1, 1)
 theme_override_font_sizes/font_size = 23
 text = "次のステージへ
 "
