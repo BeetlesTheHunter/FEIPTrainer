@@ -8,16 +8,16 @@ public partial class QuizScene : Control
     [Export] private Button ButtonB;
     [Export] private Button ButtonC;
     [Export] private Button ButtonD;
+
+    public event Action CorrectAnswer;
+    private void RaiseCorrectAnswer() => CorrectAnswer?.Invoke();
+    public event Action WorngAnswer;
+    private void RaiseWorngAnswer() => WorngAnswer?.Invoke();
     public override void _Ready()
 	{
         ButtonA.Pressed += HandleButtonAPressed;
-        
         ButtonB.Pressed += HandleButtonBPressed;
-        
-
         ButtonC.Pressed += HandleButtonCPressed;
-        
-
         ButtonD.Pressed += HandleButtonDPressed;
         
 
@@ -33,6 +33,8 @@ public partial class QuizScene : Control
     private void HandleButtonAPressed() 
     {
         GD.Print("A");
+        //仮
+        RaiseCorrectAnswer();
     }
     private void HandleButtonBPressed()
     {
@@ -46,4 +48,6 @@ public partial class QuizScene : Control
     {
         GD.Print("D");
     }
+
+
 }

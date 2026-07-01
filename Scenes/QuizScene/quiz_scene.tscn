@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c37bca2mia24n" path="res://Scenes/QuizScene/QuizScene.cs" id="1_v6ra0"]
 [ext_resource type="Texture2D" uid="uid://ttjtvbslhxgj" path="res://Assets/PlaceHolderAssets/icon_square.png" id="2_v6ra0"]
 [ext_resource type="Texture2D" uid="uid://by75mcilgjejf" path="res://Assets/PlaceHolderAssets/button_square_depth_flat.png" id="3_i7ej2"]
+[ext_resource type="PackedScene" uid="uid://crgm5c8d2q46" path="res://Scenes/QuizScene/ScoreManager/ScoreManager.tscn" id="5_i7ej2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4m83h"]
 content_margin_left = 10.0
@@ -121,3 +122,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxTexture_3lq73")
 text = "D"
+
+[node name="ScoreManager" parent="." unique_id=1316858675 node_paths=PackedStringArray("quizScene") instance=ExtResource("5_i7ej2")]
+quizScene = NodePath("..")
