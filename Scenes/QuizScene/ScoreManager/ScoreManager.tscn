@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crgm5c8d2q46"]
 
-[ext_resource type="Script" uid="uid://tkbb60hlocdk" path="res://Scenes/ScoreManager/ScoreManager.cs" id="1_50ohd"]
+[ext_resource type="Script" uid="uid://tkbb60hlocdk" path="res://Scenes/QuizScene/ScoreManager/ScoreManager.cs" id="1_50ohd"]
 
 [node name="ScoreManager" type="Node" unique_id=1316858675]
 script = ExtResource("1_50ohd")
