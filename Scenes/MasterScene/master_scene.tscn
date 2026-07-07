@@ -6,3 +6,4 @@
 
 [node name="ESCMenu" parent="." unique_id=1768557837 instance=ExtResource("1_pp70p")]
 visible = false
+z_index = 1
