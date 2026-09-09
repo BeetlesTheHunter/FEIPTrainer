@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://cqbri5qu1fac6"
+UserDataManager="*uid://dspg2twb1abnt"
 
 [dotnet]
 
