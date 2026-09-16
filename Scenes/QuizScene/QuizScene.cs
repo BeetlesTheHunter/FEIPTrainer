@@ -50,10 +50,12 @@ public partial class QuizScene : Control
         if (currentQuestion.AnswerIndex == 0)
         {
             GD.Print("正解");
+            RaiseCorrectAnswer();
         }
         else
         {
             GD.Print("不正解");
+            RaiseWrongAnswer();
         }
 
         //仮
@@ -64,10 +66,12 @@ public partial class QuizScene : Control
         if (currentQuestion.AnswerIndex == 1)
         {
             GD.Print("正解");
+            RaiseCorrectAnswer();
         }
         else
         {
             GD.Print("不正解");
+            RaiseWrongAnswer() ;
         }
         //仮
         //RaiseWrongAnswer();
@@ -77,10 +81,12 @@ public partial class QuizScene : Control
         if (currentQuestion.AnswerIndex == 2)
         {
             GD.Print("正解");
+            RaiseCorrectAnswer();
         }
         else
         {
             GD.Print("不正解");
+            RaiseWrongAnswer();
         }
     }
     private void HandleButtonDPressed()
@@ -88,10 +94,12 @@ public partial class QuizScene : Control
         if (currentQuestion.AnswerIndex == 3)
         {
             GD.Print("正解");
+            RaiseCorrectAnswer();
         }
         else
         {
             GD.Print("不正解");
+            RaiseWrongAnswer();
         }
     }
 
