@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c46eobayfoap2"]
+
+[ext_resource type="Texture2D" uid="uid://cmp74aib55wr7" path="res://Assets/PlaceHolderAssets/button_rectangle_depth_flat.png" id="1_0xjc8"]
+[ext_resource type="Script" uid="uid://brcye20y4gn5p" path="res://Scenes/Login/Login.cs" id="1_h4wbb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4wbb"]
+texture = ExtResource("1_0xjc8")
+
+[node name="Login" type="Control" unique_id=1348788486 node_paths=PackedStringArray("loginBotan")]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.99700004
+offset_left = 43.0
+offset_bottom = -0.056030273
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h4wbb")
+loginBotan = NodePath("Button")
+
+[node name="Control" type="Control" parent="." unique_id=1277972890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1961249810]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/TextureRect" unique_id=1454170456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="Label" type="Label" parent="." unique_id=146034180]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.374
+anchor_top = 0.192
+anchor_right = 0.59300005
+anchor_bottom = 0.29700002
+offset_left = 0.23397827
+offset_top = -0.03199768
+offset_right = 0.36291504
+offset_bottom = 0.13798523
+theme_override_font_sizes/font_size = 49
+text = "ログイン画面"
+visible_characters = 9
+visible_ratio = 1.5
+
+[node name="Button" type="Button" parent="." unique_id=1392805836]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.351
+anchor_top = 0.44900003
+anchor_right = 0.634
+anchor_bottom = 0.57000005
+offset_left = -0.2590027
+offset_top = -0.054016113
+offset_right = -0.10601807
+offset_bottom = -0.22003174
+theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxTexture_h4wbb")
+text = "ログイン"
