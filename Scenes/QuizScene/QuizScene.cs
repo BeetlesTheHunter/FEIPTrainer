@@ -45,6 +45,12 @@ public partial class QuizScene : Control
             QuestionLabel.Text += "\n D: " + currentQuestion.Options[3];
         }
     }
+
+    private  void NextQuestion()
+    {
+        currentQuestion = QuestionDataManager.Instance.GetQuestionById(currentQuestion.Id + 1);
+        UpdateQuestionUI();
+    }
     private void HandleButtonAPressed()
     {
         if (currentQuestion.AnswerIndex == 0)
@@ -56,7 +62,10 @@ public partial class QuizScene : Control
         {
             GD.Print("不正解");
             RaiseWrongAnswer();
+
         }
+        NextQuestion();
+
 
         //仮
         //RaiseCorrectAnswer();
@@ -73,6 +82,7 @@ public partial class QuizScene : Control
             GD.Print("不正解");
             RaiseWrongAnswer() ;
         }
+        NextQuestion();
         //仮
         //RaiseWrongAnswer();
     }
@@ -88,6 +98,7 @@ public partial class QuizScene : Control
             GD.Print("不正解");
             RaiseWrongAnswer();
         }
+        NextQuestion();
     }
     private void HandleButtonDPressed()
     {
@@ -101,6 +112,7 @@ public partial class QuizScene : Control
             GD.Print("不正解");
             RaiseWrongAnswer();
         }
+        NextQuestion();
     }
 
 
