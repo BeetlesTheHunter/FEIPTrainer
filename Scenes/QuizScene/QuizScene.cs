@@ -24,7 +24,7 @@ public partial class QuizScene : Control
         ButtonC.Pressed += HandleButtonCPressed;
         ButtonD.Pressed += HandleButtonDPressed;
 
-        currentQuestion = QuestionDataManager.Instance.GetQuestionById(23);
+        currentQuestion = QuestionDataManager.Instance.GetQuestionById(4);
         UpdateQuestionUI();
     }
 
@@ -47,23 +47,52 @@ public partial class QuizScene : Control
     }
     private void HandleButtonAPressed()
     {
-        GD.Print("A");
+        if (currentQuestion.AnswerIndex == 0)
+        {
+            GD.Print("正解");
+        }
+        else
+        {
+            GD.Print("不正解");
+        }
+
         //仮
         //RaiseCorrectAnswer();
     }
     private void HandleButtonBPressed()
     {
-        GD.Print("B");
+        if (currentQuestion.AnswerIndex == 1)
+        {
+            GD.Print("正解");
+        }
+        else
+        {
+            GD.Print("不正解");
+        }
         //仮
         //RaiseWrongAnswer();
     }
     private void HandleButtonCPressed()
     {
-        GD.Print("C");
+        if (currentQuestion.AnswerIndex == 2)
+        {
+            GD.Print("正解");
+        }
+        else
+        {
+            GD.Print("不正解");
+        }
     }
     private void HandleButtonDPressed()
     {
-        GD.Print("D");
+        if (currentQuestion.AnswerIndex == 3)
+        {
+            GD.Print("正解");
+        }
+        else
+        {
+            GD.Print("不正解");
+        }
     }
 
 
