@@ -14,7 +14,7 @@ public partial class EscMenu : Control
 
     private void HandleContinueButtonPressed()
     {
-        GameManager.instance.ReplaceScene(GameManager.instance.dashBoardScreen);
+        GameManager.Instance.ReplaceScene(GameManager.Instance.dashBoardScreen);
     }
     public override void _Input(InputEvent @event)
     {

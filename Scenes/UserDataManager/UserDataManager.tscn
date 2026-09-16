@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dspg2twb1abnt"]
+
+[ext_resource type="Script" uid="uid://bjoxdjxf77282" path="res://Scenes/UserDataManager/UserDataManager.cs" id="1_dpk6n"]
+
+[node name="UserDataManager" type="Node" unique_id=819863175]
+script = ExtResource("1_dpk6n")

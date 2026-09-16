@@ -48,7 +48,7 @@ content_margin_right = 100.0
 content_margin_bottom = 50.0
 texture = ExtResource("3_i7ej2")
 
-[node name="QuizScene" type="Control" unique_id=301261906 node_paths=PackedStringArray("ButtonA", "ButtonB", "ButtonC", "ButtonD")]
+[node name="QuizScene" type="Control" unique_id=301261906 node_paths=PackedStringArray("ButtonA", "ButtonB", "ButtonC", "ButtonD", "QuestionLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,6 +60,7 @@ ButtonA = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonA")
 ButtonB = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonB")
 ButtonC = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonC")
 ButtonD = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonD")
+QuestionLabel = NodePath("QuizText/RichTextLabel")
 
 [node name="QuizText" type="PanelContainer" parent="." unique_id=410314578]
 custom_minimum_size = Vector2(500, 650)
