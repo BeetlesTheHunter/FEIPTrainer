@@ -10,6 +10,7 @@ public partial class QuizScene : Control
     [Export] private Button ButtonD;
     [Export] private RichTextLabel QuestionLabel;
 
+
     private QuestionData currentQuestion ;
 
     public event Action CorrectAnswer;
@@ -37,7 +38,11 @@ public partial class QuizScene : Control
         if (currentQuestion != null)
         {
             QuestionLabel.Text = currentQuestion.Question;
-           
+            QuestionLabel.Text += "\n";
+            QuestionLabel.Text += "\n A: " + currentQuestion.Options[0];
+            QuestionLabel.Text += "\n B: " + currentQuestion.Options[1];
+            QuestionLabel.Text += "\n C: " + currentQuestion.Options[2];
+            QuestionLabel.Text += "\n D: " + currentQuestion.Options[3];
         }
     }
     private void HandleButtonAPressed()
