@@ -24,19 +24,19 @@ bg_color = Color(0.8089983, 0.8089983, 0.80899817, 1)
 [node name="ESCMenu" type="Control" unique_id=1768557837 node_paths=PackedStringArray("ContinueButton")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 763.0
-offset_bottom = 393.0
+offset_right = 766.0
+offset_bottom = 413.0
 script = ExtResource("1_ooady")
 ContinueButton = NodePath("ESCMenu/Continue")
 
 [node name="ESCMenu" type="Panel" parent="." unique_id=719341402]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.545
-anchor_bottom = 0.54800004
+anchor_right = 1.5070001
+anchor_bottom = 1.621
 offset_left = 2.0
-offset_right = 734.165
-offset_bottom = 421.636
+offset_right = 0.15893555
+offset_bottom = -0.05303955
 theme_override_styles/panel = SubResource("StyleBoxFlat_uaous")
 
 [node name="Label" type="Label" parent="ESCMenu" unique_id=1524815912]
