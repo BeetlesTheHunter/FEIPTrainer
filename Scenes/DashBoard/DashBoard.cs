@@ -26,7 +26,7 @@ public partial class DashBoard : Control
     public void HandleNomalStageButtonPressed()
     {
         GD.Print("NomalStageBottonPressed");
-        GameManager.instance.ReplaceScene(GameManager.instance.quizScreen);
+        GameManager.Instance.ReplaceScene(GameManager.Instance.quizScreen);
     }
 
     public void HandleReviewStageButtonPressed()
