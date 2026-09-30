@@ -7,7 +7,7 @@
 
 [sub_resource type="Theme" id="Theme_032cv"]
 
-[node name="Results" type="Control" unique_id=1914941142 node_paths=PackedStringArray("_nextStageButton")]
+[node name="Results" type="Control" unique_id=1914941142 node_paths=PackedStringArray("_nextStageButton", "CorrectAnswerRate", "score")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +16,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tb3wv")
 _nextStageButton = NodePath("MainMargin/MainLayout/RightSideColumn/HBoxContainer/spacer2/NextStage")
+CorrectAnswerRate = NodePath("MainMargin/MainLayout/CenterScoreColumn/ScoreStack/CorrectAnswerRate")
+score = NodePath("MainMargin/MainLayout/CenterScoreColumn/ScoreStack/score")
 
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=625284805]
 layout_mode = 1
@@ -62,7 +64,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "獲得スコア：xxxxxxxxx
+text = "獲得スコア：スコア読み込みできませんでした
 "
 horizontal_alignment = 1
 
