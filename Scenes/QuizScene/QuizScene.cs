@@ -14,9 +14,10 @@ public partial class QuizScene : Control
     private QuestionData currentQuestion;
     private QuestionData[] questionArray;
     private int currentIndex = 0; // 配列のインデックス管理用
+    
     [Export] public ScoreManager scoreManager {get; private set;}
 
-    private QuestionData currentQuestion ;
+    
 
     public event Action CorrectAnswer;
     private void RaiseCorrectAnswer() => CorrectAnswer?.Invoke();
@@ -31,15 +32,6 @@ public partial class QuizScene : Control
         ButtonD.Pressed += HandleButtonDPressed;
         int numberOfQuestions = 11;
         QuestionData[] array = new QuestionData[numberOfQuestions];
-
-        
-        for(int i = 0; i < numberOfQuestions; i++)
-        {
-            array[i] = QuestionDataManager.Instance.GetQuestionById(i + 1);
-        }
-
-        Init(array);
-
 
     }
 
