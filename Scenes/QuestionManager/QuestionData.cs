@@ -1,4 +1,3 @@
-
 using Godot;
 using System;
 using System.Text.Json.Serialization;
@@ -29,15 +28,13 @@ public partial class QuestionData : Resource
 
     public QuestionData() { }
 
-
-
     public QuestionData(
-        int id,
-        string category,
-        string question,
-        string[] options,
-        int answerIndex,
-        string questionImage,
+        int id, 
+        string category, 
+        string question, 
+        string[] options, 
+        int answerIndex, 
+        string questionImage, 
         string[] optionsImages)
     {
         Id = id;
