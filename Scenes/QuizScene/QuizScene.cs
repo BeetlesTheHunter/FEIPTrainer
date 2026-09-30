@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Text.Json.Serialization.Metadata;
 
 public partial class QuizScene : Control
 {
@@ -25,24 +26,21 @@ public partial class QuizScene : Control
         ButtonB.Pressed += HandleButtonBPressed;
         ButtonC.Pressed += HandleButtonCPressed;
         ButtonD.Pressed += HandleButtonDPressed;
+        int numberOfQuestions = 11;
+        QuestionData[] array = new QuestionData[numberOfQuestions];
 
-        QuestionData[] array = new QuestionData[5];
+        
+        for(int i = 0; i < numberOfQuestions; i++)
+        {
+            array[i] = QuestionDataManager.Instance.GetQuestionById(i + 1);
+        }
 
-        array[0] = QuestionDataManager.Instance.GetQuestionById(1);
-        array[1] = QuestionDataManager.Instance.GetQuestionById(2);
-        array[2] = QuestionDataManager.Instance.GetQuestionById(3);
-        array[3] = QuestionDataManager.Instance.GetQuestionById(4);
-        array[4] = QuestionDataManager.Instance.GetQuestionById(5);
-
-        init(array);
-
-
+        Init(array);
 
 
     }
 
-    // 仕様書通りのメソッド名（_init）
-    public void init(QuestionData[] array) // 配列を受け取るためのメソッド
+    public void Init(QuestionData[] array)
     {
         questionArray = array;
         currentIndex = 0;
@@ -54,10 +52,7 @@ public partial class QuizScene : Control
         }
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-    }
+   
 
     private void UpdateQuestionUI()
     {
@@ -76,21 +71,17 @@ public partial class QuizScene : Control
 
     private void NextQuestion()
     {
-        // 配列が渡されている場合は配列から次の問題を取得
-        if (questionArray != null && questionArray.Length > 0)
-        {
-            currentIndex++;
+       
+        currentIndex++;
 
-            if (currentIndex < questionArray.Length)// 
-            {
-                currentQuestion = questionArray[currentIndex];
-                UpdateQuestionUI();
-            }
-            else
-            {
-                // 最後の問題を答え終わったら「ステージクリア」と出力
-                GD.Print("ステージクリア");
-            }
+        if (currentIndex < questionArray.Length)// 
+        {
+            currentQuestion = questionArray[currentIndex];
+            UpdateQuestionUI();
+        }
+        else
+        {
+            GD.Print("ステージクリア");
         }
        
     }
