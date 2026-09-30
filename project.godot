@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Firebase="*uid://cvb26atjckwlq"
+FirebaseConfig="*uid://ched1x7qwx4tn"
 GameManager="*uid://cqbri5qu1fac6"
 UserDataManager="*uid://dspg2twb1abnt"
 QuestionManager="*uid://ddegpveslndr7"
@@ -25,6 +27,10 @@ QuestionManager="*uid://ddegpveslndr7"
 [dotnet]
 
 project/assembly_name="Test3"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
 
 [physics]
 
