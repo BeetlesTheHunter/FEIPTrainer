@@ -9,7 +9,7 @@ public partial class QuizScene : Control
     [Export] private Button ButtonC;
     [Export] private Button ButtonD;
     [Export] private RichTextLabel QuestionLabel;
-
+    [Export] public ScoreManager scoreManager {get; private set;}
 
     private QuestionData currentQuestion ;
 
