@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Text.Json.Serialization.Metadata;
 
 public partial class QuizScene : Control
 {
@@ -9,6 +10,10 @@ public partial class QuizScene : Control
     [Export] private Button ButtonC;
     [Export] private Button ButtonD;
     [Export] private RichTextLabel QuestionLabel;
+
+    private QuestionData currentQuestion;
+    private QuestionData[] questionArray;
+    private int currentIndex = 0; // 配列のインデックス管理用
     [Export] public ScoreManager scoreManager {get; private set;}
 
     private QuestionData currentQuestion ;
@@ -16,23 +21,42 @@ public partial class QuizScene : Control
     public event Action CorrectAnswer;
     private void RaiseCorrectAnswer() => CorrectAnswer?.Invoke();
     public event Action WrongAnswer;
-    private void RaiseWrongAnswer() => WrongAnswer  ?.Invoke();
+    private void RaiseWrongAnswer() => WrongAnswer?.Invoke();
+
     public override void _Ready()
     {
         ButtonA.Pressed += HandleButtonAPressed;
         ButtonB.Pressed += HandleButtonBPressed;
         ButtonC.Pressed += HandleButtonCPressed;
         ButtonD.Pressed += HandleButtonDPressed;
+        int numberOfQuestions = 11;
+        QuestionData[] array = new QuestionData[numberOfQuestions];
 
-        currentQuestion = QuestionDataManager.Instance.GetQuestionById(4);
-        UpdateQuestionUI();
+        
+        for(int i = 0; i < numberOfQuestions; i++)
+        {
+            array[i] = QuestionDataManager.Instance.GetQuestionById(i + 1);
+        }
+
+        Init(array);
+
+
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+    public void Init(QuestionData[] array)
     {
+        questionArray = array;
+        currentIndex = 0;
 
+        if (questionArray != null && questionArray.Length > 0)
+        {
+            currentQuestion = questionArray[currentIndex];
+            UpdateQuestionUI();
+        }
     }
+
+   
+
     private void UpdateQuestionUI()
     {
         if (currentQuestion != null)
@@ -46,11 +70,25 @@ public partial class QuizScene : Control
         }
     }
 
-    private  void NextQuestion()
+    int questionCount = 0; //仮
+
+    private void NextQuestion()
     {
-        currentQuestion = QuestionDataManager.Instance.GetQuestionById(currentQuestion.Id + 1);
-        UpdateQuestionUI();
+       
+        currentIndex++;
+
+        if (currentIndex < questionArray.Length)// 
+        {
+            currentQuestion = questionArray[currentIndex];
+            UpdateQuestionUI();
+        }
+        else
+        {
+            GD.Print("ステージクリア");
+        }
+       
     }
+
     private void HandleButtonAPressed()
     {
         if (currentQuestion.AnswerIndex == 0)
@@ -62,14 +100,10 @@ public partial class QuizScene : Control
         {
             GD.Print("不正解");
             RaiseWrongAnswer();
-
         }
         NextQuestion();
-
-
-        //仮
-        //RaiseCorrectAnswer();
     }
+
     private void HandleButtonBPressed()
     {
         if (currentQuestion.AnswerIndex == 1)
@@ -80,12 +114,11 @@ public partial class QuizScene : Control
         else
         {
             GD.Print("不正解");
-            RaiseWrongAnswer() ;
+            RaiseWrongAnswer();
         }
         NextQuestion();
-        //仮
-        //RaiseWrongAnswer();
     }
+
     private void HandleButtonCPressed()
     {
         if (currentQuestion.AnswerIndex == 2)
@@ -100,6 +133,7 @@ public partial class QuizScene : Control
         }
         NextQuestion();
     }
+
     private void HandleButtonDPressed()
     {
         if (currentQuestion.AnswerIndex == 3)
@@ -114,6 +148,4 @@ public partial class QuizScene : Control
         }
         NextQuestion();
     }
-
-
 }
