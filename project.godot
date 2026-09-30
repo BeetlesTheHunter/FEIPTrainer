@@ -21,10 +21,15 @@ config/icon="res://icon.svg"
 GameManager="*uid://cqbri5qu1fac6"
 UserDataManager="*uid://dspg2twb1abnt"
 QuestionManager="*uid://ddegpveslndr7"
+Firebase="uid://cvb26atjckwlq"
 
 [dotnet]
 
 project/assembly_name="Test3"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
 
 [physics]
 
