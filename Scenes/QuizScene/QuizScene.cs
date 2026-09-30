@@ -10,13 +10,15 @@ public partial class QuizScene : Control
     [Export] private Button ButtonD;
     [Export] private RichTextLabel QuestionLabel;
 
-
-    private QuestionData currentQuestion ;
+    private QuestionData currentQuestion;
+    private QuestionData[] questionArray;
+    private int currentIndex = 0; // 配列のインデックス管理用
 
     public event Action CorrectAnswer;
     private void RaiseCorrectAnswer() => CorrectAnswer?.Invoke();
     public event Action WrongAnswer;
-    private void RaiseWrongAnswer() => WrongAnswer  ?.Invoke();
+    private void RaiseWrongAnswer() => WrongAnswer?.Invoke();
+
     public override void _Ready()
     {
         ButtonA.Pressed += HandleButtonAPressed;
@@ -24,15 +26,39 @@ public partial class QuizScene : Control
         ButtonC.Pressed += HandleButtonCPressed;
         ButtonD.Pressed += HandleButtonDPressed;
 
-        currentQuestion = QuestionDataManager.Instance.GetQuestionById(4);
-        UpdateQuestionUI();
+        QuestionData[] array = new QuestionData[5];
+
+        array[0] = QuestionDataManager.Instance.GetQuestionById(1);
+        array[1] = QuestionDataManager.Instance.GetQuestionById(2);
+        array[2] = QuestionDataManager.Instance.GetQuestionById(3);
+        array[3] = QuestionDataManager.Instance.GetQuestionById(4);
+        array[4] = QuestionDataManager.Instance.GetQuestionById(5);
+
+        init(array);
+
+
+
+
+    }
+
+    // 仕様書通りのメソッド名（_init）
+    public void init(QuestionData[] array) // 配列を受け取るためのメソッド
+    {
+        questionArray = array;
+        currentIndex = 0;
+
+        if (questionArray != null && questionArray.Length > 0)
+        {
+            currentQuestion = questionArray[currentIndex];
+            UpdateQuestionUI();
+        }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-
     }
+
     private void UpdateQuestionUI()
     {
         if (currentQuestion != null)
@@ -46,11 +72,29 @@ public partial class QuizScene : Control
         }
     }
 
-    private  void NextQuestion()
+    int questionCount = 0; //仮
+
+    private void NextQuestion()
     {
-        currentQuestion = QuestionDataManager.Instance.GetQuestionById(currentQuestion.Id + 1);
-        UpdateQuestionUI();
+        // 配列が渡されている場合は配列から次の問題を取得
+        if (questionArray != null && questionArray.Length > 0)
+        {
+            currentIndex++;
+
+            if (currentIndex < questionArray.Length)// 
+            {
+                currentQuestion = questionArray[currentIndex];
+                UpdateQuestionUI();
+            }
+            else
+            {
+                // 最後の問題を答え終わったら「ステージクリア」と出力
+                GD.Print("ステージクリア");
+            }
+        }
+       
     }
+
     private void HandleButtonAPressed()
     {
         if (currentQuestion.AnswerIndex == 0)
@@ -62,14 +106,10 @@ public partial class QuizScene : Control
         {
             GD.Print("不正解");
             RaiseWrongAnswer();
-
         }
         NextQuestion();
-
-
-        //仮
-        //RaiseCorrectAnswer();
     }
+
     private void HandleButtonBPressed()
     {
         if (currentQuestion.AnswerIndex == 1)
@@ -80,12 +120,11 @@ public partial class QuizScene : Control
         else
         {
             GD.Print("不正解");
-            RaiseWrongAnswer() ;
+            RaiseWrongAnswer();
         }
         NextQuestion();
-        //仮
-        //RaiseWrongAnswer();
     }
+
     private void HandleButtonCPressed()
     {
         if (currentQuestion.AnswerIndex == 2)
@@ -100,6 +139,7 @@ public partial class QuizScene : Control
         }
         NextQuestion();
     }
+
     private void HandleButtonDPressed()
     {
         if (currentQuestion.AnswerIndex == 3)
@@ -114,6 +154,4 @@ public partial class QuizScene : Control
         }
         NextQuestion();
     }
-
-
 }
