@@ -681,7 +681,7 @@ func get_clean_keys(auth_result : Dictionary) -> Dictionary:
 # --------------------
 
 func get_GoogleProvider() -> GoogleProvider:
-	return GoogleProvider.new(_config.ClientId, _config.ClientSecret)
+	return GoogleProvider.new(_config.clientId, _config.clientSecret)
 
 func get_FacebookProvider() -> FacebookProvider:
 	return FacebookProvider.new(_config.auth_providers.facebook_id, _config.auth_providers.facebook_secret)
