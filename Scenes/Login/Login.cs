@@ -22,7 +22,7 @@ public partial class Login : Control
         }
 
         // 2. Autoload の Firebase シングルトンと Auth オブジェクトを取得
-        _firebase = GetNodeOrNull<GodotObject>("/root/Firebase");
+        _firebase = GetNode<GodotObject>("/root/Firebase");
         if (_firebase != null)
         {
             _auth = (GodotObject)_firebase.Get("Auth");
@@ -75,38 +75,9 @@ public partial class Login : Control
         if (_auth != null)
         {
             Variant providerVariant;
+            providerVariant = _auth.Call("get_GoogleProvider");
 
-            // バージョンによって関数名が異なるため、HasMethodで存在チェックをしてから呼び出す
-            if (_auth.HasMethod("get_GoogleProvider"))
-            {
-                providerVariant = _auth.Call("get_GoogleProvider");
-            }
-            else if (_auth.HasMethod("get_google_provider"))
-            {
-                providerVariant = _auth.Call("get_google_provider");
-            }
-            else
-            {
-                GD.PrintErr("エラー: Auth モジュール内にGoogleプロバイダ取得メソッドが見つかりません。");
-                
-                // 【究極のデバッグ】実際に Auth が持っている関連メソッドをコンソールに全出力して確認する
-                GD.Print("=== Auth に存在する関連メソッド一覧 ===");
-                foreach (Godot.Collections.Dictionary method in _auth.GetMethodList())
-                {
-                    string methodName = method["name"].AsString();
-                    // 関連しそうなメソッドだけ絞り込んで表示
-                    if (methodName.Contains("provider", StringComparison.OrdinalIgnoreCase) || 
-                        methodName.Contains("login", StringComparison.OrdinalIgnoreCase) || 
-                        methodName.Contains("auth", StringComparison.OrdinalIgnoreCase))
-                    {
-                        GD.Print("- " + methodName);
-                    }
-                }
-                GD.Print("=================================");
-                
-                if (loginBotan != null) loginBotan.Disabled = false;
-                return;
-            }
+            
 
             GodotObject googleProvider = providerVariant.As<GodotObject>();
 
