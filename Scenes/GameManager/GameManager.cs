@@ -9,7 +9,6 @@ public partial class GameManager : Node
 
     [Export] public PackedScene ESCMenuOverlay;
 
-    [Export] private PackedScene initialScene;
 
     private CanvasLayer mainScene;
     public static GameManager Instance;
@@ -19,7 +18,6 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         Instance = this;
-        ReplaceScene(initialScene);
     }
 
     public void ReplaceScene(PackedScene scene)
