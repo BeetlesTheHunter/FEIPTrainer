@@ -13,17 +13,24 @@ public partial class GameManager : Node
 
     private CanvasLayer mainScene;
     public static GameManager Instance;
+    
+    private Node currentLoadedScene;
 
     public override void _Ready()
     {
-        ReplaceScene(initialScene);
         Instance = this;
+        ReplaceScene(initialScene);
     }
 
     public void ReplaceScene(PackedScene scene)
     {
-        Node target = scene.Instantiate();
-        GetTree().CurrentScene.AddChild(target);
-    }
+        if (currentLoadedScene != null)
+        {
+            currentLoadedScene.QueueFree();
+        }
 
+        currentLoadedScene = scene.Instantiate();
+        
+        GetTree().CurrentScene.AddChild(currentLoadedScene);
+    }
 }
