@@ -9,6 +9,8 @@ public partial class DashBoard : Control
     [Export] private Button ReviewStageButton;
     [Export] private Button CategoryStageButton;
 
+    private UserDataManager userDataManager;
+
 
     public override void _Ready()
 	{
@@ -17,7 +19,11 @@ public partial class DashBoard : Control
         ReviewStageButton.Pressed += HandleReviewStageButtonPressed;
         CategoryStageButton.Pressed += HandleCategoryStageButtonPressed;
 
+    }
 
+    public void Init(UserDataManager udm)
+    {
+        userDataManager = udm;
     }
 
     public void HandleDailyStageButtonPressed()
