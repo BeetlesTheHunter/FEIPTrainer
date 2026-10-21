@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c8ybp0ag63mqe"]
+
+[ext_resource type="Script" uid="uid://cn5o7sg4n41e5" path="res://Start screen/StartScreen.cs" id="1_ebute"]
+[ext_resource type="Texture2D" uid="uid://cltany6s6tl3p" path="res://Assets/PlaceHolderAssets/button_rectangle_gradient.png" id="1_gegx0"]
+[ext_resource type="Texture2D" uid="uid://cqhtp0pdrshtp" path="res://Assets/PlaceHolderAssets/button_rectangle_line.png" id="2_ebute"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xr1id"]
+texture = ExtResource("1_gegx0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xtney"]
+texture = ExtResource("2_ebute")
+
+[node name="StartScreen" type="Control" unique_id=1794496994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ebute")
+
+[node name="Control" type="Control" parent="." unique_id=1926767932]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 8.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1935088391]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99135697
+anchor_bottom = 1.0170015
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control/ColorRect" unique_id=953610468]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43679163
+anchor_top = 0.22492401
+anchor_right = 0.5727986
+anchor_bottom = 0.48176292
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Test3
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Start" type="Button" parent="Control/ColorRect" unique_id=675106678]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39058414
+anchor_top = 0.51823705
+anchor_right = 0.6094159
+anchor_bottom = 0.68237084
+offset_top = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_xr1id")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xtney")
+text = "Start"
+metadata/_edit_use_anchors_ = true
