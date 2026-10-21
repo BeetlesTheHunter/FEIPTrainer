@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8ybp0ag63mqe"]
 
-[ext_resource type="Script" uid="uid://cn5o7sg4n41e5" path="res://Start screen/StartScreen.cs" id="1_ebute"]
+[ext_resource type="Script" uid="uid://cn5o7sg4n41e5" path="res://Scenes/Start screen/StartScreen.cs" id="1_ebute"]
 [ext_resource type="Texture2D" uid="uid://cltany6s6tl3p" path="res://Assets/PlaceHolderAssets/button_rectangle_gradient.png" id="1_gegx0"]
 [ext_resource type="Texture2D" uid="uid://cqhtp0pdrshtp" path="res://Assets/PlaceHolderAssets/button_rectangle_line.png" id="2_ebute"]
 
