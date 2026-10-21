@@ -24,7 +24,7 @@ public partial class QuestionData : Resource
     [JsonPropertyName("questionImage")]
     public string QuestionImage { get; set; } = string.Empty;
 
-    [JsonPropertyName("optionsImages")]
+    [JsonPropertyName("optionImages")]
     public string[] OptionsImages { get; set; } = Array.Empty<string>();
 
     public QuestionData() { }

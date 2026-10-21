@@ -56,16 +56,14 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "正答率：p
-"
+text = "正解: 0問"
 horizontal_alignment = 1
 
 [node name="score" type="Label" parent="MainMargin/MainLayout/CenterScoreColumn/ScoreStack" unique_id=1569533950]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-text = "獲得スコア：スコア読み込みできませんでした
-"
+text = "不正解: 0問"
 horizontal_alignment = 1
 
 [node name="RightSideColumn" type="VBoxContainer" parent="MainMargin/MainLayout" unique_id=388096197]
@@ -100,12 +98,11 @@ offset_left = 196.0
 offset_top = -46.0
 offset_right = 370.0
 offset_bottom = 25.0
-tooltip_text = "Go to dash board"
+tooltip_text = "ダッシュボードへ戻る"
 theme_override_colors/font_hover_color = Color(0.25490198, 0.7529412, 0.9490196, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.35686275, 1, 1)
 theme_override_font_sizes/font_size = 23
-text = "次のステージへ
-"
+text = "ダッシュボードへ戻る"
 
 [node name="ArrowBasicNSmall" type="Sprite2D" parent="." unique_id=1268154102]
 position = Vector2(1054, 33)

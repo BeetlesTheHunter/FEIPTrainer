@@ -21,13 +21,14 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8lpj"]
 bg_color = Color(0.8089983, 0.8089983, 0.80899817, 1)
 
-[node name="ESCMenu" type="Control" unique_id=1768557837 node_paths=PackedStringArray("ContinueButton")]
+[node name="ESCMenu" type="Control" unique_id=1768557837 node_paths=PackedStringArray("ContinueButton", "TitleButton")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 766.0
 offset_bottom = 413.0
 script = ExtResource("1_ooady")
 ContinueButton = NodePath("ESCMenu/Continue")
+TitleButton = NodePath("ESCMenu/Title")
 
 [node name="ESCMenu" type="Panel" parent="." unique_id=719341402]
 layout_mode = 1

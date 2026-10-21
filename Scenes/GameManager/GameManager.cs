@@ -25,18 +25,34 @@ public partial class GameManager : Node
 
     public override void _Ready()
     {
-        questionDataManager = questionDataManagerScene.Instantiate() as QuestionDataManager;
-        AddChild(questionDataManager);
-
-        userDataManager = userDataManagerScene.Instantiate() as UserDataManager;
-        AddChild(userDataManager);
-
+        Instance = this;
         gameManager = this;
 
-        Instance = this;
+        if (questionDataManagerScene != null)
+        {
+            questionDataManager = questionDataManagerScene.Instantiate() as QuestionDataManager;
+            AddChild(questionDataManager);
+        }
+        else GD.PushError("[GameManager] questionDataManagerScene が未設定です");
+
+        if (userDataManagerScene != null)
+        {
+            userDataManager = userDataManagerScene.Instantiate() as UserDataManager;
+            AddChild(userDataManager);
+        }
+        else GD.PushError("[GameManager] userDataManagerScene が未設定です");
+
+        // Autoload の _Ready 時点ではまだメインシーン(CurrentScene)が無いので、
+        // 1フレーム遅らせてから最初の画面(ダッシュボード)を開く。
+        CallDeferred(nameof(LoadInitialScene));
     }
 
-    public void ReplaceScene(PackedScene scene)
+    private void LoadInitialScene()
+    {
+        ReplaceScene(dashBoardScreen);
+    }
+
+    public Node ReplaceScene(PackedScene scene)
     {
         if (currentLoadedScene != null)
         {
@@ -44,7 +60,9 @@ public partial class GameManager : Node
         }
 
         currentLoadedScene = scene.Instantiate();
-        
-        GetTree().CurrentScene.AddChild(currentLoadedScene);
+
+        Node parent = GetTree().CurrentScene ?? GetTree().Root;
+        parent.AddChild(currentLoadedScene);
+        return currentLoadedScene;
     }
 }
