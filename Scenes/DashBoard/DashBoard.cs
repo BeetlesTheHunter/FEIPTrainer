@@ -8,6 +8,8 @@ public partial class DashBoard : Control
     [Export] private Button NomalStageButton;
     [Export] private Button ReviewStageButton;
 
+    private UserDataManager userDataManager;
+
 
     public override void _Ready()
 	{
@@ -15,7 +17,11 @@ public partial class DashBoard : Control
         NomalStageButton.Pressed += HandleNomalStageButtonPressed;
         ReviewStageButton.Pressed += HandleReviewStageButtonPressed;
 
+    }
 
+    public void Init(UserDataManager udm)
+    {
+        userDataManager = udm;
     }
 
     public void HandleDailyStageButtonPressed()
