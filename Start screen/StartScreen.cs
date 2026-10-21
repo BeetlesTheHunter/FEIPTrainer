@@ -1,15 +1,26 @@
+
 using Godot;
-using System;
 
 public partial class StartScreen : Control
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+    [Export] private Button startButton;
+   
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    public override void _Ready()
+    {
+       
+      
+
+       
+        startButton.Pressed += OnStartPressed;
+     
+    }
+
+    private void OnStartPressed()
+    {
+        GD.Print("ゲーム開始");
+        GameManager.Instance.ReplaceScene(
+            GameManager.Instance.dashBoardScreen);
+    }
+
 }

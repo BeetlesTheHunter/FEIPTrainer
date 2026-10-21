@@ -10,7 +10,7 @@ texture = ExtResource("1_gegx0")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xtney"]
 texture = ExtResource("2_ebute")
 
-[node name="StartScreen" type="Control" unique_id=1794496994]
+[node name="StartScreen" type="Control" unique_id=1794496994 node_paths=PackedStringArray("startButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,28 +18,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ebute")
+startButton = NodePath("ColorRect/Start")
 
-[node name="Control" type="Control" parent="." unique_id=1926767932]
-layout_mode = 1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_right = 8.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1935088391]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1935088391]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.99135697
 anchor_bottom = 1.0170015
+offset_left = 3.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Control/ColorRect" unique_id=953610468]
+[node name="Label" type="Label" parent="ColorRect" unique_id=953610468]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.43679163
@@ -53,7 +46,7 @@ text = "Test3
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Start" type="Button" parent="Control/ColorRect" unique_id=675106678]
+[node name="Start" type="Button" parent="ColorRect" unique_id=675106678]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.39058414
