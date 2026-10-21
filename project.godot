@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 FirebaseConfig="uid://mootkgjqmjb0"
-GameManager="uid://cqbri5qu1fac6"
+GameManager="*uid://cqbri5qu1fac6"
 UserDataManager="*uid://dspg2twb1abnt"
 QuestionManager="*uid://ddegpveslndr7"
 
