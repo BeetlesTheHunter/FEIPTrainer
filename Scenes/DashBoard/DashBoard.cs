@@ -9,6 +9,7 @@ public partial class DashBoard : Control
     [Export] private Button ReviewStageButton;
 
     private UserDataManager userDataManager;
+    private GameManager gameManager;
 
 
     public override void _Ready()
@@ -19,8 +20,9 @@ public partial class DashBoard : Control
 
     }
 
-    public void Init(UserDataManager udm)
+    public void Init(GameManager gm, UserDataManager udm)
     {
+        gameManager = gm;
         userDataManager = udm;
     }
 
@@ -32,7 +34,7 @@ public partial class DashBoard : Control
     public void HandleNomalStageButtonPressed()
     {
         GD.Print("NomalStageBottonPressed");
-        GameManager.Instance.ReplaceScene(GameManager.Instance.quizScreen);
+        gameManager.QuizScreen();
     }
 
     public void HandleReviewStageButtonPressed()

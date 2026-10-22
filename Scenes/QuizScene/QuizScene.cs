@@ -16,6 +16,7 @@ public partial class QuizScene : Control
     private int currentIndex = 0; // 配列のインデックス管理用
     
     [Export] public ScoreManager scoreManager {get; private set;}
+    private QuestionDataManager qdm;
 
     
 
@@ -35,7 +36,7 @@ public partial class QuizScene : Control
 
     }
 
-    public void Init(QuestionData[] array)
+    public void Init(QuestionDataManager qdm, QuestionData[] array)
     {
         questionArray = array;
         currentIndex = 0;
