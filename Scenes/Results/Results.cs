@@ -26,7 +26,7 @@ public partial class Results : Control
     {
 
        
-            GameManager.Instance.ReplaceScene(GameManager.Instance.dashBoardScreen);
+        //GameManager.Instance.ReplaceScene(GameManager.Instance.dashBoardScene);
     
           
     }

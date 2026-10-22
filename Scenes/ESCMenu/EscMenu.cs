@@ -4,6 +4,7 @@ using System;
 public partial class EscMenu : Control
 {
     [Export] private Button ContinueButton;
+    private GameManager gameManager;
 
     public override void _Ready()
     {
@@ -12,10 +13,16 @@ public partial class EscMenu : Control
         Visible = false;
     }
 
+    public void Init(GameManager gm)
+    {
+        gameManager = gm;
+    }
+
     private void HandleContinueButtonPressed()
     {
-        GameManager.Instance.ReplaceScene(GameManager.Instance.dashBoardScreen);
+        
     }
+    
     public override void _Input(InputEvent @event)
     {
         if (@event.IsActionPressed("ui_cancel"))

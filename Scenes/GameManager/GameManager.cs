@@ -1,14 +1,13 @@
 using Godot;
-using System;
-
 
 public partial class GameManager : Node
 {
-    [Export] public PackedScene dashBoardScreen;
-    [Export] public PackedScene quizScreen;
-    [Export] public PackedScene resultsScreen;
+    [Export] private PackedScene dashBoardScene;
+    [Export] private PackedScene quizScene;
+    [Export] private PackedScene resultsScene;
+    [Export] private PackedScene startScene;
 
-    [Export] public PackedScene ESCMenuOverlay;
+    [Export] private PackedScene ESCMenuOverlay;
     
     [Export] private PackedScene questionDataManagerScene;
     [Export] private PackedScene userDataManagerScene;
@@ -16,10 +15,6 @@ public partial class GameManager : Node
     private QuestionDataManager questionDataManager;
     private UserDataManager userDataManager;
     private GameManager gameManager;
-
-
-    private CanvasLayer mainScene;
-    public static GameManager Instance;
     
     private Node currentLoadedScene;
 
@@ -33,17 +28,50 @@ public partial class GameManager : Node
 
         gameManager = this;
 
-        Instance = this;
+        StartScreen();
+        ESCMenuScreen();
+
+
     }
 
-    public void ReplaceScene(PackedScene scene)
+    public void StartScreen()
+    {
+        StartScreen scene = startScene.Instantiate() as StartScreen;
+        scene.Init(gameManager);
+        ReplaceScene(scene);
+        
+    }
+
+    public void DashBoardScreen()
+    {
+        DashBoard scene = dashBoardScene.Instantiate() as DashBoard;
+        scene.Init(gameManager, userDataManager);
+        ReplaceScene(scene);
+    }
+
+    public void QuizScreen()
+    {
+        QuizScene scene = quizScene.Instantiate() as QuizScene;
+        scene.Init(questionDataManager,null);
+        ReplaceScene(scene);
+
+    }
+
+    public void ESCMenuScreen()
+    {
+        EscMenu scene = ESCMenuOverlay.Instantiate() as EscMenu;
+        scene.Init(gameManager);
+        AddChild(scene);
+    }
+
+    private void ReplaceScene(Node scene)
     {
         if (currentLoadedScene != null)
         {
             currentLoadedScene.QueueFree();
         }
 
-        currentLoadedScene = scene.Instantiate();
+        currentLoadedScene = scene;
         
         GetTree().CurrentScene.AddChild(currentLoadedScene);
     }
