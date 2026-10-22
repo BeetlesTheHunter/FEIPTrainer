@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Test3"
+config/name="FEIPTrainer"
 run/main_scene="uid://cvkne8yxk2lsw"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"

@@ -61,7 +61,7 @@ public partial class GameManager : Node
     {
         EscMenu scene = ESCMenuOverlay.Instantiate() as EscMenu;
         scene.Init(gameManager);
-        AddChild(scene);
+        GetTree().CurrentScene.AddChild(scene);
     }
 
     private void ReplaceScene(Node scene)
