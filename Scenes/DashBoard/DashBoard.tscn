@@ -1,16 +1,14 @@
 [gd_scene format=3 uid="uid://1adwrb5j8rgk"]
 
 [ext_resource type="Script" uid="uid://b2sia2oilwv8w" path="res://Scenes/DashBoard/DashBoard.cs" id="1_ayeso"]
-[ext_resource type="Texture2D" uid="uid://cmp74aib55wr7" path="res://Assets/PlaceHolderAssets/button_rectangle_depth_flat.png" id="1_s02pu"]
+[ext_resource type="Theme" uid="uid://cmyifl6cvm1qi" path="res://UIStyles/Themes/DefualtTheme.tres" id="1_goquy"]
+[ext_resource type="Shader" uid="uid://23bo4s3anyck" path="res://Scripts/Shaders/BackgroundBlur.gdshader" id="3_7b2hk"]
+[ext_resource type="Texture2D" uid="uid://dt752jjjxyp7f" path="res://Assets/Backgrounds/DashBoardBackground.jpg" id="3_goquy"]
+[ext_resource type="StyleBox" uid="uid://rsxmn6etr65e" path="res://UIStyles/Panels/NailedPanel.tres" id="3_ivox8"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayeso"]
-texture = ExtResource("1_s02pu")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_goquy"]
-texture = ExtResource("1_s02pu")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b2hk"]
-texture = ExtResource("1_s02pu")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivox8"]
+shader = ExtResource("3_7b2hk")
+shader_parameter/blur_amount = 4.00000019
 
 [node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton")]
 layout_mode = 3
@@ -19,32 +17,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_goquy")
 script = ExtResource("1_ayeso")
-DailyStageButton = NodePath("StagePanel/VBoxContainer/DailyStageButton")
-NomalStageButton = NodePath("StagePanel/VBoxContainer/NomalStageButton")
-ReviewStageButton = NodePath("StagePanel/VBoxContainer/ReviewStageButton")
+DailyStageButton = NodePath("VBoxContainer/DailyStageButton")
+NomalStageButton = NodePath("VBoxContainer/HBoxContainer/NomalStageButton")
+ReviewStageButton = NodePath("VBoxContainer/HBoxContainer/ReviewStageButton")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1005612483]
+z_index = -1
+texture_filter = 4
+material = SubResource("ShaderMaterial_ivox8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_goquy")
+expand_mode = 1
 
 [node name="PlayerInfoPanel" type="PanelContainer" parent="." unique_id=529991284]
 layout_mode = 0
-offset_right = 160.0
-offset_bottom = 104.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 337.0
+offset_bottom = 218.0
+theme_override_styles/panel = ExtResource("3_ivox8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerInfoPanel" unique_id=1930609315]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PlayerInfoPanel" unique_id=1930609315]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1841345367]
+[node name="NameLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer2" unique_id=1841345367]
 layout_mode = 2
 text = "名前：未設定"
 
-[node name="ScoreLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1110945872]
+[node name="ScoreLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer2" unique_id=1110945872]
 layout_mode = 2
 text = "総スコア：０"
 
-[node name="RankLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1615763449]
+[node name="RankLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer2" unique_id=1615763449]
 layout_mode = 2
 text = "順位：-"
 
-[node name="LoginDaysLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer" unique_id=1842502661]
+[node name="LoginDaysLabel" type="Label" parent="PlayerInfoPanel/VBoxContainer2" unique_id=1842502661]
 layout_mode = 2
 text = "連続ログイン日数：０日"
 
@@ -61,34 +76,28 @@ layout_mode = 2
 [node name="RankingContainer" type="VBoxContainer" parent="RankingPanel/ScrollContainer" unique_id=287539411]
 layout_mode = 2
 
-[node name="StagePanel" type="PanelContainer" parent="." unique_id=557733990]
-layout_mode = 0
-offset_left = 117.0
-offset_top = 231.0
-offset_right = 483.0
-offset_bottom = 557.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=705720969]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -331.0
+offset_right = 406.0
+offset_bottom = 1.0
+grow_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="StagePanel" unique_id=705720969]
+[node name="DailyStageButton" type="Button" parent="VBoxContainer" unique_id=1573045925]
 layout_mode = 2
-theme_override_constants/separation = 100
-
-[node name="DailyStageButton" type="Button" parent="StagePanel/VBoxContainer" unique_id=1573045925]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_ayeso")
 text = "デイリー"
 
-[node name="NomalStageButton" type="Button" parent="StagePanel/VBoxContainer" unique_id=638358640]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1597076363]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_goquy")
+
+[node name="NomalStageButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=638358640]
+layout_mode = 2
 text = "ノーマル"
 
-[node name="ReviewStageButton" type="Button" parent="StagePanel/VBoxContainer" unique_id=1713757497]
+[node name="ReviewStageButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1713757497]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_7b2hk")
 text = "復習"
