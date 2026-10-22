@@ -74,5 +74,6 @@ public partial class GameManager : Node
         currentLoadedScene = scene;
         
         GetTree().CurrentScene.AddChild(currentLoadedScene);
+        GetTree().CurrentScene.MoveChild(currentLoadedScene,0);
     }
 }

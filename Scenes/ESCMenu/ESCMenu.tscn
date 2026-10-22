@@ -21,7 +21,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8lpj"]
 bg_color = Color(0.8089983, 0.8089983, 0.80899817, 1)
 
-[node name="ESCMenu" type="Control" unique_id=1768557837 node_paths=PackedStringArray("ContinueButton")]
+[node name="ESCMenu" type="Control" unique_id=1768557837 node_paths=PackedStringArray("ContinueButton", "TitleButton")]
 top_level = true
 z_index = 5
 layout_mode = 3
@@ -33,6 +33,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_ooady")
 ContinueButton = NodePath("ESCMenu/Continue")
+TitleButton = NodePath("ESCMenu/Title")
 
 [node name="ESCMenu" type="Panel" parent="." unique_id=719341402]
 layout_mode = 1
@@ -72,10 +73,10 @@ text = "続ける"
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 0.006
-offset_left = 150.0
-offset_top = 251.0
-offset_right = 607.0
-offset_bottom = 334.178
+offset_left = 330.0
+offset_top = 378.0
+offset_right = 787.0
+offset_bottom = 461.178
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_tck06")
 theme_override_styles/hover = SubResource("StyleBoxFlat_c8lpj")
