@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://23bo4s3anyck" path="res://Scripts/Shaders/BackgroundBlur.gdshader" id="4_i7ej2"]
 [ext_resource type="Texture2D" uid="uid://bx38pn2iko6ky" path="res://Assets/Backgrounds/QuizPlainsBackground.jpg" id="5_4m83h"]
 [ext_resource type="PackedScene" uid="uid://crgm5c8d2q46" path="res://Scenes/QuizScene/ScoreManager/ScoreManager.tscn" id="5_i7ej2"]
+[ext_resource type="StyleBox" uid="uid://rsxmn6etr65e" path="res://UIStyles/Panels/NailedPanel.tres" id="5_wdgeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wdgeb"]
 shader = ExtResource("4_i7ej2")
@@ -44,6 +45,7 @@ custom_minimum_size = Vector2(500, 650)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_styles/panel = ExtResource("5_wdgeb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="QuizText" unique_id=546752838]
 layout_mode = 2

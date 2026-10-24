@@ -100,4 +100,5 @@ text = "ノーマル"
 
 [node name="ReviewStageButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1713757497]
 layout_mode = 2
+disabled = true
 text = "復習"
