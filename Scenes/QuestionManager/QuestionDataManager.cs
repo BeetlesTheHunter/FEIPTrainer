@@ -2,12 +2,34 @@ using System.Collections.Generic;
 using Godot;
 using System.Text.Json;
 using System.Linq;
+using System;
 
 public partial class QuestionDataManager : Node
 {
 	private const string questionDataPath = "res://Data/all_questions.json";
 	private Dictionary<int, QuestionData> questionDictionary = new Dictionary<int, QuestionData>();
 	public static QuestionDataManager Instance { get; private set; }
+
+
+
+	public QuestionData GetQuestionById(int id)
+	{
+		if (questionDictionary.TryGetValue(id, out var questionData))
+		{
+			return questionData;
+		}
+		else
+		{
+			GD.PrintErr($"Question with ID {id} not found.");
+			return null;
+		}
+	}
+
+	public QuestionData GetRandomQuestion()
+	{
+		int value = Random.Shared.Next(1, questionDictionary.Count());
+		return GetQuestionById(value);
+	}
 
 
 	public override void _EnterTree()
@@ -47,16 +69,5 @@ public partial class QuestionDataManager : Node
 		questionDictionary = questionList.ToDictionary(question => question.Id, question => question);
 	}
 
-	public QuestionData GetQuestionById(int id)
-	{
-		if (questionDictionary.TryGetValue(id, out var questionData))
-		{
-			return questionData;
-		}
-		else
-		{
-			GD.PrintErr($"Question with ID {id} not found.");
-			return null;
-		}
-	}
+	
 }

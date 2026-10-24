@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Text.Json.Serialization.Metadata;
 
 public partial class QuizScene : Control
 {
@@ -16,7 +15,7 @@ public partial class QuizScene : Control
     private int currentIndex = 0; // 配列のインデックス管理用
     
     [Export] public ScoreManager scoreManager {get; private set;}
-    private QuestionDataManager qdm;
+    private QuestionDataManager questionDataManager;
 
     
 
@@ -31,15 +30,27 @@ public partial class QuizScene : Control
         ButtonB.Pressed += HandleButtonBPressed;
         ButtonC.Pressed += HandleButtonCPressed;
         ButtonD.Pressed += HandleButtonDPressed;
-        int numberOfQuestions = 11;
-        QuestionData[] array = new QuestionData[numberOfQuestions];
+        
 
     }
 
     public void Init(QuestionDataManager qdm, QuestionData[] array)
     {
+        questionDataManager = qdm;
+
         questionArray = array;
         currentIndex = 0;
+
+        if(questionArray == null)
+        {
+            QuestionData[] testArray = {questionDataManager.GetQuestionById(1),
+            questionDataManager.GetQuestionById(2),
+            questionDataManager.GetQuestionById(3),
+            questionDataManager.GetQuestionById(4),
+            questionDataManager.GetQuestionById(5)};
+
+            questionArray = testArray;
+        }
 
         if (questionArray != null && questionArray.Length > 0)
         {
