@@ -53,15 +53,16 @@ public partial class QuizScene : Control
         UpdateQuestionUI();
     }
 
-    public void Init(QuestionData[] array)
+    public void Init(QuestionData[] array, QuestionDataManager qdm)
     {
         quizMode = QuizMode.ArrayQustion;
-
-        questionArray = array;
         questionNumber = 0;
+        
 
-        if(questionArray == null)
+        if(array == null)
         {
+            questionDataManager = qdm;
+            
             QuestionData[] testArray = {
             questionDataManager.GetQuestionById(1),
             questionDataManager.GetQuestionById(418),
@@ -69,8 +70,10 @@ public partial class QuizScene : Control
             questionDataManager.GetQuestionById(1240),
             questionDataManager.GetQuestionById(1505)};
 
-            questionArray = testArray;
+            array = testArray;
         }
+
+        questionArray = array;
 
         if (questionArray != null && questionArray.Length > 0)
         {
@@ -143,7 +146,7 @@ public partial class QuizScene : Control
 
     private void EndQuiz()
     {
-        
+        GD.Print("end of quiz reached");
     }
 
     private void ToggleButtons(bool disabled)
