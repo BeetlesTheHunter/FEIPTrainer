@@ -43,11 +43,12 @@ public partial class QuizScene : Control
 
         if(questionArray == null)
         {
-            QuestionData[] testArray = {questionDataManager.GetQuestionById(1),
-            questionDataManager.GetQuestionById(2),
-            questionDataManager.GetQuestionById(3),
-            questionDataManager.GetQuestionById(4),
-            questionDataManager.GetQuestionById(5)};
+            QuestionData[] testArray = {
+            questionDataManager.GetQuestionById(1),
+            questionDataManager.GetQuestionById(418),
+            questionDataManager.GetQuestionById(993),
+            questionDataManager.GetQuestionById(1240),
+            questionDataManager.GetQuestionById(1505)};
 
             questionArray = testArray;
         }
@@ -66,6 +67,7 @@ public partial class QuizScene : Control
         if (currentQuestion != null)
         {
             QuestionLabel.Text = currentQuestion.Question;
+            AddQuestionImage();
             QuestionLabel.Text += "\n";
             QuestionLabel.Text += "\n A: " + currentQuestion.Options[0];
             QuestionLabel.Text += "\n B: " + currentQuestion.Options[1];
@@ -74,7 +76,14 @@ public partial class QuizScene : Control
         }
     }
 
-    int questionCount = 0; //仮
+    private void AddQuestionImage()
+    {
+        if(currentQuestion.QuestionImage != null)
+        {
+            QuestionLabel.Text += currentQuestion.QuestionImage;
+        }
+    }
+
 
     private void NextQuestion()
     {
