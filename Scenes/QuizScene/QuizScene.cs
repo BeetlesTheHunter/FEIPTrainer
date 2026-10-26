@@ -66,13 +66,19 @@ public partial class QuizScene : Control
     {
         if (currentQuestion != null)
         {
-            QuestionLabel.Text = currentQuestion.Question;
+            QuestionLabel.Clear();
+
+            QuestionLabel.AppendText(currentQuestion.Question);
+            QuestionLabel.AppendText("\n");
+
             AddQuestionImage();
-            QuestionLabel.Text += "\n";
-            QuestionLabel.Text += "\n A: " + currentQuestion.Options[0];
-            QuestionLabel.Text += "\n B: " + currentQuestion.Options[1];
-            QuestionLabel.Text += "\n C: " + currentQuestion.Options[2];
-            QuestionLabel.Text += "\n D: " + currentQuestion.Options[3];
+            QuestionLabel.AppendText("\n");
+
+            QuestionLabel.AppendText("\n A: " + currentQuestion.Options[0]);
+            QuestionLabel.AppendText("\n B: " + currentQuestion.Options[1]);
+            QuestionLabel.AppendText("\n C: " + currentQuestion.Options[2]);
+            QuestionLabel.AppendText("\n D: " + currentQuestion.Options[3]);
+           
         }
     }
 
@@ -80,7 +86,8 @@ public partial class QuizScene : Control
     {
         if(currentQuestion.QuestionImage != null)
         {
-            QuestionLabel.Text += currentQuestion.QuestionImage;
+            Texture2D image = GD.Load<Texture2D>(currentQuestion.QuestionImage);
+            QuestionLabel.AddImage(image,400,256);
         }
     }
 

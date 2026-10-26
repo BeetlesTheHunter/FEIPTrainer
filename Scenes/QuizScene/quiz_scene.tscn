@@ -21,8 +21,8 @@ grow_vertical = 2
 theme = ExtResource("1_hmjen")
 script = ExtResource("1_v6ra0")
 ButtonA = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonA")
-ButtonB = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonB")
-ButtonC = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonC")
+ButtonB = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonB")
+ButtonC = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonC")
 ButtonD = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonD")
 QuestionLabel = NodePath("QuizText/RichTextLabel")
 scoreManager = NodePath("ScoreManager")
@@ -50,6 +50,7 @@ theme_override_styles/panel = ExtResource("5_wdgeb")
 [node name="RichTextLabel" type="RichTextLabel" parent="QuizText" unique_id=546752838]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
 text = "ハザード回避のためのフォワーディング（データバイパス）の主目的はどれか？"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1441145255]
@@ -78,18 +79,18 @@ layout_mode = 2
 layout_mode = 2
 text = "A"
 
-[node name="ButtonB" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=526479199]
+[node name="ButtonC" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=426416065]
 layout_mode = 2
-text = "B
-"
+text = "C"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=500712022]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="ButtonC" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=426416065]
+[node name="ButtonB" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=526479199]
 layout_mode = 2
-text = "C"
+text = "B
+"
 
 [node name="ButtonD" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2" unique_id=1104043654]
 layout_mode = 2
