@@ -12,12 +12,19 @@ public partial class QuizScene : Control
 
     private QuestionData currentQuestion;
     private QuestionData[] questionArray;
-    private int currentIndex = 0; // 配列のインデックス管理用
+    private int questionNumber = 0; //何問やったか管理するために使う
+    private int randomQuestionNumberMax = 0;
     
     [Export] public ScoreManager scoreManager {get; private set;}
     private QuestionDataManager questionDataManager;
 
-    
+    public enum QuizMode
+    {
+        Randomized,
+        ArrayQustion,
+    }
+
+    private QuizMode quizMode;
 
     public event Action CorrectAnswer;
     private void RaiseCorrectAnswer() => CorrectAnswer?.Invoke();
@@ -34,12 +41,27 @@ public partial class QuizScene : Control
 
     }
 
+    public void Init(QuestionDataManager qdm, int numberOfQuestions)
+    {
+        quizMode = QuizMode.Randomized;
+
+        questionDataManager = qdm;
+
+        questionNumber = 0;
+        randomQuestionNumberMax = numberOfQuestions;
+
+        currentQuestion = questionDataManager.GetRandomQuestion();
+        UpdateQuestionUI();
+    }
+
     public void Init(QuestionDataManager qdm, QuestionData[] array)
     {
+        quizMode = QuizMode.ArrayQustion;
+
         questionDataManager = qdm;
 
         questionArray = array;
-        currentIndex = 0;
+        questionNumber = 0;
 
         if(questionArray == null)
         {
@@ -55,7 +77,7 @@ public partial class QuizScene : Control
 
         if (questionArray != null && questionArray.Length > 0)
         {
-            currentQuestion = questionArray[currentIndex];
+            currentQuestion = questionArray[questionNumber];
             UpdateQuestionUI();
         }
     }
@@ -91,22 +113,42 @@ public partial class QuizScene : Control
         }
     }
 
-
     private void NextQuestion()
     {
        
-        currentIndex++;
-
-        if (currentIndex < questionArray.Length)// 
+        questionNumber++;
+ 
+        if(quizMode == QuizMode.Randomized)
         {
-            currentQuestion = questionArray[currentIndex];
-            UpdateQuestionUI();
+            if(questionNumber <= randomQuestionNumberMax)
+            {
+                currentQuestion = questionDataManager.GetRandomQuestion();
+                UpdateQuestionUI();
+            }
+            else
+            {
+                EndQuiz();
+            }
         }
-        else
+        else if(quizMode == QuizMode.ArrayQustion)
         {
-            GD.Print("ステージクリア");
+            if(questionNumber < questionArray.Length)
+            {
+                currentQuestion = questionArray[questionNumber];
+                UpdateQuestionUI();
+            }
+            else
+            {
+                EndQuiz();
+            }
         }
+        
        
+    }
+
+    private void EndQuiz()
+    {
+        
     }
 
     private void HandleButtonAPressed()
