@@ -43,11 +43,12 @@ public partial class QuizScene : Control
 
         if(questionArray == null)
         {
-            QuestionData[] testArray = {questionDataManager.GetQuestionById(1),
-            questionDataManager.GetQuestionById(2),
-            questionDataManager.GetQuestionById(3),
-            questionDataManager.GetQuestionById(4),
-            questionDataManager.GetQuestionById(5)};
+            QuestionData[] testArray = {
+            questionDataManager.GetQuestionById(1),
+            questionDataManager.GetQuestionById(418),
+            questionDataManager.GetQuestionById(993),
+            questionDataManager.GetQuestionById(1240),
+            questionDataManager.GetQuestionById(1505)};
 
             questionArray = testArray;
         }
@@ -65,16 +66,31 @@ public partial class QuizScene : Control
     {
         if (currentQuestion != null)
         {
-            QuestionLabel.Text = currentQuestion.Question;
-            QuestionLabel.Text += "\n";
-            QuestionLabel.Text += "\n A: " + currentQuestion.Options[0];
-            QuestionLabel.Text += "\n B: " + currentQuestion.Options[1];
-            QuestionLabel.Text += "\n C: " + currentQuestion.Options[2];
-            QuestionLabel.Text += "\n D: " + currentQuestion.Options[3];
+            QuestionLabel.Clear();
+
+            QuestionLabel.AppendText(currentQuestion.Question);
+            QuestionLabel.AppendText("\n");
+
+            AddQuestionImage();
+            QuestionLabel.AppendText("\n");
+
+            QuestionLabel.AppendText("\n A: " + currentQuestion.Options[0]);
+            QuestionLabel.AppendText("\n B: " + currentQuestion.Options[1]);
+            QuestionLabel.AppendText("\n C: " + currentQuestion.Options[2]);
+            QuestionLabel.AppendText("\n D: " + currentQuestion.Options[3]);
+           
         }
     }
 
-    int questionCount = 0; //仮
+    private void AddQuestionImage()
+    {
+        if(currentQuestion.QuestionImage != null)
+        {
+            Texture2D image = GD.Load<Texture2D>(currentQuestion.QuestionImage);
+            QuestionLabel.AddImage(image,400,256);
+        }
+    }
+
 
     private void NextQuestion()
     {

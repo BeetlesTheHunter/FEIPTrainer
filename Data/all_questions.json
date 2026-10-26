@@ -5848,7 +5848,7 @@
       "g<f<c<e<d<b<a"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/2025A/3.png",
+	"questionImage": "res://Data//img/2025A/3.png",
 	"optionImages": []
   },
   {
@@ -5890,7 +5890,7 @@
       "SELECT * FROM 商品 WHERE 仕入先 ID BETWEEN 'M002' AND 'M004'"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/2025A/6.png",
+	"questionImage": "res://Data//img/2025A/6.png",
 	"optionImages": []
   },
   {
@@ -6002,7 +6002,7 @@
       "31"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/2025A/14.png",
+	"questionImage": "res://Data//img/2025A/14.png",
 	"optionImages": []
   },
   {
@@ -6072,7 +6072,7 @@
       "5"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/2025A/19.png",
+	"questionImage": "res://Data//img/2025A/19.png",
 	"optionImages": []
   },
   {
@@ -6094,13 +6094,13 @@
 	"category": "理論",
 	"question": "X及びYはそれぞれ0又は1の値をとる変数である。X▢YをXとYの論理演算としたとき、次の真理値表が得られた。X▢Yの真理値表はどれか。",
 	"options": [
-	  "../kakomon/img/2024A/1a.png",
-	  "../kakomon/img/2024A/1i.png",
-	  "../kakomon/img/2024A/1u.png",
-      "../kakomon/img/2024A/1e.png"
+	  "res://Data//img/2024A/1a.png",
+	  "res://Data//img/2024A/1i.png",
+	  "res://Data//img/2024A/1u.png",
+      "res://Data//img/2024A/1e.png"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/2024A/1.png",
+	"questionImage": "res://Data//img/2024A/1.png",
 	"optionImages": []
   },
   {
@@ -6128,7 +6128,7 @@
       "0.96"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/2024A/3.png",
+	"questionImage": "res://Data//img/2024A/3.png",
 	"optionImages": []
   },
   {
@@ -6268,7 +6268,7 @@
       "125"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/2024A/13.png",
+	"questionImage": "res://Data//img/2024A/13.png",
 	"optionImages": []
   },
   {
@@ -6352,7 +6352,7 @@
       "xとyの相関係数は負である。"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/2024A/19.png",
+	"questionImage": "res://Data//img/2024A/19.png",
 	"optionImages": []
   },
   {
@@ -6394,7 +6394,7 @@
       "b, e"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/2023A/2.png",
+	"questionImage": "res://Data//img/2023A/2.png",
 	"optionImages": []
   },
   {
@@ -6450,7 +6450,7 @@
       "注文コード → 商品コード → 顧客注文数量"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/2023A/6.png",
+	"questionImage": "res://Data//img/2023A/6.png",
 	"optionImages": []
   },
   {
@@ -6506,7 +6506,7 @@
       "d"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/2023A/10.png",
+	"questionImage": "res://Data//img/2023A/10.png",
 	"optionImages": []
   },
   {
@@ -6520,7 +6520,7 @@
       "3a = 2b"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/2023A/11.png",
+	"questionImage": "res://Data//img/2023A/11.png",
 	"optionImages": []
   },
   {
@@ -6548,7 +6548,7 @@
       "E"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/2023A/13.png",
+	"questionImage": "res://Data//img/2023A/13.png",
 	"optionImages": []
   },
   {
@@ -6674,7 +6674,7 @@
       "a: NISHIN (k) ← j mod 2, b: j ← j div 2"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/sampleA/2.png",
+	"questionImage": "res://Data//img/sampleA/2.png",
 	"optionImages": []
   },
   {
@@ -6702,7 +6702,7 @@
       "0011111110"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/sampleA/4.png",
+	"questionImage": "res://Data//img/sampleA/4.png",
 	"optionImages": []
   },
   {
@@ -6710,10 +6710,10 @@
 	"category": "アルゴリズム",
 	"question": "2分探索木になっている2分木はどれか。",
 	"options": [
-	  "../kakomon/img/sampleA/5a.png",
-	  "../kakomon/img/sampleA/5i.png",
-	  "../kakomon/img/sampleA/5u.png",
-      "../kakomon/img/sampleA/5e.png"
+	  "res://Data//img/sampleA/5a.png",
+	  "res://Data//img/sampleA/5i.png",
+	  "res://Data//img/sampleA/5u.png",
+      "res://Data//img/sampleA/5e.png"
 	],
 	"answerIndex": 1,
 	"questionImage": null,
@@ -6730,7 +6730,7 @@
       "B(j, 7-i) ← A(i, j)"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/sampleA/6.png",
+	"questionImage": "res://Data//img/sampleA/6.png",
 	"optionImages": []
   },
   {
@@ -6814,7 +6814,7 @@
       "D, C, A, B"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/sampleA/12.png",
+	"questionImage": "res://Data//img/sampleA/12.png",
 	"optionImages": []
   },
   {
@@ -6828,7 +6828,7 @@
       "5"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/sampleA/13.png",
+	"questionImage": "res://Data//img/sampleA/13.png",
 	"optionImages": []
   },
   {
@@ -6842,7 +6842,7 @@
       "a * (1 - (1 - b)^3) * (1 - (1 - c)^2)"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/sampleA/14.png",
+	"questionImage": "res://Data//img/sampleA/14.png",
 	"optionImages": []
   },
   {
@@ -7528,7 +7528,7 @@
       "a+d=1, b+c=1"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202507S/3.png",
+	"questionImage": "res://Data//img/202507S/3.png",
 	"optionImages": []
   },
   {
@@ -7542,7 +7542,7 @@
       "0.7"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202507S/4.png",
+	"questionImage": "res://Data//img/202507S/4.png",
 	"optionImages": []
   },
   {
@@ -7612,7 +7612,7 @@
       "0.999"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202507S/12.png",
+	"questionImage": "res://Data//img/202507S/12.png",
 	"optionImages": []
   },
   {
@@ -7724,7 +7724,7 @@
       "商品コードがS005の仕入値を90,000に更新する。"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202507S/20.png",
+	"questionImage": "res://Data//img/202507S/20.png",
 	"optionImages": []
   },
   {
@@ -7956,10 +7956,10 @@
 	"category": "プロジェクトマネジメント",
 	"question": "アジャイル開発におけるプラクティスの一つであるバーンダウンチャートはどれか。ここで、図中の破線は予定又は予想を、実線は実績を表す。",
 	"options": [
-	  "../kakomon/img/202507S/40a.png",
-	  "../kakomon/img/202507S/40i.png",
-	  "../kakomon/img/202507S/40u.png",
-      "../kakomon/img/202507S/40e.png"
+	  "res://Data//img/202507S/40a.png",
+	  "res://Data//img/202507S/40i.png",
+	  "res://Data//img/202507S/40u.png",
+      "res://Data//img/202507S/40e.png"
 	],
 	"answerIndex": 0,
 	"questionImage": null,
@@ -7976,7 +7976,7 @@
       "アクティビティ ④ の田中の責任をRに変更"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202507S/41.png",
+	"questionImage": "res://Data//img/202507S/41.png",
 	"optionImages": []
   },
   {
@@ -8046,7 +8046,7 @@
       "MBO (Management by Objectives) の導入"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202507S/46.png",
+	"questionImage": "res://Data//img/202507S/46.png",
 	"optionImages": []
   },
   {
@@ -8102,7 +8102,7 @@
       "新商品Sの新規顧客数は、商品Cの購入者のうち新商品Sを購入する人数より少ないと予想している。"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202507S/50.png",
+	"questionImage": "res://Data//img/202507S/50.png",
 	"optionImages": []
   },
   {
@@ -8130,7 +8130,7 @@
       "30"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202507S/54.png",
+	"questionImage": "res://Data//img/202507S/54.png",
 	"optionImages": []
   },
   {
@@ -8172,7 +8172,7 @@
       "6"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202507S/57.png",
+	"questionImage": "res://Data//img/202507S/57.png",
 	"optionImages": []
   },
   {
@@ -8256,7 +8256,7 @@
       "センサL出力値 > センサR出力値のとき、モータLの回転速度を上げ、モータRの回転速度を下げる。センサL出力値 < センサR出力値のとき、モータLの回転速度を下げ、モータRの回転速度を上げる。"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202506S/4.png",
+	"questionImage": "res://Data//img/202506S/4.png",
 	"optionImages": []
   },
   {
@@ -8368,7 +8368,7 @@
       "1.000"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202506S/12.png",
+	"questionImage": "res://Data//img/202506S/12.png",
 	"optionImages": []
   },
   {
@@ -8410,7 +8410,7 @@
       "\\B\\A→..\\B"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202506S/15.png",
+	"questionImage": "res://Data//img/202506S/15.png",
 	"optionImages": []
   },
   {
@@ -8424,7 +8424,7 @@
       "1/2^10"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202506S/16.png",
+	"questionImage": "res://Data//img/202506S/16.png",
 	"optionImages": []
   },
   {
@@ -8718,7 +8718,7 @@
       "(A=7, B=0), (A=8,B=2)"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202506S/37.png",
+	"questionImage": "res://Data//img/202506S/37.png",
 	"optionImages": []
   },
   {
@@ -8788,7 +8788,7 @@
       "E"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202506S/42.png",
+	"questionImage": "res://Data//img/202506S/42.png",
 	"optionImages": []
   },
   {
@@ -8992,10 +8992,10 @@
 	"category": "理論",
 	"question": "散布図のうち、“負の相関”を示すものはどれか。",
 	"options": [
-	  "../kakomon/img/202506S/58a.png",
-	  "../kakomon/img/202506S/58i.png",
-	  "../kakomon/img/202506S/58u.png",
-      "../kakomon/img/202506S/58e.png"
+	  "res://Data//img/202506S/58a.png",
+	  "res://Data//img/202506S/58i.png",
+	  "res://Data//img/202506S/58u.png",
+      "res://Data//img/202506S/58e.png"
 	],
 	"answerIndex": 1,
 	"questionImage": null,
@@ -9068,7 +9068,7 @@
       "d"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202501S/3.png",
+	"questionImage": "res://Data//img/202501S/3.png",
 	"optionImages": []
   },
   {
@@ -9138,7 +9138,7 @@
       "300"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202501S/8.png",
+	"questionImage": "res://Data//img/202501S/8.png",
 	"optionImages": []
   },
   {
@@ -9208,7 +9208,7 @@
       "12.0"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202501S/13.png",
+	"questionImage": "res://Data//img/202501S/13.png",
 	"optionImages": []
   },
   {
@@ -9306,7 +9306,7 @@
       "GROUP BY クラス名,平均点 ORDER BY クラス名,教科名"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202501S/20.png",
+	"questionImage": "res://Data//img/202501S/20.png",
 	"optionImages": []
   },
   {
@@ -9334,7 +9334,7 @@
       "104"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202501S/22.png",
+	"questionImage": "res://Data//img/202501S/22.png",
 	"optionImages": []
   },
   {
@@ -9488,7 +9488,7 @@
       "c → a → b"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202501S/33.png",
+	"questionImage": "res://Data//img/202501S/33.png",
 	"optionImages": []
   },
   {
@@ -9628,7 +9628,7 @@
       "案4"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202501S/44.png",
+	"questionImage": "res://Data//img/202501S/44.png",
 	"optionImages": []
   },
   {
@@ -9768,7 +9768,7 @@
       "3,300,000"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202501S/54.png",
+	"questionImage": "res://Data//img/202501S/54.png",
 	"optionImages": []
   },
   {
@@ -9796,7 +9796,7 @@
       "D"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202501S/57.png",
+	"questionImage": "res://Data//img/202501S/57.png",
 	"optionImages": []
   },
   {
@@ -9908,7 +9908,7 @@
       "ヒープ"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202412S/5.png",
+	"questionImage": "res://Data//img/202412S/5.png",
 	"optionImages": []
   },
   {
@@ -9922,7 +9922,7 @@
       "NOV"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202412S/6.png",
+	"questionImage": "res://Data//img/202412S/6.png",
 	"optionImages": []
   },
   {
@@ -10056,10 +10056,10 @@
 	"category": "理論",
 	"question": "入力XとYの値が同じときにだけ、出力Zに1を出力する回路はどれか。",
 	"options": [
-	  "../kakomon/img/202412S/16a.png",
-	  "../kakomon/img/202412S/16i.png",
-	  "../kakomon/img/202412S/16u.png",
-      "../kakomon/img/202412S/16e.png"
+	  "res://Data//img/202412S/16a.png",
+	  "res://Data//img/202412S/16i.png",
+	  "res://Data//img/202412S/16u.png",
+      "res://Data//img/202412S/16e.png"
 	],
 	"answerIndex": 2,
 	"questionImage": null,
@@ -10622,7 +10622,7 @@
       "6"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202412S/57.png",
+	"questionImage": "res://Data//img/202412S/57.png",
 	"optionImages": []
   },
   {
@@ -10636,7 +10636,7 @@
       "118"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202412S/59.png",
+	"questionImage": "res://Data//img/202412S/59.png",
 	"optionImages": []
   },
   {
@@ -10748,7 +10748,7 @@
       "100"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202407S/8.png",
+	"questionImage": "res://Data//img/202407S/8.png",
 	"optionImages": []
   },
   {
@@ -10854,10 +10854,10 @@
 	"category": "理論",
 	"question": "4ビットの入力データに対し、1の入力数が0個又は偶数個のとき出力が1に、奇数個のとき出力が0になる回路はどれか。",
 	"options": [
-	  "../kakomon/img/202407S/16a.png",
-	  "../kakomon/img/202407S/16i.png",
-	  "../kakomon/img/202407S/16u.png",
-      "../kakomon/img/202407S/16e.png"
+	  "res://Data//img/202407S/16a.png",
+	  "res://Data//img/202407S/16i.png",
+	  "res://Data//img/202407S/16u.png",
+      "res://Data//img/202407S/16e.png"
 	],
 	"answerIndex": 3,
 	"questionImage": null,
@@ -10896,13 +10896,13 @@
 	"category": "データベース",
 	"question": "“発注伝票”表を第3 正規形に書き換えたものはどれか。 ここで、下線部は主キーを表す。",
 	"options": [
-	  "../kakomon/img/202407S/19a.png",
-	  "../kakomon/img/202407S/19i.png",
-	  "../kakomon/img/202407S/19u.png",
-      "../kakomon/img/202407S/19e.png"
+	  "res://Data//img/202407S/19a.png",
+	  "res://Data//img/202407S/19i.png",
+	  "res://Data//img/202407S/19u.png",
+      "res://Data//img/202407S/19e.png"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202407S/19.png",
+	"questionImage": "res://Data//img/202407S/19.png",
 	"optionImages": []
   },
   {
@@ -10916,7 +10916,7 @@
       "SELECT 商品番号 FROM 商品\nWHERE NOT EXISTS (SELECT 商品番号 FROM 在庫\nWHERE 商品.商品番号=在庫.商品番号)"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202407S/20.png",
+	"questionImage": "res://Data//img/202407S/20.png",
 	"optionImages": []
   },
   {
@@ -10924,10 +10924,10 @@
 	"category": "データベース",
 	"question": "データベースシステムにおいて、二つのプログラムが同一データへのアクセス要求を行うとき、後続プログラムのアクセス要求に対する並行実行の可否の組合せのうち、適切なものはどれか。 ここで、表中の○は二つのプログラムが並行して実行されることを表し、×は先行プログラムの実行終了まで後続プログラムは待たされることを表す。",
 	"options": [
-	  "../kakomon/img/202407S/22a.png",
-	  "../kakomon/img/202407S/22i.png",
-	  "../kakomon/img/202407S/22u.png",
-      "../kakomon/img/202407S/22e.png"
+	  "res://Data//img/202407S/22a.png",
+	  "res://Data//img/202407S/22i.png",
+	  "res://Data//img/202407S/22u.png",
+      "res://Data//img/202407S/22e.png"
 	],
 	"answerIndex": 3,
 	"questionImage": null,
@@ -10958,7 +10958,7 @@
       "ルータ"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202407S/24.png",
+	"questionImage": "res://Data//img/202407S/24.png",
 	"optionImages": []
   },
   {
@@ -11126,7 +11126,7 @@
       "6,400"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202407S/38.png",
+	"questionImage": "res://Data//img/202407S/38.png",
 	"optionImages": []
   },
   {
@@ -11154,7 +11154,7 @@
       "14"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202407S/41.png",
+	"questionImage": "res://Data//img/202407S/41.png",
 	"optionImages": []
   },
   {
@@ -11308,7 +11308,7 @@
       "大学との共同研究開発や、同業他社からの技術導入"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202407S/54.png",
+	"questionImage": "res://Data//img/202407S/54.png",
 	"optionImages": []
   },
   {
@@ -11336,7 +11336,7 @@
       "X-Sだけの発注を取り消す。"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202407S/57.png",
+	"questionImage": "res://Data//img/202407S/57.png",
 	"optionImages": []
   },
   {
@@ -11610,10 +11610,10 @@
 	"category": "データベース",
 	"question": "“従業員”表を第3正規形にしたものはどれか。ここで、下線部は主キーを表す。\n従業員(従業員番号,従業員氏名,{技能コード,技能名,技能経験年数})\n({}は繰返しを表す)",
 	"options": [
-	  "../kakomon/img/202406S/19a.png",
-	  "../kakomon/img/202406S/19i.png",
-	  "../kakomon/img/202406S/19u.png",
-      "../kakomon/img/202406S/19e.png"
+	  "res://Data//img/202406S/19a.png",
+	  "res://Data//img/202406S/19i.png",
+	  "res://Data//img/202406S/19u.png",
+      "res://Data//img/202406S/19e.png"
 	],
 	"answerIndex": 2,
 	"questionImage": null,
@@ -11862,10 +11862,10 @@
 	"category": "プロジェクトマネジメント",
 	"question": "テスト工程での品質状況を評価するためには、テスト項目消化件数と累積バグ件数との関係を分析する必要がある。一定の品質が達成されつつあることを表しているグラフはどれか。",
 	"options": [
-	  "../kakomon/img/202406S/41a.png",
-	  "../kakomon/img/202406S/41i.png",
-	  "../kakomon/img/202406S/41u.png",
-      "../kakomon/img/202406S/41e.png"
+	  "res://Data//img/202406S/41a.png",
+	  "res://Data//img/202406S/41i.png",
+	  "res://Data//img/202406S/41u.png",
+      "res://Data//img/202406S/41e.png"
 	],
 	"answerIndex": 3,
 	"questionImage": null,
@@ -11882,7 +11882,7 @@
       "4"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202406S/42.png",
+	"questionImage": "res://Data//img/202406S/42.png",
 	"optionImages": []
   },
   {
@@ -12022,7 +12022,7 @@
       "D"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202406S/54.png",
+	"questionImage": "res://Data//img/202406S/54.png",
 	"optionImages": []
   },
   {
@@ -12162,7 +12162,7 @@
       "NOV"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202406S/6.png",
+	"questionImage": "res://Data//img/202406S/6.png",
 	"optionImages": []
   },
   {
@@ -12190,7 +12190,7 @@
       "12.0"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202406S/13.png",
+	"questionImage": "res://Data//img/202406S/13.png",
 	"optionImages": []
   },
   {
@@ -12218,7 +12218,7 @@
       "①: 構文解析, ②: 最適化, ③: コード生成"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202401S/21.png",
+	"questionImage": "res://Data//img/202401S/21.png",
 	"optionImages": []
   },
   {
@@ -12288,7 +12288,7 @@
       "プロセス"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202401S/34.png",
+	"questionImage": "res://Data//img/202401S/34.png",
 	"optionImages": []
   },
   {
@@ -12330,7 +12330,7 @@
       "22"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202401S/41.png",
+	"questionImage": "res://Data//img/202401S/41.png",
 	"optionImages": []
   },
   {
@@ -12358,7 +12358,7 @@
       "135,500"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202401S/44.png",
+	"questionImage": "res://Data//img/202401S/44.png",
 	"optionImages": []
   },
   {
@@ -12456,7 +12456,7 @@
       "定量発注法"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202401S/58.png",
+	"questionImage": "res://Data//img/202401S/58.png",
 	"optionImages": []
   },
   {
@@ -12470,7 +12470,7 @@
       "1,600"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202401S/59.png",
+	"questionImage": "res://Data//img/202401S/59.png",
 	"optionImages": []
   },
   {
@@ -12590,13 +12590,13 @@
 	"category": "データベース",
 	"question": "項目 a ~ fから成るレコードがある。このレコードの主キーは、項目aとbを組み合わせたものである。また、項目fは項目bによって特定できる。このレコードを第3正規形にしたものはどれか。",
 	"options": [
-	  "../kakomon/img/202312S/19a.png",
-	  "../kakomon/img/202312S/19i.png",
-	  "../kakomon/img/202312S/19u.png",
-      "../kakomon/img/202312S/19e.png"
+	  "res://Data//img/202312S/19a.png",
+	  "res://Data//img/202312S/19i.png",
+	  "res://Data//img/202312S/19u.png",
+      "res://Data//img/202312S/19e.png"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202312S/19.png",
+	"questionImage": "res://Data//img/202312S/19.png",
 	"optionImages": []
   },
   {
@@ -12610,7 +12610,7 @@
       "4"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202312S/20.png",
+	"questionImage": "res://Data//img/202312S/20.png",
 	"optionImages": []
   },
   {
@@ -12736,7 +12736,7 @@
       "走行中の自動車から、車両の位置、速度などを表すデータをクラウド上に収集し分析することによって、各道路の現在の混雑状況をWeb サイトに公開する。"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202312S/47.png",
+	"questionImage": "res://Data//img/202312S/47.png",
 	"optionImages": []
   },
   {
@@ -12778,7 +12778,7 @@
       "30"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202312S/54.png",
+	"questionImage": "res://Data//img/202312S/54.png",
 	"optionImages": []
   },
   {
@@ -12876,7 +12876,7 @@
       "0.7"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202306S/4.png",
+	"questionImage": "res://Data//img/202306S/4.png",
 	"optionImages": []
   },
   {
@@ -12932,7 +12932,7 @@
       "0.999"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202306S/12.png",
+	"questionImage": "res://Data//img/202306S/12.png",
 	"optionImages": []
   },
   {
@@ -12968,10 +12968,10 @@
 	"category": "データベース",
 	"question": "“従業員”表を第3正規形にしたものはどれか。ここで、下線部は主キーを表す。\n従業員(従業員番号,従業員氏名,技能コード,技能名,技能経験年数})\n({} は繰返しを表す)",
 	"options": [
-	  "../kakomon/202307S/19a.png",
-	  "../kakomon/202307S/19i.png",
-	  "../kakomon/202307S/19u.png",
-      "../kakomon/202307S/19e.png"
+	  "res://Data//202307S/19a.png",
+	  "res://Data//202307S/19i.png",
+	  "res://Data//202307S/19u.png",
+      "res://Data//202307S/19e.png"
 	],
 	"answerIndex": 2,
 	"questionImage": null,
@@ -13268,7 +13268,7 @@
       "案4"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/202307S/44.png",
+	"questionImage": "res://Data//202307S/44.png",
 	"optionImages": []
   },
   {
@@ -13352,7 +13352,7 @@
       "ビジネスの創出, 競争優位の確立"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/202307S/51.png",
+	"questionImage": "res://Data//202307S/51.png",
 	"optionImages": []
   },
   {
@@ -13422,7 +13422,7 @@
       "7"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/202307S/57.png",
+	"questionImage": "res://Data//202307S/57.png",
 	"optionImages": []
   },
   {
@@ -13884,7 +13884,7 @@
       "X-S だけの発注を取り消す。"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/202306S/57.png",
+	"questionImage": "res://Data//202306S/57.png",
 	"optionImages": []
   },
   {
@@ -13912,7 +13912,7 @@
       "2,000"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/202306S/59.png",
+	"questionImage": "res://Data//202306S/59.png",
 	"optionImages": []
   },
   {
@@ -13968,7 +13968,7 @@
       "∞"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202301S/4.png",
+	"questionImage": "res://Data//img/202301S/4.png",
 	"optionImages": []
   },
   {
@@ -13996,7 +13996,7 @@
       "ABCD++÷AD-X"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202301S/6.png",
+	"questionImage": "res://Data//img/202301S/6.png",
 	"optionImages": []
   },
   {
@@ -14010,7 +14010,7 @@
       "((1, 2, x) , 3, (6, 5, 4))"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202301S/7.png",
+	"questionImage": "res://Data//img/202301S/7.png",
 	"optionImages": []
   },
   {
@@ -14024,7 +14024,7 @@
       "6"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202301S/8.png",
+	"questionImage": "res://Data//img/202301S/8.png",
 	"optionImages": []
   },
   {
@@ -14416,7 +14416,7 @@
       "d"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202207S/43.png",
+	"questionImage": "res://Data//img/202207S/43.png",
 	"optionImages": []
   },
   {
@@ -14458,7 +14458,7 @@
       "テスト項目の消化度合いに比べて誤りの検出が進んでおり、テストが効率的に進行中である。現時点で注意することはないが、未解決な誤りを長期間抱え込まないように、誤りへの対処の進捗管理が必要である。"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202207S/48.png",
+	"questionImage": "res://Data//img/202207S/48.png",
 	"optionImages": []
   },
   {
@@ -14500,7 +14500,7 @@
       "A→C→G→J→L"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202207S/51.png",
+	"questionImage": "res://Data//img/202207S/51.png",
 	"optionImages": []
   },
   {
@@ -14780,7 +14780,7 @@
       "0.7"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202212S/2.png",
+	"questionImage": "res://Data//img/202212S/2.png",
 	"optionImages": []
   },
   {
@@ -14794,7 +14794,7 @@
       "33"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202212S/3.png",
+	"questionImage": "res://Data//img/202212S/3.png",
 	"optionImages": []
   },
   {
@@ -15362,13 +15362,13 @@
 	"category": "理論",
 	"question": "隣接行列Aで表されるグラフはどれか。ここで、隣接行列とは、個の節点から成 るグラフの節点VとV を結ぶ枝が存在するときは第 行第 列と第 行第/列の要 素が1となり、存在しないときは0となる行列の行列である。",
 	"options": [
-	  "../kakomon/img/202207S/2a.png",
-	  "../kakomon/img/202207S/2i.png",
-	  "../kakomon/img/202207S/2u.png",
-      "../kakomon/img/202207S/2e.png"
+	  "res://Data//img/202207S/2a.png",
+	  "res://Data//img/202207S/2i.png",
+	  "res://Data//img/202207S/2u.png",
+      "res://Data//img/202207S/2e.png"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202207S/2.png",
+	"questionImage": "res://Data//img/202207S/2.png",
 	"optionImages": []
   },
   {
@@ -15376,10 +15376,10 @@
 	"category": "理論",
 	"question": "2桁の2進数 x₁x₂が表す整数をxとする。2進数 x₂x₁ が表す整数を、x の式で表し たものはどれか。ここで、 int(r) は非負の実数 r の小数点以下を切り捨てた整数を表す。",
 	"options": [
-	  "../kakomon/img/202207S/3a.png",
-	  "../kakomon/img/202207S/3i.png",
-	  "../kakomon/img/202207S/3u.png",
-      "../kakomon/img/202207S/3e.png"
+	  "res://Data//img/202207S/3a.png",
+	  "res://Data//img/202207S/3i.png",
+	  "res://Data//img/202207S/3u.png",
+      "res://Data//img/202207S/3e.png"
 	],
 	"answerIndex": 2,
 	"questionImage": null,
@@ -15452,7 +15452,7 @@
       "7"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202207S/10.png",
+	"questionImage": "res://Data//img/202207S/10.png",
 	"optionImages": []
   },
   {
@@ -15466,7 +15466,7 @@
       "90"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202207S/11.png",
+	"questionImage": "res://Data//img/202207S/11.png",
 	"optionImages": []
   },
   {
@@ -15586,10 +15586,10 @@
 	"category": "理論",
 	"question": "2 入力 NAND 素子を用いて 4 入力 NAND 回路を構成したものはどれか。",
 	"options": [
-	  "../kakomon/img/202207S/22a.png",
-	  "../kakomon/img/202207S/22i.png",
-	  "../kakomon/img/202207S/22u.png",
-      "../kakomon/img/202207S/22e.png"
+	  "res://Data//img/202207S/22a.png",
+	  "res://Data//img/202207S/22i.png",
+	  "res://Data//img/202207S/22u.png",
+      "res://Data//img/202207S/22e.png"
 	],
 	"answerIndex": 1,
 	"questionImage": null,
@@ -15628,13 +15628,13 @@
 	"category": "データベース",
 	"question": "次の表は、営業担当者のある年度の販売実績である。この表の第1期から第4期の 販売金額の平均が 4,000 万円以上で、どの期でも 3,000 万円以上販売している営業担 当者の名前を求める SQL 文として、適切なものはどれか。ここで、金額の単位は千円 とする。",
 	"options": [
-	  "../kakomon/img/202207S/28a.png",
-	  "../kakomon/img/202207S/28i.png",
-	  "../kakomon/img/202207S/28u.png",
-      "../kakomon/img/202207S/28e.png"
+	  "res://Data//img/202207S/28a.png",
+	  "res://Data//img/202207S/28i.png",
+	  "res://Data//img/202207S/28u.png",
+      "res://Data//img/202207S/28e.png"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202207S/28.png",
+	"questionImage": "res://Data//img/202207S/28.png",
 	"optionImages": []
   },
   {
@@ -15642,13 +15642,13 @@
 	"category": "データベース",
 	"question": "関係データベースの “注文” 表の “顧客番号” は, “顧客” 表の主キー “顧客番 号” を参照する外部キーである。このとき、参照の整合性を損なうデータ操作はどれ か。ここで、ア~エの記述におけるデータの並びは、それぞれの表の列の並びと同様 とする。",
 	"options": [
-	  "../kakomon/img/202207S/29a.png",
-	  "../kakomon/img/202207S/29i.png",
-	  "../kakomon/img/202207S/29u.png",
-      "../kakomon/img/202207S/29e.png"
+	  "res://Data//img/202207S/29a.png",
+	  "res://Data//img/202207S/29i.png",
+	  "res://Data//img/202207S/29u.png",
+      "res://Data//img/202207S/29e.png"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202207S/29.png",
+	"questionImage": "res://Data//img/202207S/29.png",
 	"optionImages": []
   },
   {
@@ -15844,7 +15844,7 @@
       "102"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202207S/51.png",
+	"questionImage": "res://Data//img/202207S/51.png",
 	"optionImages": []
   },
   {
@@ -15998,7 +15998,7 @@
       "4,900"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202207S/71.png",
+	"questionImage": "res://Data//img/202207S/71.png",
 	"optionImages": []
   },
   {
@@ -16026,7 +16026,7 @@
       "C → B → A"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202207S/75.png",
+	"questionImage": "res://Data//img/202207S/75.png",
 	"optionImages": []
   },
   {
@@ -16040,7 +16040,7 @@
       "b は a の目的である。"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202207S/77.png",
+	"questionImage": "res://Data//img/202207S/77.png",
 	"optionImages": []
   },
   {
@@ -16054,7 +16054,7 @@
       "4,000"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202207S/78.png",
+	"questionImage": "res://Data//img/202207S/78.png",
 	"optionImages": []
   },
   {
@@ -16068,7 +16068,7 @@
       "“契約”が労働者派遣契約で、企業 A が派遣元、企業 B が派遣先であるとき、企 業 B に労働者 C が出向しているといえる。"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202207S/79.png",
+	"questionImage": "res://Data//img/202207S/79.png",
 	"optionImages": []
   },
   {
@@ -17446,7 +17446,7 @@
   {
 	"id": 1247,
 	"category": "マネジメント",
-	"question": "../kakomon/img/202112S/202112Q55.png",
+	"question": "res://Data//img/202112S/202112Q55.png",
 	"options": [
 	  "",
 	  "",
@@ -18666,10 +18666,10 @@
 	"category": "アルゴリズム",
 	"question": "2 分探索木として適切なものはどれか。ここで、数字1~9は、各ノード (節)の値を表す。",
 	"options": [
-	  "../kakomon/img/202006S/7a.png",
-	  "../kakomon/img/202006S/7i.png",
-	  "../kakomon/img/202006S/7u.png",
-      "../kakomon/img/202006S/7e.png"
+	  "res://Data//img/202006S/7a.png",
+	  "res://Data//img/202006S/7i.png",
+	  "res://Data//img/202006S/7u.png",
+      "res://Data//img/202006S/7e.png"
 	],
 	"answerIndex": 1,
 	"questionImage": null,
@@ -18714,7 +18714,7 @@
       "a: Z(k) ← Y(k), b: Z(n+k) ← X(k)"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202006S/10.png",
+	"questionImage": "res://Data//img/202006S/10.png",
 	"optionImages": []
   },
   {
@@ -18742,7 +18742,7 @@
       "ミラーリング"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202006S/13.png",
+	"questionImage": "res://Data//img/202006S/13.png",
 	"optionImages": []
   },
   {
@@ -18896,7 +18896,7 @@
       "a: 1..*, b: 1..*"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202006S/27.png",
+	"questionImage": "res://Data//img/202006S/27.png",
 	"optionImages": []
   },
   {
@@ -18904,13 +18904,13 @@
 	"category": "データベース",
 	"question": "“商品”表に対して、更新 SQL 文を実行するトランザクションが、デッドロックの発生によって異常終了した。異常終了後の“商品”表はどれか。ここで、“商品”表に対する他のトランザクションは、参照は行うが更新はしないものとする。\n\n[更新SQL文]\nDELETE FROM 商品 WHERE 商品コード = 'B020'",
 	"options": [
-	  "../kakomon/img/202006S/29a.png",
-	  "../kakomon/img/202006S/29i.png",
-	  "../kakomon/img/202006S/29u.png",
-      "../kakomon/img/202006S/29e.png"
+	  "res://Data//img/202006S/29a.png",
+	  "res://Data//img/202006S/29i.png",
+	  "res://Data//img/202006S/29u.png",
+      "res://Data//img/202006S/29e.png"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202006S/29.png",
+	"questionImage": "res://Data//img/202006S/29.png",
 	"optionImages": []
   },
   {
@@ -18924,7 +18924,7 @@
       "イーサネットフレームの宛先: MAC3, IP データグラムの宛先: IP3"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202006S/33.png",
+	"questionImage": "res://Data//img/202006S/33.png",
 	"optionImages": []
   },
   {
@@ -19022,7 +19022,7 @@
       "目標のバグ累積件数が達成されたので、出荷後にバグが発生する確率が低いことを示す。"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202006S/47.png",
+	"questionImage": "res://Data//img/202006S/47.png",
 	"optionImages": []
   },
   {
@@ -19078,7 +19078,7 @@
       "102"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202006S/51.png",
+	"questionImage": "res://Data//img/202006S/51.png",
 	"optionImages": []
   },
   {
@@ -19148,7 +19148,7 @@
       "投資をしない"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202006S/64.png",
+	"questionImage": "res://Data//img/202006S/64.png",
 	"optionImages": []
   },
   {
@@ -19162,7 +19162,7 @@
       "スケールメリットとシナジー効果がともにない。"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202006S/67.png",
+	"questionImage": "res://Data//img/202006S/67.png",
 	"optionImages": []
   },
   {
@@ -19190,7 +19190,7 @@
       "D"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202006S/72.png",
+	"questionImage": "res://Data//img/202006S/72.png",
 	"optionImages": []
   },
   {
@@ -19218,7 +19218,7 @@
       "C→B→A"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202006S/77.png",
+	"questionImage": "res://Data//img/202006S/77.png",
 	"optionImages": []
   },
   {
@@ -19232,7 +19232,7 @@
       "5"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202006S/78.png",
+	"questionImage": "res://Data//img/202006S/78.png",
 	"optionImages": []
   },
   {
@@ -19274,7 +19274,7 @@
       "60"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202007S/3.png",
+	"questionImage": "res://Data//img/202007S/3.png",
 	"optionImages": []
   },
   {
@@ -19288,7 +19288,7 @@
       "1,000"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202007S/4.png",
+	"questionImage": "res://Data//img/202007S/4.png",
 	"optionImages": []
   },
   {
@@ -19316,7 +19316,7 @@
       "b-cd+a"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202007S/7.png",
+	"questionImage": "res://Data//img/202007S/7.png",
 	"optionImages": []
   },
   {
@@ -19344,7 +19344,7 @@
       "TANGO[i] ← TANGO[i-1]"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202007S/9.png",
+	"questionImage": "res://Data//img/202007S/9.png",
 	"optionImages": []
   },
   {
@@ -19372,7 +19372,7 @@
       "D, C, A, B"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202007S/13.png",
+	"questionImage": "res://Data//img/202007S/13.png",
 	"optionImages": []
   },
   {
@@ -19400,7 +19400,7 @@
       "(1-D)²C(1-(1-T)²)²"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202007S/16.png",
+	"questionImage": "res://Data//img/202007S/16.png",
 	"optionImages": []
   },
   {
@@ -19436,10 +19436,10 @@
 	"category": "理論",
 	"question": "論理式 X=Ā・B＋A・B̄＋Ā・B̄ と同じ結果が得られる論理回路はどれか。ここで、論理式中の・は論理積,+は論理和、Ā はAの否定を表す。",
 	"options": [
-	  "../kakomon/img/202007S/22a.png",
-	  "../kakomon/img/202007S/22i.png",
-	  "../kakomon/img/202007S/22u.png",
-      "../kakomon/img/202007S/22e.png"
+	  "res://Data//img/202007S/22a.png",
+	  "res://Data//img/202007S/22i.png",
+	  "res://Data//img/202007S/22u.png",
+      "res://Data//img/202007S/22e.png"
 	],
 	"answerIndex": 1,
 	"questionImage": null,
@@ -19484,7 +19484,7 @@
       "テーブル1(a, c, d)\n テーブル2(b, f, g, h)\n テーブル3(e, i, j)"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202007S/27.png",
+	"questionImage": "res://Data//img/202007S/27.png",
 	"optionImages": []
   },
   {
@@ -19492,13 +19492,13 @@
 	"category": "データベース",
 	"question": "“学生”表と“学部”表に対して次の SQL 文を実行した結果として、正しいものはどれか。\n[SQL文]\nSELECT 氏名 FROM 学生,学部\n WHERE 所属 = 学部名 AND 学部.住所= '新宿'",
 	"options": [
-	  "../kakomon/img/202007S/28a.png",
-	  "../kakomon/img/202007S/28i.png",
-	  "../kakomon/img/202007S/28u.png",
-      "../kakomon/img/202007S/28e.png"
+	  "res://Data//img/202007S/28a.png",
+	  "res://Data//img/202007S/28i.png",
+	  "res://Data//img/202007S/28u.png",
+      "res://Data//img/202007S/28e.png"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202007S/28.png",
+	"questionImage": "res://Data//img/202007S/28.png",
 	"optionImages": []
   },
   {
@@ -19512,7 +19512,7 @@
       "“注文”表の行 ('0002', 'K001') を削除する。"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202007S/29.png",
+	"questionImage": "res://Data//img/202007S/29.png",
 	"optionImages": []
   },
   {
@@ -19562,10 +19562,10 @@
 	"category": "セキュリティ",
 	"question": "パスワードに使用できる文字の種類の数をM、パスワードの文字数を nとするとき、設定できるパスワードの理論的な総数を求める数式はどれか。",
 	"options": [
-	  "../kakomon/img/202007S/37a.png",
-	  "../kakomon/img/202007S/37i.png",
-	  "../kakomon/img/202007S/37u.png",
-      "../kakomon/img/202007S/37e.png"
+	  "res://Data//img/202007S/37a.png",
+	  "res://Data//img/202007S/37i.png",
+	  "res://Data//img/202007S/37u.png",
+      "res://Data//img/202007S/37e.png"
 	],
 	"answerIndex": 0,
 	"questionImage": null,
@@ -19596,7 +19596,7 @@
       "データベース接続プログラム間の通信を暗号化する。"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202007S/42.png",
+	"questionImage": "res://Data//img/202007S/42.png",
 	"optionImages": []
   },
   {
@@ -19610,7 +19610,7 @@
       "D"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202007S/43.png",
+	"questionImage": "res://Data//img/202007S/43.png",
 	"optionImages": []
   },
   {
@@ -19632,10 +19632,10 @@
 	"category": "テクノロジ",
 	"question": "UMLのクラス図のうち、汎化の関係を示したものはどれか。",
 	"options": [
-	  "../kakomon/img/202007S/45a.png",
-	  "../kakomon/img/202007S/45i.png",
-	  "../kakomon/img/202007S/45u.png",
-      "../kakomon/img/202007S/45e.png"
+	  "res://Data//img/202007S/45a.png",
+	  "res://Data//img/202007S/45i.png",
+	  "res://Data//img/202007S/45u.png",
+      "res://Data//img/202007S/45e.png"
 	],
 	"answerIndex": 1,
 	"questionImage": null,
@@ -19666,7 +19666,7 @@
       "13"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202007S/53.png",
+	"questionImage": "res://Data//img/202007S/53.png",
 	"optionImages": []
   },
   {
@@ -19722,7 +19722,7 @@
       "MBO (Management by Objectives)の導入"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202007S/62.png",
+	"questionImage": "res://Data//img/202007S/62.png",
 	"optionImages": []
   },
   {
@@ -19792,7 +19792,7 @@
       "7"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202007S/70.png",
+	"questionImage": "res://Data//img/202007S/70.png",
 	"optionImages": []
   },
   {
@@ -19848,7 +19848,7 @@
       "118"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202007S/77.png",
+	"questionImage": "res://Data//img/202007S/77.png",
 	"optionImages": []
   },
   {
@@ -19876,7 +19876,7 @@
       "a: NISHIN (k) ← j mod 2, b: j ← j div 2"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202012S/1.png",
+	"questionImage": "res://Data//img/202012S/1.png",
 	"optionImages": []
   },
   {
@@ -19932,7 +19932,7 @@
       "2.8"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202012S/5.png",
+	"questionImage": "res://Data//img/202012S/5.png",
 	"optionImages": []
   },
   {
@@ -19960,7 +19960,7 @@
       "7"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202012S/9.png",
+	"questionImage": "res://Data//img/202012S/9.png",
 	"optionImages": []
   },
   {
@@ -20002,7 +20002,7 @@
       "5"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202012S/12.png",
+	"questionImage": "res://Data//img/202012S/12.png",
 	"optionImages": []
   },
   {
@@ -20044,7 +20044,7 @@
       "280"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202012S/17.png",
+	"questionImage": "res://Data//img/202012S/17.png",
 	"optionImages": []
   },
   {
@@ -20072,7 +20072,7 @@
       "F=A+B"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202012S/22.png",
+	"questionImage": "res://Data//img/202012S/22.png",
 	"optionImages": []
   },
   {
@@ -20220,13 +20220,13 @@
 	"category": "テクノロジ",
 	"question": "プログラム中の図の部分を判定条件網羅 (分岐網羅)でテストするときのテストケースとして、適切なものはどれか。",
 	"options": [
-	  "../kakomon/img/202012S/47a.png",
-	  "../kakomon/img/202012S/47i.png",
-	  "../kakomon/img/202012S/47u.png",
-      "../kakomon/img/202012S/47e.png"
+	  "res://Data//img/202012S/47a.png",
+	  "res://Data//img/202012S/47i.png",
+	  "res://Data//img/202012S/47u.png",
+      "res://Data//img/202012S/47e.png"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202012S/47.png",
+	"questionImage": "res://Data//img/202012S/47.png",
 	"optionImages": []
   },
   {
@@ -20254,7 +20254,7 @@
       "作業Fを最も遅く開始できるのは11日目である。"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202012S/52.png",
+	"questionImage": "res://Data//img/202012S/52.png",
 	"optionImages": []
   },
   {
@@ -20422,7 +20422,7 @@
       "D"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202012S/76.png",
+	"questionImage": "res://Data//img/202012S/76.png",
 	"optionImages": []
   },
   {
@@ -20430,10 +20430,10 @@
 	"category": "理論",
 	"question": "品質管理における検査特性曲線 (OC曲線)は、通常、横軸にロットの不良率を、縦軸にはロットの合格率を目盛ったものである。大きさ Nのロットから、大きさ nのサンプルを抜き取り、このサンプル中に見いだされた不良個数が合格判定個数 c以下のときはロットを合格とし、cを超えたときはロットを不合格とする。Nとnを一定にしてcを0,1,2と変えたときの、OC曲線の変化の傾向を表す図はどれか。",
 	"options": [
-	  "../kakomon/img/202012S/77a.png",
-	  "../kakomon/img/202012S/77i.png",
-	  "../kakomon/img/202012S/77u.png",
-      "../kakomon/img/202012S/77e.png"
+	  "res://Data//img/202012S/77a.png",
+	  "res://Data//img/202012S/77i.png",
+	  "res://Data//img/202012S/77u.png",
+      "res://Data//img/202012S/77e.png"
 	],
 	"answerIndex": 1,
 	"questionImage": null,
@@ -20464,7 +20464,7 @@
       "(Ā + B)・(A + C̄)"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202101S/2.png",
+	"questionImage": "res://Data//img/202101S/2.png",
 	"optionImages": []
   },
   {
@@ -20472,13 +20472,13 @@
 	"category": "理論",
 	"question": "ノードとノードの間のエッジの有無を、隣接行列を用いて表す。ある無向グラフの隣接行列が次の場合、グラフで表現したものはどれか。ここで、ノードを隣接行列の行と列に対応させて、ノード間にエッジが存在する場合は1で、エッジが存在しない場合は0で示す。",
 	"options": [
-	  "../kakomon/img/202101S/3a.png",
-	  "../kakomon/img/202101S/3i.png",
-	  "../kakomon/img/202101S/3u.png",
-      "../kakomon/img/202101S/3e.png"
+	  "res://Data//img/202101S/3a.png",
+	  "res://Data//img/202101S/3i.png",
+	  "res://Data//img/202101S/3u.png",
+      "res://Data//img/202101S/3e.png"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202101S/3.png",
+	"questionImage": "res://Data//img/202101S/3.png",
 	"optionImages": []
   },
   {
@@ -20492,7 +20492,7 @@
       "a: 1, b: 1"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202101S/5.png",
+	"questionImage": "res://Data//img/202101S/5.png",
 	"optionImages": []
   },
   {
@@ -20534,7 +20534,7 @@
       "11"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202101S/10.png",
+	"questionImage": "res://Data//img/202101S/10.png",
 	"optionImages": []
   },
   {
@@ -20632,7 +20632,7 @@
       "A: 論理積, B: 論理和"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202101S/22.png",
+	"questionImage": "res://Data//img/202101S/22.png",
 	"optionImages": []
   },
   {
@@ -20688,7 +20688,7 @@
       "a: 510, b: 借方"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202101S/26.png",
+	"questionImage": "res://Data//img/202101S/26.png",
 	"optionImages": []
   },
   {
@@ -20702,7 +20702,7 @@
       "非正規形"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202101S/27.png",
+	"questionImage": "res://Data//img/202101S/27.png",
 	"optionImages": []
   },
   {
@@ -20710,13 +20710,13 @@
 	"category": "データベース",
 	"question": "“注文”表と“製品”表に対して、次のSQL文を実行したときに得られる結果はどれか。\n\nSELECT 製品名,数量 FROM 注文,製品\n WHERE 注文.製品コード = 製品.製品コード",
 	"options": [
-	  "../kakomon/img/202101S/28a.png",
-	  "../kakomon/img/202101S/28i.png",
-	  "../kakomon/img/202101S/28u.png",
-      "../kakomon/img/202101S/28e.png"
+	  "res://Data//img/202101S/28a.png",
+	  "res://Data//img/202101S/28i.png",
+	  "res://Data//img/202101S/28u.png",
+      "res://Data//img/202101S/28e.png"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202101S/28.png",
+	"questionImage": "res://Data//img/202101S/28.png",
 	"optionImages": []
   },
   {
@@ -20842,7 +20842,7 @@
       "(A=7,B=0), (A=8,B=2)"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202101S/48.png",
+	"questionImage": "res://Data//img/202101S/48.png",
 	"optionImages": []
   },
   {
@@ -20870,7 +20870,7 @@
       "4"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202101S/54.png",
+	"questionImage": "res://Data//img/202101S/54.png",
 	"optionImages": []
   },
   {
@@ -20884,7 +20884,7 @@
       "99.8%以上"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202101S/55.png",
+	"questionImage": "res://Data//img/202101S/55.png",
 	"optionImages": []
   },
   {
@@ -20982,7 +20982,7 @@
       "168"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202101S/78.png",
+	"questionImage": "res://Data//img/202101S/78.png",
 	"optionImages": []
   },
   {
@@ -21024,7 +21024,7 @@
       "論理和(OR)"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202001S/202001Q2.png",
+	"questionImage": "res://Data//img/202001S/202001Q2.png",
 	"optionImages": []
   },
   {
@@ -21052,7 +21052,7 @@
       "55"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202001S/202001Q8.png",
+	"questionImage": "res://Data//img/202001S/202001Q8.png",
 	"optionImages": []
   },
   {
@@ -21122,7 +21122,7 @@
       "200"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202001S/202001Q18.png",
+	"questionImage": "res://Data//img/202001S/202001Q18.png",
 	"optionImages": []
   },
   {
@@ -21136,7 +21136,7 @@
       "2,000"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202001S/202001Q22.png",
+	"questionImage": "res://Data//img/202001S/202001Q22.png",
 	"optionImages": []
   },
   {
@@ -21150,7 +21150,7 @@
       "マルチモーダルインタフェース"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202001S/202001Q23.png",
+	"questionImage": "res://Data//img/202001S/202001Q23.png",
 	"optionImages": []
   },
   {
@@ -21164,7 +21164,7 @@
       ""
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202001S/202001Q25.png",
+	"questionImage": "res://Data//img/202001S/202001Q25.png",
 	"optionImages": []
   },
   {
@@ -21234,7 +21234,7 @@
       "ペトリネット"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/202001S/202001Q45.png",
+	"questionImage": "res://Data//img/202001S/202001Q45.png",
 	"optionImages": []
   },
   {
@@ -21262,7 +21262,7 @@
       "WBS"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/202001S/202001Q51.png",
+	"questionImage": "res://Data//img/202001S/202001Q51.png",
 	"optionImages": []
   },
   {
@@ -21276,7 +21276,7 @@
       "125"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202001S/202001Q52.png",
+	"questionImage": "res://Data//img/202001S/202001Q52.png",
 	"optionImages": []
   },
   {
@@ -21374,7 +21374,7 @@
       "105"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202001S/202001Q72.png",
+	"questionImage": "res://Data//img/202001S/202001Q72.png",
 	"optionImages": []
   },
   {
@@ -21402,7 +21402,7 @@
       "A社が戦略a2, B社が戦略b2を採る組合せ"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/202001S/202001Q77.png",
+	"questionImage": "res://Data//img/202001S/202001Q77.png",
 	"optionImages": []
   },
   {
@@ -21438,10 +21438,10 @@
 	"category": "理論",
 	"question": "2桁の2進数x1x2が表す整数をxとする。2進数x2x1が表す整数を、xの式で表したものはどれか。ここで、int(r) は非負の実数rの小数点以下を切り捨てた整数を表す。",
 	"options": [
-	  "../kakomon/img/201912S/201912Q3a.png",
-	  "../kakomon/img/201912S/201912Q3i.png",
-	  "../kakomon/img/201912S/201912Q3u.png",
-      "../kakomon/img/201912S/201912Q3e.png"
+	  "res://Data//img/201912S/201912Q3a.png",
+	  "res://Data//img/201912S/201912Q3i.png",
+	  "res://Data//img/201912S/201912Q3u.png",
+      "res://Data//img/201912S/201912Q3e.png"
 	],
 	"answerIndex": 2,
 	"questionImage": null,
@@ -21472,7 +21472,7 @@
       "n > M+1"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201912S/201912Q10.png",
+	"questionImage": "res://Data//img/201912S/201912Q10.png",
 	"optionImages": []
   },
   {
@@ -21542,7 +21542,7 @@
       "図エ"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201912S/201912Q20.png",
+	"questionImage": "res://Data//img/201912S/201912Q20.png",
 	"optionImages": []
   },
   {
@@ -21556,7 +21556,7 @@
       ""
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201912S/201912Q21.png",
+	"questionImage": "res://Data//img/201912S/201912Q21.png",
 	"optionImages": []
   },
   {
@@ -21570,7 +21570,7 @@
       ""
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/201912S/201912Q22.png",
+	"questionImage": "res://Data//img/201912S/201912Q22.png",
 	"optionImages": []
   },
   {
@@ -21612,7 +21612,7 @@
       ""
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201912S/201912Q26.png",
+	"questionImage": "res://Data//img/201912S/201912Q26.png",
 	"optionImages": []
   },
   {
@@ -21822,7 +21822,7 @@
       "部品構成表(最終製品における各部品の構成と所要量)"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201912S/201912Q73.png",
+	"questionImage": "res://Data//img/201912S/201912Q73.png",
 	"optionImages": []
   },
   {
@@ -21850,7 +21850,7 @@
       "7"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/202107S/202107Q77.png",
+	"questionImage": "res://Data//img/202107S/202107Q77.png",
 	"optionImages": []
   },
   {
@@ -21920,7 +21920,7 @@
       "9.△"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201907S/201907Q4.png",
+	"questionImage": "res://Data//img/201907S/201907Q4.png",
 	"optionImages": []
   },
   {
@@ -21934,7 +21934,7 @@
       "8"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201907S/201907Q6.png",
+	"questionImage": "res://Data//img/201907S/201907Q6.png",
 	"optionImages": []
   },
   {
@@ -21948,7 +21948,7 @@
       "方法1: n, 方法2: n"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201907S/201907Q7.png",
+	"questionImage": "res://Data//img/201907S/201907Q7.png",
 	"optionImages": []
   },
   {
@@ -21962,7 +21962,7 @@
       "MTTRは、システムの故障が回復した時点から次に故障が起きるまでの平均時間を表す。"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/201907S/201907Q14.png",
+	"questionImage": "res://Data//img/201907S/201907Q14.png",
 	"optionImages": []
   },
   {
@@ -21990,7 +21990,7 @@
       "図エ"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201907S/201907Q21.png",
+	"questionImage": "res://Data//img/201907S/201907Q21.png",
 	"optionImages": []
   },
   {
@@ -22046,7 +22046,7 @@
       "700 マイクロ秒進んでいる。"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/201907S/201907Q34.png",
+	"questionImage": "res://Data//201907S/201907Q34.png",
 	"optionImages": []
   },
   {
@@ -22116,7 +22116,7 @@
       "B, D"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/201907S/201907Q52.png",
+	"questionImage": "res://Data//img/201907S/201907Q52.png",
 	"optionImages": []
   },
   {
@@ -22186,7 +22186,7 @@
       "案4"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201907S/201907Q63.png",
+	"questionImage": "res://Data//img/201907S/201907Q63.png",
 	"optionImages": []
   },
   {
@@ -22228,7 +22228,7 @@
       "目標を設定するために、季節変動要因や地域的広がりを加味することによって、市場の変化を評価する。"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201907S/201907Q68.png",
+	"questionImage": "res://Data//img/201907S/201907Q68.png",
 	"optionImages": []
   },
   {
@@ -22242,7 +22242,7 @@
       "30"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201907S/201907Q73.png",
+	"questionImage": "res://Data//img/201907S/201907Q73.png",
 	"optionImages": []
   },
   {
@@ -22256,7 +22256,7 @@
       "マトリックス組織"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201907S/201907Q75.png",
+	"questionImage": "res://Data//img/201907S/201907Q75.png",
 	"optionImages": []
   },
   {
@@ -22270,7 +22270,7 @@
       ""
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/201907S/201907Q76.png",
+	"questionImage": "res://Data//img/201907S/201907Q76.png",
 	"optionImages": []
   },
   {
@@ -22284,7 +22284,7 @@
       ""
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201907S/201907Q77.png",
+	"questionImage": "res://Data//img/201907S/201907Q77.png",
 	"optionImages": []
   },
   {
@@ -22326,7 +22326,7 @@
       "④"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201907S/201907Q80.png",
+	"questionImage": "res://Data//img/201907S/201907Q80.png",
 	"optionImages": []
   },
   {
@@ -22354,7 +22354,7 @@
       "2.8"
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/201906S/201906Q3.png",
+	"questionImage": "res://Data//201906S/201906Q3.png",
 	"optionImages": []
   },
   {
@@ -22382,7 +22382,7 @@
       "(n-1) × F(n)"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201906S/201906Q07.png",
+	"questionImage": "res://Data//img/201906S/201906Q07.png",
 	"optionImages": []
   },
   {
@@ -22410,7 +22410,7 @@
       "図エ"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201906S/201906Q10.png",
+	"questionImage": "res://Data//img/201906S/201906Q10.png",
 	"optionImages": []
   },
   {
@@ -22494,7 +22494,7 @@
       ""
 	],
 	"answerIndex": 1,
-	"questionImage": "../kakomon/img/201906S/201906Q21.png",
+	"questionImage": "res://Data//img/201906S/201906Q21.png",
 	"optionImages": []
   },
   {
@@ -22592,7 +22592,7 @@
       "共通鍵"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201906S/201906Q39.png",
+	"questionImage": "res://Data//img/201906S/201906Q39.png",
 	"optionImages": []
   },
   {
@@ -22662,7 +22662,7 @@
       "6"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/201906S/201906Q51.png",
+	"questionImage": "res://Data//img/201906S/201906Q51.png",
 	"optionImages": []
   },
   {
@@ -22676,7 +22676,7 @@
       "59"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201906S/201906Q52.png",
+	"questionImage": "res://Data//img/201906S/201906Q52.png",
 	"optionImages": []
   },
   {
@@ -22690,7 +22690,7 @@
       "32"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/201906S/201906Q53.png",
+	"questionImage": "res://Data//img/201906S/201906Q53.png",
 	"optionImages": []
   },
   {
@@ -22816,7 +22816,7 @@
       "事業を継続させていくための資金投下の必要性は低く、将来的には撤退を考えざるを得ない。"
 	],
 	"answerIndex": 0,
-	"questionImage": "../kakomon/img/201906S/201906Q67.png",
+	"questionImage": "res://Data//img/201906S/201906Q67.png",
 	"optionImages": []
   },
   {
@@ -22900,7 +22900,7 @@
       "X-Sだけの発注を取り消す。"
 	],
 	"answerIndex": 3,
-	"questionImage": "../kakomon/img/201906S/201906Q77.png",
+	"questionImage": "res://Data//img/201906S/201906Q77.png",
 	"optionImages": []
   },
   {
@@ -22928,7 +22928,7 @@
       "労働者派遣契約関係"
 	],
 	"answerIndex": 2,
-	"questionImage": "../kakomon/img/201906S/201906Q80.png",
+	"questionImage": "res://Data//img/201906S/201906Q80.png",
 	"optionImages": []
   }
 ]
