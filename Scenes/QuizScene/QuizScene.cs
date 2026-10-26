@@ -3,7 +3,6 @@ using System;
 
 public partial class QuizScene : Control
 {
-    // Called when the node enters the scene tree for the first time.
     [Export] private Button ButtonA;
     [Export] private Button ButtonB;
     [Export] private Button ButtonC;
@@ -54,11 +53,9 @@ public partial class QuizScene : Control
         UpdateQuestionUI();
     }
 
-    public void Init(QuestionDataManager qdm, QuestionData[] array)
+    public void Init(QuestionData[] array)
     {
         quizMode = QuizMode.ArrayQustion;
-
-        questionDataManager = qdm;
 
         questionArray = array;
         questionNumber = 0;
@@ -115,7 +112,7 @@ public partial class QuizScene : Control
 
     private void NextQuestion()
     {
-       
+    
         questionNumber++;
  
         if(quizMode == QuizMode.Randomized)
@@ -142,8 +139,6 @@ public partial class QuizScene : Control
                 EndQuiz();
             }
         }
-        
-       
     }
 
     private void EndQuiz()
@@ -151,9 +146,25 @@ public partial class QuizScene : Control
         
     }
 
-    private void HandleButtonAPressed()
+    private void ToggleButtons(bool disabled)
     {
-        if (currentQuestion.AnswerIndex == 0)
+        //true turns the button off and false turns them on
+        ButtonA.Disabled = disabled;
+        ButtonB.Disabled = disabled;
+        ButtonC.Disabled = disabled;
+        ButtonD.Disabled = disabled;
+
+    }
+
+    private const int ButtonAValue = 0;
+    private const int ButtonBValue = 1;
+    private const int ButtonCValue = 2;
+    private const int ButtonDValue = 3;
+
+
+    private void CheckAnswer(int answerIndex)
+    {
+        if (currentQuestion.AnswerIndex == answerIndex)
         {
             GD.Print("正解");
             RaiseCorrectAnswer();
@@ -163,51 +174,31 @@ public partial class QuizScene : Control
             GD.Print("不正解");
             RaiseWrongAnswer();
         }
+    }
+
+    private void HandleButtonAPressed()
+    {
+        CheckAnswer(ButtonAValue);
         NextQuestion();
     }
 
     private void HandleButtonBPressed()
     {
-        if (currentQuestion.AnswerIndex == 1)
-        {
-            GD.Print("正解");
-            RaiseCorrectAnswer();
-        }
-        else
-        {
-            GD.Print("不正解");
-            RaiseWrongAnswer();
-        }
+        CheckAnswer(ButtonBValue);
         NextQuestion();
     }
 
     private void HandleButtonCPressed()
     {
-        if (currentQuestion.AnswerIndex == 2)
-        {
-            GD.Print("正解");
-            RaiseCorrectAnswer();
-        }
-        else
-        {
-            GD.Print("不正解");
-            RaiseWrongAnswer();
-        }
+        CheckAnswer(ButtonCValue);
         NextQuestion();
     }
 
     private void HandleButtonDPressed()
     {
-        if (currentQuestion.AnswerIndex == 3)
-        {
-            GD.Print("正解");
-            RaiseCorrectAnswer();
-        }
-        else
-        {
-            GD.Print("不正解");
-            RaiseWrongAnswer();
-        }
+        CheckAnswer(ButtonDValue);
         NextQuestion();
     }
+
+    
 }
