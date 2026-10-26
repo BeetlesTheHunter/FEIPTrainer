@@ -1,0 +1,245 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scenes/PartQuiz/PartQuizScene.cs" id="1_pq"]
+[ext_resource type="Theme" uid="uid://cmyifl6cvm1qi" path="res://UIStyles/Themes/DefualtTheme.tres" id="2_theme"]
+[ext_resource type="Shader" uid="uid://23bo4s3anyck" path="res://Scripts/Shaders/BackgroundBlur.gdshader" id="3_blur"]
+[ext_resource type="Texture2D" uid="uid://bx38pn2iko6ky" path="res://Assets/Backgrounds/QuizPlainsBackground.jpg" id="4_bg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq"]
+shader = ExtResource("3_blur")
+shader_parameter/blur_amount = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_Card"]
+content_margin_left = 16.0
+content_margin_top = 14.0
+content_margin_right = 16.0
+content_margin_bottom = 14.0
+bg_color = Color(0.98, 0.98, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.25, 0.3, 0.5, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_BtnNormal"]
+bg_color = Color(0.31, 0.42, 0.93, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_BtnHover"]
+bg_color = Color(0.42, 0.52, 0.97, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_BtnPressed"]
+bg_color = Color(0.2, 0.3, 0.75, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_BtnDisabled"]
+bg_color = Color(0.6, 0.62, 0.7, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+
+
+
+[node name="PartQuizScene" type="Control" unique_id=301261906 node_paths=PackedStringArray("ButtonA", "ButtonB", "ButtonC", "ButtonD", "ButtonGrid", "LeftColumn", "QuestionZone", "QuestionBox", "QuestionText", "QuestionImage", "MissingImageLabel", "OptionsZone", "OptionsGrid", "FeedbackSlot")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_pq")
+ButtonA = NodePath("Margin/Columns/RightColumn/LowerRight/ButtonGrid/ButtonA")
+ButtonB = NodePath("Margin/Columns/RightColumn/LowerRight/ButtonGrid/ButtonB")
+ButtonC = NodePath("Margin/Columns/RightColumn/LowerRight/ButtonGrid/ButtonC")
+ButtonD = NodePath("Margin/Columns/RightColumn/LowerRight/ButtonGrid/ButtonD")
+ButtonGrid = NodePath("Margin/Columns/RightColumn/LowerRight/ButtonGrid")
+LeftColumn = NodePath("Margin/Columns/LeftColumn")
+QuestionZone = NodePath("Margin/Columns/LeftColumn/QuestionZone")
+QuestionBox = NodePath("Margin/Columns/LeftColumn/QuestionZone/QuestionBox")
+QuestionText = NodePath("Margin/Columns/LeftColumn/QuestionZone/QuestionBox/QuestionText")
+QuestionImage = NodePath("Margin/Columns/LeftColumn/QuestionZone/QuestionBox/QuestionImage")
+MissingImageLabel = NodePath("Margin/Columns/LeftColumn/QuestionZone/QuestionBox/MissingImageLabel")
+OptionsZone = NodePath("Margin/Columns/LeftColumn/OptionsZone")
+OptionsGrid = NodePath("Margin/Columns/LeftColumn/OptionsZone/OptionsGrid")
+FeedbackSlot = NodePath("Margin/Columns/RightColumn/UpperRight/FeedbackSlot")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -1
+texture_filter = 4
+material = SubResource("ShaderMaterial_pq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_bg")
+expand_mode = 1
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Columns" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LeftColumn" type="VBoxContainer" parent="Margin/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 14
+
+[node name="QuestionZone" type="PanelContainer" parent="Margin/Columns/LeftColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBox_Card")
+
+[node name="QuestionBox" type="VBoxContainer" parent="Margin/Columns/LeftColumn/QuestionZone"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="QuestionText" type="RichTextLabel" parent="Margin/Columns/LeftColumn/QuestionZone/QuestionBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.05, 0.05, 0.1, 1)
+theme_override_font_sizes/normal_font_size = 26
+scroll_active = false
+
+[node name="QuestionImage" type="TextureRect" parent="Margin/Columns/LeftColumn/QuestionZone/QuestionBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MissingImageLabel" type="Label" parent="Margin/Columns/LeftColumn/QuestionZone/QuestionBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.1, 0.1, 1)
+autowrap_mode = 3
+
+[node name="OptionsZone" type="VBoxContainer" parent="Margin/Columns/LeftColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="OptionsGrid" type="GridContainer" parent="Margin/Columns/LeftColumn/OptionsZone"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="RightColumn" type="VBoxContainer" parent="Margin/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+theme_override_constants/separation = 14
+
+[node name="UpperRight" type="PanelContainer" parent="Margin/Columns/RightColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.8
+theme_override_styles/panel = SubResource("StyleBox_Card")
+
+[node name="FeedbackSlot" type="Control" parent="Margin/Columns/RightColumn/UpperRight"]
+layout_mode = 2
+
+[node name="LowerRight" type="PanelContainer" parent="Margin/Columns/RightColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBox_Card")
+
+[node name="ButtonGrid" type="GridContainer" parent="Margin/Columns/RightColumn/LowerRight"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="ButtonA" type="Button" parent="Margin/Columns/RightColumn/LowerRight/ButtonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBox_BtnNormal")
+theme_override_styles/hover = SubResource("StyleBox_BtnHover")
+theme_override_styles/pressed = SubResource("StyleBox_BtnPressed")
+theme_override_styles/disabled = SubResource("StyleBox_BtnDisabled")
+text = "A"
+
+[node name="ButtonB" type="Button" parent="Margin/Columns/RightColumn/LowerRight/ButtonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBox_BtnNormal")
+theme_override_styles/hover = SubResource("StyleBox_BtnHover")
+theme_override_styles/pressed = SubResource("StyleBox_BtnPressed")
+theme_override_styles/disabled = SubResource("StyleBox_BtnDisabled")
+text = "B"
+
+[node name="ButtonC" type="Button" parent="Margin/Columns/RightColumn/LowerRight/ButtonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBox_BtnNormal")
+theme_override_styles/hover = SubResource("StyleBox_BtnHover")
+theme_override_styles/pressed = SubResource("StyleBox_BtnPressed")
+theme_override_styles/disabled = SubResource("StyleBox_BtnDisabled")
+text = "C"
+
+[node name="ButtonD" type="Button" parent="Margin/Columns/RightColumn/LowerRight/ButtonGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBox_BtnNormal")
+theme_override_styles/hover = SubResource("StyleBox_BtnHover")
+theme_override_styles/pressed = SubResource("StyleBox_BtnPressed")
+theme_override_styles/disabled = SubResource("StyleBox_BtnDisabled")
+text = "D"

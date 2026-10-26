@@ -17,6 +17,7 @@ public partial class QuizScene : Control
     
     [Export] public ScoreManager scoreManager {get; private set;}
     private QuestionDataManager questionDataManager;
+    private GameManager gameManager;
 
     public enum QuizMode
     {
@@ -41,8 +42,9 @@ public partial class QuizScene : Control
 
     }
 
-    public void Init(QuestionDataManager qdm, int numberOfQuestions)
+    public void Init(GameManager gm, QuestionDataManager qdm, int numberOfQuestions)
     {
+        gameManager = gm;
         quizMode = QuizMode.Randomized;
 
         questionDataManager = qdm;
@@ -54,8 +56,9 @@ public partial class QuizScene : Control
         UpdateQuestionUI();
     }
 
-    public void Init(QuestionDataManager qdm, QuestionData[] array)
+    public void Init(GameManager gm, QuestionDataManager qdm, QuestionData[] array)
     {
+        gameManager = gm;
         quizMode = QuizMode.ArrayQustion;
 
         questionDataManager = qdm;
@@ -148,7 +151,12 @@ public partial class QuizScene : Control
 
     private void EndQuiz()
     {
-        
+        // この時点で questionNumber = 答えた問題数(Randomized / ArrayQustion どちらも同じ)
+        int rate = questionNumber > 0
+            ? Mathf.RoundToInt(scoreManager.NumbersCorrect * 100f / questionNumber)
+            : 0;
+
+        gameManager.ResultScreen(scoreManager.Score, rate);
     }
 
     private void HandleButtonAPressed()

@@ -6,6 +6,9 @@ public partial class Results : Control
    [Export]  private Button _nextStageButton;
    [Export] private Label CorrectAnswerRate;
    [Export] private Label score;
+
+    /// <summary>「次へ」ボタンが押されたとき。遷移先は GameManager 側で決める。</summary>
+    public event Action NextStagePressed;
    
 
     public override void _Ready()
@@ -26,7 +29,7 @@ public partial class Results : Control
     {
 
        
-        //GameManager.Instance.ReplaceScene(GameManager.Instance.dashBoardScene);
+        NextStagePressed?.Invoke();
     
           
     }

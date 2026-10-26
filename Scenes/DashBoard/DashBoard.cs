@@ -7,6 +7,7 @@ public partial class DashBoard : Control
 	[Export] private Button DailyStageButton;
     [Export] private Button NomalStageButton;
     [Export] private Button ReviewStageButton;
+    [Export] private Button CategoryStageButton;
 
     private UserDataManager userDataManager;
     private GameManager gameManager;
@@ -17,6 +18,7 @@ public partial class DashBoard : Control
 		DailyStageButton.Pressed += HandleDailyStageButtonPressed;
         NomalStageButton.Pressed += HandleNomalStageButtonPressed;
         ReviewStageButton.Pressed += HandleReviewStageButtonPressed;
+        CategoryStageButton.Pressed += HandleCategoryStageButtonPressed;
 
     }
 
@@ -40,5 +42,11 @@ public partial class DashBoard : Control
     public void HandleReviewStageButtonPressed()
     {
         GD.Print("ReviewStageBottonPressed");
+    }
+
+    public void HandleCategoryStageButtonPressed()
+    {
+        GD.Print("CategoryStageButtonPressed");
+        gameManager.CategorySelectScreen();
     }
 }

@@ -10,7 +10,7 @@
 shader = ExtResource("3_7b2hk")
 shader_parameter/blur_amount = 4.00000019
 
-[node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton")]
+[node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton", "CategoryStageButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +22,7 @@ script = ExtResource("1_ayeso")
 DailyStageButton = NodePath("VBoxContainer/DailyStageButton")
 NomalStageButton = NodePath("VBoxContainer/HBoxContainer/NomalStageButton")
 ReviewStageButton = NodePath("VBoxContainer/HBoxContainer/ReviewStageButton")
+CategoryStageButton = NodePath("VBoxContainer/CategoryStageButton")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1005612483]
 z_index = -1
@@ -102,3 +103,7 @@ text = "ノーマル"
 layout_mode = 2
 disabled = true
 text = "復習"
+
+[node name="CategoryStageButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "カテゴリ別"

@@ -6,6 +6,8 @@ public partial class GameManager : Node
     [Export] private PackedScene quizScene;
     [Export] private PackedScene resultsScene;
     [Export] private PackedScene startScene;
+    [Export] private PackedScene categorySelectScene;
+    [Export] private PackedScene partQuizScene;
 
     [Export] private PackedScene ESCMenuOverlay;
     
@@ -52,9 +54,31 @@ public partial class GameManager : Node
     public void QuizScreen()
     {
         QuizScene scene = quizScene.Instantiate() as QuizScene;
-        scene.Init(questionDataManager,null);
+        scene.Init(gameManager, questionDataManager, null);
         ReplaceScene(scene);
 
+    }
+
+    public void CategorySelectScreen()
+    {
+        CategorySelect scene = categorySelectScene.Instantiate() as CategorySelect;
+        scene.Init(gameManager, questionDataManager);
+        ReplaceScene(scene);
+    }
+
+    public void PartQuizScreen(QuestionData[] questions)
+    {
+        PartQuizScene scene = partQuizScene.Instantiate() as PartQuizScene;
+        scene.Init(gameManager, questions);
+        ReplaceScene(scene);
+    }
+
+    public void ResultScreen(int score, int rate)
+    {
+        Results scene = resultsScene.Instantiate() as Results;
+        scene.NextStagePressed += DashBoardScreen;
+        ReplaceScene(scene);
+        scene.lnit(score, rate);
     }
 
     public void ESCMenuScreen()
