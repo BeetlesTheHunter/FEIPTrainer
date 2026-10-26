@@ -40,20 +40,20 @@ public partial class QuizScene : Control
 
     }
 
-    public void Init(QuestionDataManager qdm, int numberOfQuestions)
+    public void Init(QuestionDataManager qdm, int numQuestions)
     {
         quizMode = QuizMode.Randomized;
 
         questionDataManager = qdm;
 
         questionNumber = 0;
-        randomQuestionNumberMax = numberOfQuestions;
+        randomQuestionNumberMax = numQuestions;
 
         currentQuestion = questionDataManager.GetRandomQuestion();
         UpdateQuestionUI();
     }
 
-    public void Init(QuestionData[] array, QuestionDataManager qdm)
+    public void Init(QuestionDataManager qdm, QuestionData[] array)
     {
         quizMode = QuizMode.ArrayQustion;
         questionNumber = 0;
@@ -62,7 +62,7 @@ public partial class QuizScene : Control
         if(array == null)
         {
             questionDataManager = qdm;
-            
+
             QuestionData[] testArray = {
             questionDataManager.GetQuestionById(1),
             questionDataManager.GetQuestionById(418),
@@ -149,15 +149,6 @@ public partial class QuizScene : Control
         GD.Print("end of quiz reached");
     }
 
-    private void ToggleButtons(bool disabled)
-    {
-        //true turns the button off and false turns them on
-        ButtonA.Disabled = disabled;
-        ButtonB.Disabled = disabled;
-        ButtonC.Disabled = disabled;
-        ButtonD.Disabled = disabled;
-
-    }
 
     private const int ButtonAValue = 0;
     private const int ButtonBValue = 1;
@@ -179,27 +170,40 @@ public partial class QuizScene : Control
         }
     }
 
+    private void DisableButtons(bool disabled)
+    {
+        ButtonA.Disabled = disabled;
+        ButtonB.Disabled = disabled;
+        ButtonC.Disabled = disabled;
+        ButtonD.Disabled = disabled;
+
+    }
+
     private void HandleButtonAPressed()
     {
         CheckAnswer(ButtonAValue);
+        DisableButtons(true);
         NextQuestion();
     }
 
     private void HandleButtonBPressed()
     {
         CheckAnswer(ButtonBValue);
+        DisableButtons(true);
         NextQuestion();
     }
 
     private void HandleButtonCPressed()
     {
         CheckAnswer(ButtonCValue);
+        DisableButtons(true);
         NextQuestion();
     }
 
     private void HandleButtonDPressed()
     {
         CheckAnswer(ButtonDValue);
+        DisableButtons(true);
         NextQuestion();
     }
 
