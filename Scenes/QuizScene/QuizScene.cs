@@ -55,7 +55,7 @@ public partial class QuizScene : Control
 		UpdateQuestionUI();
 	}
 
-	public void Init(GameManager gm, QuestionData[] array, QuestionDataManager qdm)
+	public void Init(GameManager gm, QuestionDataManager qdm, QuestionData[] array)
 	{
 		gameManager = gm;
 		quizMode = QuizMode.ArrayQustion;
