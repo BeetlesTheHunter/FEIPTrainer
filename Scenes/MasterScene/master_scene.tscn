@@ -1,3 +1,5 @@
 [gd_scene format=3 uid="uid://cvkne8yxk2lsw"]
 
 [node name="MainCanvas" type="CanvasLayer" unique_id=971846613]
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=124241223]
