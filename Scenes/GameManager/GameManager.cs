@@ -52,7 +52,7 @@ public partial class GameManager : Node
     public void QuizScreen()
     {
         QuizScene scene = quizScene.Instantiate() as QuizScene;
-        scene.Init(gameManager, null, questionDataManager);
+        scene.Init(gameManager, questionDataManager, array:null);
         ReplaceScene(scene);
 
     }

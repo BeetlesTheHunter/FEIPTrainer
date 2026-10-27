@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://6nga3nxjinnv"]
+
+[ext_resource type="Script" uid="uid://cnexyb45g54v8" path="res://Scenes/CombatScene/CombatScene.cs" id="1_mekbl"]
+[ext_resource type="Texture2D" uid="uid://bx38pn2iko6ky" path="res://Assets/Backgrounds/QuizPlainsBackground.jpg" id="1_mlh44"]
+
+[node name="CombatScene" type="Node2D" unique_id=243679490]
+script = ExtResource("1_mekbl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=35775474]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1251124548]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mlh44")
+expand_mode = 1
