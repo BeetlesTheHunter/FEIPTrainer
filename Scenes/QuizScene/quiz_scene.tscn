@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bx38pn2iko6ky" path="res://Assets/Backgrounds/QuizPlainsBackground.jpg" id="5_4m83h"]
 [ext_resource type="PackedScene" uid="uid://crgm5c8d2q46" path="res://Scenes/QuizScene/ScoreManager/ScoreManager.tscn" id="5_i7ej2"]
 [ext_resource type="StyleBox" uid="uid://rsxmn6etr65e" path="res://UIStyles/Panels/NailedPanel.tres" id="5_wdgeb"]
+[ext_resource type="PackedScene" uid="uid://6nga3nxjinnv" path="res://Scenes/CombatScene/combat_scene.tscn" id="7_wdgeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wdgeb"]
 shader = ExtResource("4_i7ej2")
@@ -26,6 +27,9 @@ ButtonC = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonC")
 ButtonD = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonD")
 QuestionLabel = NodePath("QuizText/RichTextLabel")
 scoreManager = NodePath("ScoreManager")
+
+[node name="ScoreManager" parent="." unique_id=1316858675 node_paths=PackedStringArray("quizScene") instance=ExtResource("5_i7ej2")]
+quizScene = NodePath("..")
 
 [node name="Background" type="TextureRect" parent="." unique_id=284814656]
 z_index = -1
@@ -61,10 +65,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -538.0
-offset_top = -327.0
+offset_left = -552.0
+offset_top = -313.0
 offset_right = -88.0
-offset_bottom = -27.0
+offset_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -96,5 +100,23 @@ text = "B
 layout_mode = 2
 text = "D"
 
-[node name="ScoreManager" parent="." unique_id=1316858675 node_paths=PackedStringArray("quizScene") instance=ExtResource("5_i7ej2")]
-quizScene = NodePath("..")
+[node name="CombatSceneFrame" type="PanelContainer" parent="." unique_id=930683561]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -610.0
+offset_bottom = 360.0
+grow_horizontal = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CombatSceneFrame" unique_id=503851578]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CombatSceneFrame/SubViewportContainer" unique_id=1635046840]
+handle_input_locally = false
+size = Vector2i(550, 300)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="CombatSceneFrame/SubViewportContainer/SubViewport" unique_id=407843915]
+
+[node name="CombatScene" parent="CombatSceneFrame/SubViewportContainer/SubViewport" unique_id=243679490 instance=ExtResource("7_wdgeb")]
