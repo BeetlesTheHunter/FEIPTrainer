@@ -45,7 +45,7 @@ public partial class QuizScene : Control
 
 	}
 
-	public void Init(GameManager gm, QuestionDataManager qdm, int numberOfQuestions)
+	public void Init(GameManager gm, QuestionDataManager qdm, int numQuestions)
 	{
 		gameManager = gm;
 		quizMode = QuizMode.Randomized;
@@ -53,7 +53,7 @@ public partial class QuizScene : Control
 		questionDataManager = qdm;
 
 		questionNumber = 0;
-		randomQuestionNumberMax = numberOfQuestions;
+		randomQuestionNumberMax = numQuestions;
 
 		currentQuestion = questionDataManager.GetRandomQuestion();
 		UpdateQuestionUI();

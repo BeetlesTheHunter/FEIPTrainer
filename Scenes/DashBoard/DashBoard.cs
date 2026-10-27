@@ -29,6 +29,7 @@ public partial class DashBoard : Control
     public void HandleDailyStageButtonPressed()
     {
         GD.Print("DailyStageBottonPressed");
+        gameManager.DailyQuizScene();
     }
 
     public void HandleNomalStageButtonPressed()

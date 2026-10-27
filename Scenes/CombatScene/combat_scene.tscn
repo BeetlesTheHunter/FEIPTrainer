@@ -323,18 +323,17 @@ texture = ExtResource("1_mlh44")
 position = Vector2(-972, -213)
 sprite_frames = SubResource("SpriteFrames_telnw")
 animation = &"idle"
-frame_progress = 0.8922109
+frame_progress = 0.502755
 CharacterData = ExtResource("73_xjrve")
 CharacterName = "Testotron"
 Health = 10
-Strength = 2
-Defense = 5
+Strength = 5
 
 [node name="EnemyCharacter" parent="." unique_id=890992182 instance=ExtResource("3_hj6wo")]
 position = Vector2(-225, -220)
 sprite_frames = SubResource("SpriteFrames_telnw")
 animation = &"idle"
-frame_progress = 0.48790842
+frame_progress = 0.098453015
 flip_h = true
 CharacterData = ExtResource("73_xjrve")
 CharacterName = "Testotron"
