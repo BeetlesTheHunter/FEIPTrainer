@@ -6,6 +6,8 @@ public partial class Results : Control
    [Export]  private Button _nextStageButton;
    [Export] private Label CorrectAnswerRate;
    [Export] private Label score;
+
+    private GameManager gameManager;
    
 
     public override void _Ready()
@@ -15,8 +17,10 @@ public partial class Results : Control
     }
 
 
-    public void lnit(int scoreValue,int  rate)
+    public void Init(GameManager gm, int scoreValue, int rate)
     {
+        gameManager = gm;
+
         score.Text = $"獲得スコア:{scoreValue}";
 
         CorrectAnswerRate.Text = $"正答率:{rate}%";
@@ -26,7 +30,7 @@ public partial class Results : Control
     {
 
        
-        //GameManager.Instance.ReplaceScene(GameManager.Instance.dashBoardScene);
+        gameManager.DashBoardScreen();
     
           
     }
