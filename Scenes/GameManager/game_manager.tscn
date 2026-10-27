@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b67diqwdmo4x0" path="res://Scenes/ESCMenu/ESCMenu.tscn" id="5_b4vse"]
 [ext_resource type="PackedScene" uid="uid://ddegpveslndr7" path="res://Scenes/QuestionManager/question_data_manager.tscn" id="6_b4vse"]
 [ext_resource type="PackedScene" uid="uid://dspg2twb1abnt" path="res://Scenes/UserDataManager/UserDataManager.tscn" id="7_268yw"]
+[ext_resource type="PackedScene" path="res://Scenes/CategorySelect/CategorySelect.tscn" id="8_cat"]
 
 [node name="GameManager" type="Node" unique_id=211893046]
 script = ExtResource("1_mtm67")
@@ -18,3 +19,4 @@ startScene = ExtResource("5_268yw")
 ESCMenuOverlay = ExtResource("5_b4vse")
 questionDataManagerScene = ExtResource("6_b4vse")
 userDataManagerScene = ExtResource("7_268yw")
+categorySelectScene = ExtResource("8_cat")

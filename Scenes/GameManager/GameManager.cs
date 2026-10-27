@@ -6,6 +6,7 @@ public partial class GameManager : Node
     [Export] private PackedScene quizScene;
     [Export] private PackedScene resultsScene;
     [Export] private PackedScene startScene;
+    [Export] private PackedScene categorySelectScene;
 
     [Export] private PackedScene ESCMenuOverlay;
     
@@ -49,12 +50,20 @@ public partial class GameManager : Node
         ReplaceScene(scene);
     }
 
-    public void QuizScreen()
+    // questions を渡すとその問題で開始する(null のときは従来どおりテスト用の問題)
+    public void QuizScreen(QuestionData[] questions = null)
     {
         QuizScene scene = quizScene.Instantiate() as QuizScene;
-        scene.Init(gameManager, null, questionDataManager);
+        scene.Init(gameManager, questions, questionDataManager);
         ReplaceScene(scene);
 
+    }
+
+    public void CategorySelectScreen()
+    {
+        CategorySelect scene = categorySelectScene.Instantiate() as CategorySelect;
+        scene.Init(gameManager, questionDataManager);
+        ReplaceScene(scene);
     }
 
     public void ResultScreen(int score, int rate)
