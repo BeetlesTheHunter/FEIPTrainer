@@ -14,7 +14,8 @@ public partial class QuizScene : Control
 	private int questionNumber = 0; //何問やったか管理するために使う
 	private int randomQuestionNumberMax = 0;
 	
-	[Export] public ScoreManager scoreManager {get; private set;}
+	[Export] private ScoreManager scoreManager;
+    [Export] private CombatScene combatScene;
 	private QuestionDataManager questionDataManager;
 	private GameManager gameManager;
 
@@ -37,6 +38,9 @@ public partial class QuizScene : Control
 		ButtonB.Pressed += HandleButtonBPressed;
 		ButtonC.Pressed += HandleButtonCPressed;
 		ButtonD.Pressed += HandleButtonDPressed;
+
+        combatScene.CombatOver += HandleCombatOver;
+        combatScene.ProcessOver += HandleProcessOver;
 		
 
 	}
@@ -157,6 +161,16 @@ public partial class QuizScene : Control
 		gameManager.ResultScreen(scoreManager.Score, rate);
 	}
 
+    public void HandleCombatOver()
+    {
+        EndQuiz();
+    }
+
+    public void HandleProcessOver()
+    {
+        ToggleButtons(false);
+    }
+
 	private void ToggleButtons(bool disabled)
 	{
 		//true turns the button off and false turns them on
@@ -175,16 +189,20 @@ public partial class QuizScene : Control
 
 	private void CheckAnswer(int answerIndex)
 	{
+        ToggleButtons(true);
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
 			RaiseCorrectAnswer();
+            scoreManager.addScore(combatScene.PlayerAttack());
 		}
 		else
 		{
 			GD.Print("不正解");
 			RaiseWrongAnswer();
+            scoreManager.addScore(combatScene.EnemyAttack());
 		}
+        
 	}
 
 	private void HandleButtonAPressed()

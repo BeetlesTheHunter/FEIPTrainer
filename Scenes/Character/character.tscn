@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dtc1cchmcq0b8"]
+
+[ext_resource type="Material" uid="uid://q327ahvrhn3o" path="res://Scenes/Character/DamageMaterialShader.tres" id="1_fxf8n"]
+[ext_resource type="Script" uid="uid://b5y3pcc3h05y6" path="res://Scenes/Character/Character.cs" id="19_qtlab"]
+
+[node name="Character" type="AnimatedSprite2D" unique_id=295762045]
+material = ExtResource("1_fxf8n")
+scale = Vector2(0.25, 0.25)
+animation = &"damaged"
+script = ExtResource("19_qtlab")
