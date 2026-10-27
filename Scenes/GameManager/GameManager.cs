@@ -52,9 +52,16 @@ public partial class GameManager : Node
     public void QuizScreen()
     {
         QuizScene scene = quizScene.Instantiate() as QuizScene;
-        scene.Init(null, questionDataManager);
+        scene.Init(gameManager, null, questionDataManager);
         ReplaceScene(scene);
 
+    }
+
+    public void ResultScreen(int score, int rate)
+    {
+        Results scene = resultsScene.Instantiate() as Results;
+        scene.Init(gameManager, score, rate);
+        ReplaceScene(scene);
     }
 
     public void ESCMenuScreen()
