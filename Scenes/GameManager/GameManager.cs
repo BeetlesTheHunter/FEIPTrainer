@@ -31,7 +31,6 @@ public partial class GameManager : Node
         StartScreen();
         ESCMenuScreen();
 
-
     }
 
     public void StartScreen()
