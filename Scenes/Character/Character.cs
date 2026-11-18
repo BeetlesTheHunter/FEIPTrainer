@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Threading.Tasks;
 
 
 [Tool]
@@ -12,7 +11,7 @@ public partial class Character : AnimatedSprite2D
 	public const string WalkAnimation = "walk";
 	public const string DamagedAnimation = "damaged";
 
-	private const string DamageShaderPath = "uid://q327ahvrhn3o";
+	private const string DamageShaderPath = "res://Scripts/Shaders/DamageEffect.gdshader";
 	private ShaderMaterial DamageShader;
 
 
