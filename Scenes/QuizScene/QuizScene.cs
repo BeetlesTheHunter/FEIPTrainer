@@ -123,7 +123,7 @@ public partial class QuizScene : Control
  
 		if(quizMode == QuizMode.Randomized)
 		{
-			if(questionNumber <= randomQuestionNumberMax)
+			if(questionNumber < randomQuestionNumberMax)
 			{
 				currentQuestion = questionDataManager.GetRandomQuestion();
 				UpdateQuestionUI();
@@ -131,6 +131,7 @@ public partial class QuizScene : Control
 			else
 			{
 				EndQuiz();
+				return;
 			}
 		}
 		else if(quizMode == QuizMode.ArrayQustion)
@@ -143,8 +144,11 @@ public partial class QuizScene : Control
 			else
 			{
 				EndQuiz();
+				return;
 			}
 		}
+		ResetButtonColors();
+		ToggleButtons(false);
 	}
 
 	private void EndQuiz()
@@ -173,8 +177,13 @@ public partial class QuizScene : Control
 	private const int ButtonDValue = 3;
 
 
-	private void CheckAnswer(int answerIndex)
+	private async void CheckAnswer(int answerIndex)
 	{
+		ToggleButtons(true);
+
+		Button correctButton = GetAnswerButton(currentQuestion.AnswerIndex);
+		correctButton.Modulate = Colors.Green;
+
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
@@ -183,32 +192,64 @@ public partial class QuizScene : Control
 		else
 		{
 			GD.Print("不正解");
+
+			Button wrongButton = GetAnswerButton(answerIndex);
+			wrongButton.Modulate = Colors.Red;
+
 			RaiseWrongAnswer();
 		}
+
+await ToSignal(
+    GetTree().CreateTimer(2.0),
+    SceneTreeTimer.SignalName.Timeout
+);
+
+		NextQuestion();
 	}
+	private Button GetAnswerButton(int index)
+	{
+		switch (index)
+		{
+			case ButtonAValue:
+				return ButtonA;
+			case ButtonBValue:
+				return ButtonB;
+			case ButtonCValue:
+				return ButtonC;
+			case ButtonDValue:
+				return ButtonD;
+			default:
+            throw new ArgumentOutOfRangeException(nameof(index));
+				
+		};
+	}
+
+	private void ResetButtonColors()
+{
+    ButtonA.Modulate = Colors.White;
+    ButtonB.Modulate = Colors.White;
+    ButtonC.Modulate = Colors.White;
+    ButtonD.Modulate = Colors.White;
+}
 
 	private void HandleButtonAPressed()
 	{
 		CheckAnswer(ButtonAValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonBPressed()
 	{
 		CheckAnswer(ButtonBValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonCPressed()
 	{
 		CheckAnswer(ButtonCValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonDPressed()
 	{
 		CheckAnswer(ButtonDValue);
-		NextQuestion();
 	}
 
 	
