@@ -134,7 +134,9 @@ public partial class QuizScene : Control
             }
             else
             {
+				ResetButtonColors();
                 EndQuiz();
+				return;
             }
         }
         else if (quizMode == QuizMode.ArrayQustion)
@@ -146,9 +148,13 @@ public partial class QuizScene : Control
             }
             else
             {
+				ResetButtonColors();
                 EndQuiz();
+				return;
             }
         }
+		ResetButtonColors();
+		ToggleButtons(false);
     }
 
     // クイズ終了
@@ -203,15 +209,9 @@ public partial class QuizScene : Control
 
         // 1.5秒待つ
         await ToSignal(
-            GetTree().CreateTimer(1.5),
+            GetTree().CreateTimer(2.0),
             SceneTreeTimer.SignalName.Timeout
         );
-
-        // ボタンの色を元に戻す
-        ResetButtonColors();
-
-        // ボタンを再び押せるようにする
-        ToggleButtons(false);
 
         // 次の問題へ
         NextQuestion();
@@ -229,6 +229,11 @@ public partial class QuizScene : Control
             default: return null;
         }
     }
+
+	private void HandleResetQuiz()
+	{
+		CheckAnswer(ButtonAValue);
+	}
 
     // ボタンの色をリセット
     private void ResetButtonColors()
