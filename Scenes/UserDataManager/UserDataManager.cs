@@ -18,27 +18,13 @@ public partial class UserDataManager : Node
 	{
 		userData.userId = userId;
     }
-	public void setSolvedCount(int solvedCount)
-	{
-		userData.solvedCount = solvedCount;
-	}
-	public void setCorrectCount(int correctCount)
-	{
-		userData.correctCount = correctCount; 
-	}
+	
 
 	public int getUserId()
 	{
 		return userData.userId;
 	}
-	public int getSolvedCount()
-	{
-		return userData.solvedCount;
-	}
-	public int getCorrectCount()
-	{
-		return userData.correctCount;
-	}
+	
 
 	
 
