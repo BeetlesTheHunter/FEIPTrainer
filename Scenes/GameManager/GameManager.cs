@@ -11,9 +11,11 @@ public partial class GameManager : Node
     
     [Export] private PackedScene questionDataManagerScene;
     [Export] private PackedScene userDataManagerScene;
+    [Export] private PackedScene databaseManagerScene;
 
     private QuestionDataManager questionDataManager;
     private UserDataManager userDataManager;
+    private DatabaseManager databaseManager;
     private GameManager gameManager;
     
     private Node currentLoadedScene;
@@ -25,6 +27,9 @@ public partial class GameManager : Node
 
         userDataManager = userDataManagerScene.Instantiate() as UserDataManager;
         AddChild(userDataManager);
+
+        databaseManager = databaseManagerScene.Instantiate() as DatabaseManager;
+        AddChild(databaseManager);
 
         gameManager = this;
 
