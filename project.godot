@@ -14,7 +14,6 @@ config/name="FEIPTrainer"
 run/main_scene="uid://cvkne8yxk2lsw"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
-<<<<<<<HEADconfig/features=PackedStringArray("4.6", "C#", "Forward Plus")
 
 [autoload]
 
@@ -35,3 +34,15 @@ enabled=PackedStringArray()
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[display]
+
+window/size/viewport_width=1152
+window/size/viewport_height=648
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/size/mode=0
+window/size/resizable=true
+window/size/borderless=false
+window/stretch/mode="disabled"
+window/stretch/aspect="keep"

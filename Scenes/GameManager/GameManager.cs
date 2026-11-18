@@ -73,7 +73,7 @@ public partial class GameManager : Node
     {
         EscMenu scene = ESCMenuOverlay.Instantiate() as EscMenu;
         scene.Init(gameManager);
-        GetTree().CurrentScene.AddChild(scene);
+        GetContentViewport().AddChild(scene);
     }
 
     private void ReplaceScene(Node scene)
@@ -85,7 +85,13 @@ public partial class GameManager : Node
 
         currentLoadedScene = scene;
         
-        GetTree().CurrentScene.AddChild(currentLoadedScene);
-        GetTree().CurrentScene.MoveChild(currentLoadedScene,0);
+        GetContentViewport().AddChild(currentLoadedScene);
+        GetContentViewport().MoveChild(currentLoadedScene, 0);
+    }
+
+    private SubViewport GetContentViewport()
+    {
+        return GetTree().CurrentScene.GetNode<SubViewport>(
+            "CenterContainer/SubViewportContainer/SubViewport");
     }
 }
