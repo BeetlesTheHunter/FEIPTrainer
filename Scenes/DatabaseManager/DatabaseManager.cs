@@ -16,17 +16,11 @@ public partial class DatabaseManager : Node
     // 通信に使い回すHttpClient（郵便屋さん）
     private static readonly System.Net.Http.HttpClient _client = new System.Net.Http.HttpClient();
 
-    // 初期化済みかどうかのフラグ（二重登録を防ぐ）
-    private static bool _isInitialized = false;
-
     public override void _Ready()
     {
-        if (!_isInitialized)
-        {
-            // 「どのアプリからの通信か」を示すapikeyをセット
-            _client.DefaultRequestHeaders.Add("apikey", SupabasePublishableKey);
-            _isInitialized = true;
-        }
+       
+        _client.DefaultRequestHeaders.Add("apikey", SupabasePublishableKey);
+     
     }
 
     /// <summary>

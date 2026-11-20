@@ -62,10 +62,9 @@ public partial class Login : Control
     {
         GD.Print("Google ログイン処理を開始します...");
 
-        if (loginBotan != null)
-        {
-            loginBotan.Disabled = true; // 連打防止
-        }
+       
+        loginBotan.Disabled = true; // 連打防止
+        
 
         if (_supabase == null)
         {
