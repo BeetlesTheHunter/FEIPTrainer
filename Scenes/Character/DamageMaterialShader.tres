@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://q327ahvrhn3o"]
+
+[ext_resource type="Shader" uid="uid://biltbv2xvpuhr" path="res://Scripts/Shaders/DamageEffect.gdshader" id="1_1hv64"]
+
+[resource]
+shader = ExtResource("1_1hv64")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_amount = 0.0

@@ -13,7 +13,7 @@
 shader = ExtResource("4_i7ej2")
 shader_parameter/blur_amount = 5.0000002375
 
-[node name="QuizScene" type="Control" unique_id=301261906 node_paths=PackedStringArray("ButtonA", "ButtonB", "ButtonC", "ButtonD", "QuestionLabel", "scoreManager")]
+[node name="QuizScene" type="Control" unique_id=301261906 node_paths=PackedStringArray("ButtonA", "ButtonB", "ButtonC", "ButtonD", "QuestionLabel", "scoreManager", "combatScene")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +28,7 @@ ButtonC = NodePath("PanelContainer/HBoxContainer/VBoxContainer/ButtonC")
 ButtonD = NodePath("PanelContainer/HBoxContainer/VBoxContainer2/ButtonD")
 QuestionLabel = NodePath("QuizText/RichTextLabel")
 scoreManager = NodePath("ScoreManager")
+combatScene = NodePath("CombatSceneFrame/SubViewportContainer/SubViewport/CombatScene")
 
 [node name="ScoreManager" parent="." unique_id=1316858675 node_paths=PackedStringArray("quizScene") instance=ExtResource("5_i7ej2")]
 quizScene = NodePath("..")
@@ -118,8 +119,11 @@ layout_mode = 2
 [node name="SubViewport" type="SubViewport" parent="CombatSceneFrame/SubViewportContainer" unique_id=1635046840]
 handle_input_locally = false
 size = Vector2i(550, 300)
+size_2d_override = Vector2i(1152, 648)
+size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="CombatSceneFrame/SubViewportContainer/SubViewport" unique_id=407843915]
+[node name="Camera2D" type="Camera2D" parent="CombatSceneFrame/SubViewportContainer/SubViewport" unique_id=793227940]
 
 [node name="CombatScene" parent="CombatSceneFrame/SubViewportContainer/SubViewport" unique_id=243679490 instance=ExtResource("7_wdgeb")]
+position = Vector2(582.28357, 324)

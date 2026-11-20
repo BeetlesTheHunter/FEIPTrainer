@@ -36,7 +36,6 @@ public partial class GameManager : Node
         StartScreen();
         ESCMenuScreen();
 
-
     }
 
     public void StartScreen()
@@ -57,9 +56,16 @@ public partial class GameManager : Node
     public void QuizScreen()
     {
         QuizScene scene = quizScene.Instantiate() as QuizScene;
-        scene.Init(gameManager, questionDataManager, array:null);
+        scene.Init(gameManager, questionDataManager, numQuestions:100); //100 will be passed for the sake of the presentation, number limit on randomquestion should be a toggle
         ReplaceScene(scene);
 
+    }
+
+    public void DailyQuizScene()
+    {
+        QuizScene scene = quizScene.Instantiate() as QuizScene;
+        scene.Init(gameManager, questionDataManager, numQuestions:5);
+        ReplaceScene(scene);
     }
 
     public void ResultScreen(int score, int rate)

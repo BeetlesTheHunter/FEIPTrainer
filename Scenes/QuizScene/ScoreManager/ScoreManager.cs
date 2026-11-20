@@ -12,14 +12,14 @@ public partial class ScoreManager : Node
 
     public override void _Ready()
     {
-		quizScene.CorrectAnswer += HndleCorrectAnswer;
+		quizScene.CorrectAnswer += HandleCorrectAnswer;
     }
 
-	private void HndleCorrectAnswer()
+	private void HandleCorrectAnswer()
 	{
 		addNumbersCorrect();
-		addScore(10);
-		GD.Print(Score);
+	
+	
 	}
 
     public void addNumbersCorrect()
