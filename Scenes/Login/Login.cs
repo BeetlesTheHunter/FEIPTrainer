@@ -112,7 +112,7 @@ public partial class Login : Control
                 var session = await _supabase.Auth.ExchangeCodeForSession(providerAuth.PKCEVerifier, authCode);
                 if (session?.User != null)
                 {
-                    OnLoginSucceeded(session.User);
+                    await OnLoginSucceededAsync(session);
                 }
                 else
                 {
@@ -131,31 +131,45 @@ public partial class Login : Control
     }
 
     // ログイン成功時
-    private void OnLoginSucceeded(User user)
+    private async Task OnLoginSucceededAsync(Session session)
     {
-        GD.Print("====================================");
-        GD.Print("★ Google ログインに成功しました！");
+        User user = session.User;
+        string uid = !string.IsNullOrEmpty(user.Id) ? user.Id : "";
 
-        // Googleアカウントの表示名（full_name または name）を取得
+        // Googleアカウントの表示名を取得
         string name = "名前なし";
         if (user.UserMetadata != null)
         {
             if (user.UserMetadata.TryGetValue("full_name", out var fullName) && fullName != null)
                 name = fullName.ToString();
-            else if (user.UserMetadata.TryGetValue("name", out var userName) && userName != null)
+           else if (user.UserMetadata.TryGetValue("name", out var userName) && userName != null)
                 name = userName.ToString();
         }
 
-        string email = !string.IsNullOrEmpty(user.Email) ? user.Email : "メールなし";
-        string uid = !string.IsNullOrEmpty(user.Id) ? user.Id : "";
+        var dbManager = GetNode<DatabaseManager>("/root/DatabaseManager");
+        dbManager.SetAccessToken(session.AccessToken);
 
-        GD.Print($"表示名: {name}");
-        GD.Print($"メール: {email}");
-        GD.Print($"Supabase固有UID: {uid}");
-        GD.Print("====================================");
+        // 1. まずSupabaseから自分のデータを読み込んでみる
+        UserData userData = await dbManager.LoadUserDataAsync(uid);
 
-        // TODO: ここで学習用メイン画面シーンに移動する処理を記述します
-        // GetTree().ChangeSceneToFile("res://main_menu.tscn");
+        // 2. データがまだ無ければ（初回ログイン）、新しく作って保存する
+        if (userData == null)
+        {
+            GD.Print("初回ログインのため、新規データを作成します");
+            userData = new UserData
+            {
+                userId = uid,
+                userName = name
+            };
+            await dbManager.SaveUserDataAsync(userData);
+        }
+        else
+        {
+        GD.Print($"既存データを読み込みました！ 名前: {userData.userName} / スコア: {userData.totalScore}");
+        }
+
+    // ※ここで UserDataManager などに userData を渡して保持させる
+    // ※そのあとダッシュボードシーンへ移動する
     }
 
     // ログイン失敗時
