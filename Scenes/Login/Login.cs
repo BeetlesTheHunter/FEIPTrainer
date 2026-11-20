@@ -1,51 +1,55 @@
 using Godot;
-using Godot.Collections;
 using System;
+using System.Net;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using Supabase;
+using Supabase.Gotrue;
 
 public partial class Login : Control
 {
     [Export] private Button loginBotan;
 
-    private GodotObject _firebase;
-    private GodotObject _auth;
+    private const string SUPABASE_URL = "https://fujfdfelirgbkbjccdim.supabase.co";
+    private string SUPABASE_KEY = "sb_publishable_jzMN0sp1ay8Nq0qTk7UCPg_DbTAJQtz";
+    private const string REDIRECT_URI = "http://localhost:54321/";
 
-    public override void _Ready()
+    private Supabase.Client _supabase;
+
+    public override async void _Ready()
     {
         // 1. ボタンがインスペクターで割り当てられているか確認し、イベントを接続
         if (loginBotan != null)
         {
             loginBotan.Pressed += OnLoginBotanPressed;
+            loginBotan.Disabled = true; // Supabaseの初期化が終わるまで押せないようにする
         }
         else
         {
             GD.PrintErr("エラー: loginBotan がインスペクターでアタッチされていません。");
         }
 
-        // 2. Autoload の Firebase シングルトンと Auth オブジェクトを取得
-        _firebase = GetNode<GodotObject>("/root/Firebase");
-        if (_firebase != null)
+        // 2. Supabase クライアントの初期化
+        try
         {
-            _auth = (GodotObject)_firebase.Get("Auth");
-            
-            if (_auth != null)
+            var options = new SupabaseOptions { AutoConnectRealtime = false };
+            _supabase = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY, options);
+            await _supabase.InitializeAsync();
+
+            GD.Print("Supabaseの初期化が完了しました。");
+            if (loginBotan != null)
             {
-                // GDScript 側のシグナル (login_succeeded / login_failed) を C# のメソッドに接続
-                _auth.Connect("login_succeeded", Callable.From<Dictionary>(OnLoginSucceeded));
-                _auth.Connect("login_failed", Callable.From<int, string>(OnLoginFailed));
-            }
-            else
-            {
-                GD.PrintErr("エラー: Firebase Auth モジュールの取得に失敗しました。");
+                loginBotan.Disabled = false; // 初期化完了後にボタンを押せるようにする
             }
         }
-        else
+        catch (Exception ex)
         {
-            GD.PrintErr("エラー: /root/Firebase シングルトンが見つかりません。Autoload の設定を確認してください。");
+            OnLoginFailed($"Supabaseの初期化に失敗しました: {ex.Message}");
         }
     }
 
     // ボタンが押されたとき（Googleログイン起動）
-    private void OnLoginBotanPressed()
+    private async void OnLoginBotanPressed()
     {
         GD.Print("Google ログイン処理を開始します...");
 
@@ -54,73 +58,100 @@ public partial class Login : Control
             loginBotan.Disabled = true; // 連打防止
         }
 
-        // ==========================================================
-        // 【追加修正】ここで clientId を強制的に設定してエラーを回避します！
-        if (_firebase != null)
+        if (_supabase == null)
         {
-            Godot.Collections.Dictionary config = _firebase.Get("config").As<Godot.Collections.Dictionary>();
-            if (config != null)
-            {
-                // ↓★★★★★ 注意：ここをご自身のウェブ クライアントIDに書き換えてください ★★★★★
-                config["clientId"] = "431530766200-jpklf767m243akgtc7ugv8ikrthfot7n.apps.googleusercontent.com"; 
-                // ↑★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-
-                // 書き換えた設定を GDScript (Firebase) 側にセットして反映させる
-                _firebase.Set("config", config); 
-                GD.Print("Firebaseのconfigに clientId をセットしました。");
-            }
+            OnLoginFailed("Supabase クライアントが初期化されていません。");
+            return;
         }
-        // ==========================================================
 
-        if (_auth != null)
+        try
         {
-            Variant providerVariant;
-            providerVariant = _auth.Call("get_GoogleProvider");
+            // 1. ローカルでブラウザからの戻りを待つ簡易サーバーを起動
+            using var listener = new HttpListener();
+            listener.Prefixes.Add(REDIRECT_URI);
+            listener.Start();
 
-            
-
-            GodotObject googleProvider = providerVariant.As<GodotObject>();
-
-            if (googleProvider != null)
+            // 2. Googleログイン用のURLを取得してOSの標準ブラウザで開く
+            var providerAuth = await _supabase.Auth.SignIn(Constants.Provider.Google, new SignInOptions
             {
-                // プラグインの仕様に合わせてログイン関数を呼び出す
-                if (_auth.HasMethod("get_auth_with_popup"))
+                RedirectTo = REDIRECT_URI,
+                FlowType = Constants.OAuthFlowType.PKCE
+            });
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = providerAuth.Uri.ToString(),
+                UseShellExecute = true
+            });
+
+            GD.Print("ブラウザでのGoogleログイン画面を開きました。操作を待機中...");
+
+            // 3. ユーザーがブラウザでログインするのを待機
+            var context = await listener.GetContextAsync();
+            var authCode = context.Request.QueryString["code"];
+            var errorDesc = context.Request.QueryString["error_description"];
+
+            // 4. ブラウザ画面に結果を表示して閉じてもらう
+            var response = context.Response;
+            response.ContentType = "text/html; charset=utf-8"; // 文字化け・解釈ミス防止
+            string html = string.IsNullOrEmpty(errorDesc)
+                ? "<html><meta charset='utf-8'><body><h1>ログイン成功！</h1><p>このタブを閉じてアプリに戻ってください。</p></body></html>"
+                : $"<html><meta charset='utf-8'><body><h1>ログインエラー</h1><p>{errorDesc}</p></body></html>";
+            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(html);
+            response.ContentLength64 = buffer.Length;
+            await response.OutputStream.WriteAsync(buffer, 0, buffer.Length);
+            response.OutputStream.Flush(); // データを確実に送り出す
+            response.Close(); // レスポンスを正常終了させる
+
+            await Task.Delay(500); // ブラウザが画面を描画しきるまで0.5秒だけ待つ
+            listener.Stop();
+
+            // 5. 認証コードをSupabaseに渡してログイン確定
+            if (!string.IsNullOrEmpty(authCode))
+            {
+                var session = await _supabase.Auth.ExchangeCodeForSession(providerAuth.PKCEVerifier, authCode);
+                if (session?.User != null)
                 {
-                    _auth.Call("get_auth_with_popup", googleProvider);
-                    GD.Print("ブラウザでのGoogleログイン画面を開きます(popup)...");
-                }
-                else if (_auth.HasMethod("get_auth_with_redirect"))
-                {
-                    _auth.Call("get_auth_with_redirect", googleProvider);
-                    GD.Print("ブラウザでのGoogleログイン画面を開きます(redirect)...");
-                }
-                else if (_auth.HasMethod("login_with_oauth"))
-                {
-                    _auth.Call("login_with_oauth", googleProvider);
-                    GD.Print("OAuthログイン処理を実行します...");
+                    OnLoginSucceeded(session.User);
                 }
                 else
                 {
-                    GD.PrintErr("エラー: ログイン実行用のメソッドが見つかりません。");
-                    if (loginBotan != null) loginBotan.Disabled = false;
+                    OnLoginFailed("ユーザー情報の取得に失敗しました。");
                 }
             }
+            else
+            {
+                OnLoginFailed($"認証コードが取得できませんでした。詳細: {errorDesc}");
+            }
+        }
+        catch (Exception ex)
+        {
+            OnLoginFailed(ex.Message);
         }
     }
 
     // ログイン成功時
-    private void OnLoginSucceeded(Dictionary authResult)
+    private void OnLoginSucceeded(User user)
     {
         GD.Print("====================================");
         GD.Print("★ Google ログインに成功しました！");
-        
-        string name = authResult.ContainsKey("displayName") ? authResult["displayName"].ToString() : "名前なし";
-        string email = authResult.ContainsKey("email") ? authResult["email"].ToString() : "メールなし";
-        string uid = authResult.ContainsKey("localid") ? authResult["localid"].ToString() : "";
+
+        // Googleアカウントの表示名（full_name または name）を取得
+        string name = "名前なし";
+        if (user.UserMetadata != null)
+        {
+            if (user.UserMetadata.TryGetValue("full_name", out var fullName) && fullName != null)
+                name = fullName.ToString();
+            else if (user.UserMetadata.TryGetValue("name", out var userName) && userName != null)
+                name = userName.ToString();
+        }
+
+        string email = !string.IsNullOrEmpty(user.Email) ? user.Email : "メールなし";
+        string uid = !string.IsNullOrEmpty(user.Id) ? user.Id : "";
 
         GD.Print($"表示名: {name}");
         GD.Print($"メール: {email}");
-        GD.Print($"Firebase固有UID: {uid}");
+        GD.Print($"Supabase固有UID: {uid}");
         GD.Print("====================================");
 
         // TODO: ここで学習用メイン画面シーンに移動する処理を記述します
@@ -128,10 +159,10 @@ public partial class Login : Control
     }
 
     // ログイン失敗時
-    private void OnLoginFailed(int errorCode, string message)
+    private void OnLoginFailed(string message)
     {
-        GD.PrintErr($"ログイン失敗: エラーコード={errorCode}, メッセージ={message}");
-        
+        GD.PrintErr($"ログイン失敗: メッセージ={message}");
+
         // 失敗した場合はボタンを再度押せる状態に戻す
         if (loginBotan != null)
         {
