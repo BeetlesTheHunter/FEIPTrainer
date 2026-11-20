@@ -16,6 +16,15 @@ public partial class Login : Control
 
     private Supabase.Client _supabase;
 
+    private UserDataManager _userDataManager;
+    private GameManager _gameManager;
+
+    public void Init(GameManager gm, UserDataManager udm)
+    {
+        _gameManager = gm;
+        _userDataManager = udm;
+    }
+
     public override async void _Ready()
     {
         // 1. ボタンがインスペクターで割り当てられているか確認し、イベントを接続
@@ -167,8 +176,9 @@ public partial class Login : Control
         {
         GD.Print($"既存データを読み込みました！ 名前: {userData.userName} / スコア: {userData.totalScore}");
         }
+        _userDataManager.SetUserData(userData); // UserDataManagerにデータを渡す
+        _gameManager.StartScreen(); // そのあとダッシュボードシーンへ移動する
 
-    // ※ここで UserDataManager などに userData を渡して保持させる
     // ※そのあとダッシュボードシーンへ移動する
     }
 

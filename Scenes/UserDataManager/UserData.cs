@@ -45,15 +45,6 @@ public class UserData //: Resource
         totalAnswerCount = 0;
         totalCorrectCount = 0;
     }
-    public UserData(string id)
-    {
-        userId = id;
-        userName = "";
-        totalScore = 0;
-        consecutiveLoginNumber = 0;
-        lastLoginDate = 0;
-        totalAnswerCount = 0;
-        totalCorrectCount = 0;
-    }
+    
     
 }
