@@ -11,6 +11,11 @@ public partial class DashBoard : Control
     private UserDataManager userDataManager;
     private GameManager gameManager;
 
+    public void Init(GameManager gameManager, UserDataManager userDataManager)
+    {
+        this.gameManager = gameManager;
+        this.userDataManager = userDataManager;
+    }
 
     public override void _Ready()
 	{
@@ -20,15 +25,10 @@ public partial class DashBoard : Control
 
     }
 
-    public void Init(GameManager gm, UserDataManager udm)
-    {
-        gameManager = gm;
-        userDataManager = udm;
-    }
-
     public void HandleDailyStageButtonPressed()
     {
         GD.Print("DailyStageBottonPressed");
+        gameManager.DailyQuizScene();
     }
 
     public void HandleNomalStageButtonPressed()

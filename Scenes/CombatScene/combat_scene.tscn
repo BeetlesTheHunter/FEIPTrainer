@@ -2,17 +2,33 @@
 
 [ext_resource type="Script" uid="uid://cnexyb45g54v8" path="res://Scenes/CombatScene/CombatScene.cs" id="1_mekbl"]
 [ext_resource type="Texture2D" uid="uid://bx38pn2iko6ky" path="res://Assets/Backgrounds/QuizPlainsBackground.jpg" id="1_mlh44"]
+[ext_resource type="PackedScene" uid="uid://dtc1cchmcq0b8" path="res://Scenes/Character/character.tscn" id="3_hj6wo"]
 
-[node name="CombatScene" type="Node2D" unique_id=243679490]
+[node name="CombatScene" type="Node2D" unique_id=243679490 node_paths=PackedStringArray("PlayerCharacter", "EnemyCharacter")]
 script = ExtResource("1_mekbl")
+PlayerCharacter = NodePath("PlayerCharacter")
+EnemyCharacter = NodePath("EnemyCharacter")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=35775474]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1251124548]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background" type="Sprite2D" parent="." unique_id=215404972]
+position = Vector2(-581.00006, -322)
+scale = Vector2(0.42078486, 0.4173177)
 texture = ExtResource("1_mlh44")
-expand_mode = 1
+
+[node name="PlayerCharacter" parent="." unique_id=295762045 instance=ExtResource("3_hj6wo")]
+position = Vector2(-972, -213)
+sprite_frames = null
+frame_progress = 0.0
+CharacterData = null
+CharacterName = ""
+Health = 0
+Strength = 0
+
+[node name="EnemyCharacter" parent="." unique_id=890992182 instance=ExtResource("3_hj6wo")]
+position = Vector2(-225, -220)
+sprite_frames = null
+frame_progress = 0.0
+flip_h = true
+CharacterData = null
+CharacterName = ""
+Health = 0
+Strength = 0
