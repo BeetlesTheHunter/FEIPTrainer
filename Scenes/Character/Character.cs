@@ -15,10 +15,6 @@ public partial class Character : AnimatedSprite2D
 	private const string DAMAGESHADERUID = "uid://q327ahvrhn3o";
 	private ShaderMaterial DamageShader;
 
-
-	public event Action OnCharacterDeath;
-	public void RaiseCharacterDeath() => OnCharacterDeath?.Invoke();
-
 	public event Action OnDamageOver;
 	public void RaiseDamageOver() => OnDamageOver?.Invoke();
 
@@ -32,11 +28,6 @@ public partial class Character : AnimatedSprite2D
 		}  
 	}
 	private CharacterData _characterData;
-
-	// [Export] public string CharacterName {get; private set;}
-	// [Export] public int Health {get; private set;}
-	// [Export] public int Strength {get; private set;}
-	// [Export] public int Defense {get; private set;}
 
 	public void Init(CharacterData cd)
 	{
@@ -66,23 +57,6 @@ public partial class Character : AnimatedSprite2D
 
 		if(SpriteFrames != null)Play(IDLEANIMATION);
 	}
-
-	//This should be moved to the combatscene
-	// public void Damage(int damageValue)
-	// {
-	// 	damageValue -= Defense;
-	// 	if(damageValue <= 0) damageValue = 1;
-
-	// 	Health -= damageValue;
-	// 	DamagedEffect();
-
-	// 	if(Health <= 0)
-	// 	{
-	// 		Play(DeathAnimation);
-			
-	// 	}
-	// 	GD.Print(Health);
-	// }
 
 	public void AttackAnimation()
 	{
@@ -133,7 +107,4 @@ public partial class Character : AnimatedSprite2D
 		
 	}
 
-	
-
-	
 }

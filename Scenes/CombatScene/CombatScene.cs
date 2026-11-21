@@ -27,10 +27,6 @@ public partial class CombatScene : Node2D
 	}
 	public override void _Ready()
 	{
-		
-		playerCharacter.OnCharacterDeath += RaiseCombatOver;
-		enemyCharacter.OnCharacterDeath +=  RaiseCombatOver;
-
 		playerCharacter.OnDamageOver += RaiseProcessOver;
 		enemyCharacter.OnDamageOver +=  RaiseProcessOver;
 		
@@ -45,7 +41,6 @@ public partial class CombatScene : Node2D
 
 		playerCharacter.AttackAnimation();
 		enemyCharacter.DamageAnimation();
-		//EnemyCharacter.Damage(PlayerCharacter.Strength);
 
 		return value;
 	}
@@ -60,10 +55,29 @@ public partial class CombatScene : Node2D
 
 		enemyCharacter.AttackAnimation();
 		playerCharacter.DamageAnimation();
-		//PlayerCharacter.Damage(EnemyCharacter.Strength);
 
 		return value;
 	}
+
+	//Code that has been taken out of the Character Scene that should be moved to this class
+	//Allowing the Character class to only manage visuals while this class can control the game logic
+
+	//This should be moved to the combatscene
+	// public void Damage(int damageValue)
+	// {
+	// 	damageValue -= Defense;
+	// 	if(damageValue <= 0) damageValue = 1;
+
+	// 	Health -= damageValue;
+	// 	DamagedEffect();
+
+	// 	if(Health <= 0)
+	// 	{
+	// 		Play(DeathAnimation);
+			
+	// 	}
+	// 	GD.Print(Health);
+	// }
 
 
 
