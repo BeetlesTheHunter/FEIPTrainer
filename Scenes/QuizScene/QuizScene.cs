@@ -1,6 +1,13 @@
 using Godot;
 using System;
 
+/*
+	TO-DO
+	sub to CombatOver signal 
+	The signal can emit a enum if its CombatResult.Continue Continue the quiz 
+	else end it.
+
+*/
 public partial class QuizScene : Control
 {
 	[Export] private Button ButtonA;

@@ -16,7 +16,7 @@ public partial class CombatScene : Node2D
 		PlayerVictory,
 		EnemyVictory
 	}
-	public event Action<CombatResult,int> CombatOver; // TO-DO update quiz Scene to use this signal if signal emits Continue the quiz else end it 
+	public event Action<CombatResult,int> CombatOver; 
 	private void RaiseCombatOver(CombatResult result, int score) => CombatOver?.Invoke(result,score);
 
 	public void Init(CharacterData playerData, CharacterData enemyData)
