@@ -8,7 +8,16 @@ public partial class CombatScene : Node2D
 	private Character player;
 	[Export] private CharacterNode enemyNode;
 	private Character enemy;
-	public event Action CombatOver; //TODO call this when one of the characters die
+
+	public enum CombatResult{
+		Continue,
+		CombatOver,
+		// Bottom two can be used to tell quiz scene who won the battle if necessary in the future
+		PlayerVictory,
+		EnemyVictory
+	}
+	public event Action<CombatResult,int> CombatOver; // TO-DO update quiz Scene to use this signal if signal emits Continue the quiz else end it 
+	private void RaiseCombatOver(CombatResult result, int score) => CombatOver?.Invoke(result,score);
 
 	public void Init(CharacterData playerData, CharacterData enemyData)
 	{
@@ -16,36 +25,86 @@ public partial class CombatScene : Node2D
 		enemy = new Character(enemyNode, enemyData);
 	}
 
-	public async Task<int> PlayerAttack()
+	public async void PlayerAttack()
 	{
-		return await DamageCharacter(player,enemy);
+		if(!IsInstanceValid(this) || !IsInsideTree()) return;
+		
+		try
+		{
+			await DamageCharacter(player,enemy);
+		}
+		catch(OperationCanceledException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch(ObjectDisposedException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr($"PlayerAttack failed: {ex}");
+		}
 	}
 
-	public async Task<int> EnemyAttack()
+	public async void EnemyAttack()
 	{
-		return await DamageCharacter(enemy,player);
+		if(!IsInstanceValid(this) || !IsInsideTree()) return;
+		
+		try
+		{
+			await DamageCharacter(enemy,player);
+		}
+		catch(OperationCanceledException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch(ObjectDisposedException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr($"EnemyAttack failed: {ex}");
+		}
 	}
 
 	private int minimumDamage = 1;
-	private async Task<int> DamageCharacter(Character attacker, Character defender)
+	private const int MAXFALLBACKSECONDS = 3;
+	private static async Task WaitSignal(SignalAwaiter awaiter) => await awaiter;
+	private async Task DamageCharacter(Character attacker, Character defender)
 	{
 		int value;
 
 		int damageAmount = attacker.CharacterData.Strength - defender.CharacterData.Defense;
 		if(damageAmount <= 0) damageAmount = minimumDamage; 
-
+		
 		defender.CharacterHealth -= damageAmount;
 		value = damageAmount;
 
 		attacker.CharacterNode.AttackAnimation();
 
-		if(defender.CharacterHealth > 0) defender.CharacterNode.DamageAnimation();
+		if(defender.CharacterHealth > 0){ defender.CharacterNode.DamageAnimation();}
 		else defender.CharacterNode.DeathAnimation();
-
-		await ToSignal(defender.CharacterNode, AnimatedSprite2D.SignalName.AnimationFinished);
 		
+		var animTask = ToSignal(defender.CharacterNode, AnimatedSprite2D.SignalName.AnimationFinished);
+		var timeOutTask = ToSignal(GetTree().CreateTimer(MAXFALLBACKSECONDS), SceneTreeTimer.SignalName.Timeout);
 
-		return value;
+		await Task.WhenAny(
+			WaitSignal(animTask),
+			WaitSignal(timeOutTask)
+		);
+
+		if(!IsInstanceValid(this) || !IsInsideTree()) throw new OperationCanceledException();
+		
+		if(defender.CharacterHealth <= 0)
+		{
+			RaiseCombatOver(CombatResult.CombatOver, value);
+			return;
+		} 
+
+		RaiseCombatOver(CombatResult.Continue, value);
+		
 	}
 
 	private sealed class Character

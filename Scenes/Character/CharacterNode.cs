@@ -81,8 +81,6 @@ public partial class CharacterNode : AnimatedSprite2D
 	private const float FLASHSPEED = 0.25f;
 	private void DamageFlashEffect()
 	{
-		Play(DAMAGEDANIMATION);
-
 		Tween tween = GetTree().CreateTween();
 		tween.BindNode(this);
 		tween.SetLoops(FLASHTIMES);
@@ -93,7 +91,7 @@ public partial class CharacterNode : AnimatedSprite2D
 
 	public void HandleAnimaitionFinished()
 	{
-		//This guard prevents the sprite from going back to the idle animation after the death animation. 
+		// This guard prevents the sprite from going back to the idle animation after the death animation. 
 		if (Animation == DEATHANIMATION) return;
 		if (Animation == DAMAGEDANIMATION)
 		{

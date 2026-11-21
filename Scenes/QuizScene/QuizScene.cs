@@ -42,7 +42,7 @@ public partial class QuizScene : Control
 		ButtonC.Pressed += HandleButtonCPressed;
 		ButtonD.Pressed += HandleButtonDPressed;
 
-        combatScene.CombatOver += HandleCombatOver;
+        //combatScene.CombatOver += HandleCombatOver;
 
 		combatScene.Init(testCharacterData,testCharacterData);
 
@@ -91,8 +91,6 @@ public partial class QuizScene : Control
 			UpdateQuestionUI();
 		}
 	}
-
-   
 
 	private void UpdateQuestionUI()
 	{
@@ -187,22 +185,22 @@ public partial class QuizScene : Control
 	private const int ButtonDValue = 3;
 
 
-	private  async void CheckAnswer(int answerIndex)
+	private void CheckAnswer(int answerIndex)
 	{
         DisableAnswerButtons(true);
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
 			RaiseCorrectAnswer();
-            scoreManager.addScore( await combatScene.PlayerAttack());
+			combatScene.PlayerAttack();
 		}
 		else
 		{
 			GD.Print("不正解");
 			RaiseWrongAnswer();
-            scoreManager.addScore( await combatScene.EnemyAttack());
+			combatScene.EnemyAttack();
+			
 		}
-
 		NextQuestion();
         
 	}
