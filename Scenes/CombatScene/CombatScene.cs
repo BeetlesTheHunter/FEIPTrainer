@@ -3,8 +3,13 @@ using System;
 
 public partial class CombatScene : Node2D
 {
-	[Export] public Character PlayerCharacter { get; private set; }
-	[Export] public Character EnemyCharacter { get; private set; }
+	[Export] private Character playerCharacter;
+	private CharacterData playerCharacterData;
+	private int playerHealth;
+
+	[Export] private Character enemyCharacter;
+	private CharacterData enemyCharacterData;
+	private int enemyHealth;
 
 	public event Action CombatOver;
 	private void RaiseCombatOver() => CombatOver?.Invoke();
@@ -12,13 +17,22 @@ public partial class CombatScene : Node2D
 	public event Action ProcessOver;
 	private void RaiseProcessOver() => ProcessOver?.Invoke();
 
+	public void Init(CharacterData player, CharacterData enemy)
+	{
+		playerCharacter.CharacterData = player;
+		playerHealth = player.Health;
+
+		enemyCharacter.CharacterData = enemy;
+		enemyHealth = enemy.Health;
+	}
 	public override void _Ready()
 	{
-		PlayerCharacter.OnCharacterDeath += RaiseCombatOver;
-		EnemyCharacter.OnCharacterDeath +=  RaiseCombatOver;
+		
+		playerCharacter.OnCharacterDeath += RaiseCombatOver;
+		enemyCharacter.OnCharacterDeath +=  RaiseCombatOver;
 
-		PlayerCharacter.OnDamageOver += RaiseProcessOver;
-		EnemyCharacter.OnDamageOver +=  RaiseProcessOver;
+		playerCharacter.OnDamageOver += RaiseProcessOver;
+		enemyCharacter.OnDamageOver +=  RaiseProcessOver;
 		
 	}
 
@@ -26,11 +40,12 @@ public partial class CombatScene : Node2D
 	{
 		int value;
 
-		value = PlayerCharacter.Strength - EnemyCharacter.Defense;
+		value = playerCharacterData.Strength - enemyCharacterData.Defense;
 		if(value <= 0) value = 1;
 
-		PlayerCharacter.Play(Character.ATKAnimation);
-		EnemyCharacter.Damage(PlayerCharacter.Strength);
+		playerCharacter.AttackAnimation();
+		enemyCharacter.DamageAnimation();
+		//EnemyCharacter.Damage(PlayerCharacter.Strength);
 
 		return value;
 	}
@@ -39,12 +54,13 @@ public partial class CombatScene : Node2D
 	{
 		int value;
 
-		value = PlayerCharacter.Defense - EnemyCharacter.Strength;
+		value = playerCharacterData.Defense - enemyCharacterData.Strength;
 		if(value >= 0) value = 0;
 		
 
-		EnemyCharacter.Play(Character.ATKAnimation);
-		PlayerCharacter.Damage(EnemyCharacter.Strength);
+		enemyCharacter.AttackAnimation();
+		playerCharacter.DamageAnimation();
+		//PlayerCharacter.Damage(EnemyCharacter.Strength);
 
 		return value;
 	}

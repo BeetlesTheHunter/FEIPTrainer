@@ -14,6 +14,4 @@ public partial class CharacterData : Resource
     //Visuals and Animations
     [Export] public SpriteFrames Animations {get; private set;}
 
-
-
 }

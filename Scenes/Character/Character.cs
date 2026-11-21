@@ -2,16 +2,17 @@ using Godot;
 using System;
 
 
+
 [Tool]
 public partial class Character : AnimatedSprite2D
 {
-	public const string IdleAnimation = "idle";
-	public const string ATKAnimation = "attack";
-	public const string DeathAnimation = "death";
-	public const string WalkAnimation = "walk";
-	public const string DamagedAnimation = "damaged";
+	private const string IDLEANIMATION = "idle";
+	private const string ATKANIMATION = "attack";
+	private const string DEATHANIMATION = "death";
+	private const string WALKANIMATION = "walk";
+	private const string DAMAGEDANIMATION = "damaged";
 
-	private const string DamageShaderPath = "res://Scripts/Shaders/DamageEffect.gdshader";
+	private const string DAMAGESHADERUID = "uid://q327ahvrhn3o";
 	private ShaderMaterial DamageShader;
 
 
@@ -32,10 +33,10 @@ public partial class Character : AnimatedSprite2D
 	}
 	private CharacterData _characterData;
 
-	[Export] public string CharacterName {get; private set;}
-	[Export] public int Health {get; private set;}
-	[Export] public int Strength {get; private set;}
-	[Export] public int Defense {get; private set;}
+	// [Export] public string CharacterName {get; private set;}
+	// [Export] public int Health {get; private set;}
+	// [Export] public int Strength {get; private set;}
+	// [Export] public int Defense {get; private set;}
 
 	public void Init(CharacterData cd)
 	{
@@ -45,76 +46,89 @@ public partial class Character : AnimatedSprite2D
 	public override void _Ready()
 	{
 		UpdateCharacter();
-		if(SpriteFrames != null) Play(IdleAnimation);
+		if(SpriteFrames != null) Play(IDLEANIMATION);
 		AnimationFinished += HandleAnimaitionFinished;
-		if(!Engine.IsEditorHint()) DamageShader = GD.Load<ShaderMaterial>(DamageShaderPath).Duplicate() as ShaderMaterial;
+		if(!Engine.IsEditorHint()) DamageShader = GD.Load<ShaderMaterial>(DAMAGESHADERUID).Duplicate() as ShaderMaterial;
+		if(!Engine.IsEditorHint()) Material = DamageShader;
 	}
 
 	private void UpdateCharacter()
 	{
 		if(CharacterData is null)
 		{
-			CharacterName = null;
-			Health = 0;
-			Strength = 0;
-			Defense = 0;
+	
 			SpriteFrames = null;
 			return;
 		} 
 
-		CharacterName = CharacterData.Name;
-		Health = CharacterData.Health;
-		Strength = CharacterData.Strength;
-		Defense = CharacterData.Defense;
+
 		SpriteFrames = CharacterData.Animations;
 
-		if(SpriteFrames != null)Play(IdleAnimation);
+		if(SpriteFrames != null)Play(IDLEANIMATION);
 	}
 
-	public void Damage(int damageValue)
-	{
-		damageValue -= Defense;
-		if(damageValue <= 0) damageValue = 1;
+	//This should be moved to the combatscene
+	// public void Damage(int damageValue)
+	// {
+	// 	damageValue -= Defense;
+	// 	if(damageValue <= 0) damageValue = 1;
 
-		Health -= damageValue;
-		DamagedEffect();
+	// 	Health -= damageValue;
+	// 	DamagedEffect();
 
-		if(Health <= 0)
-		{
-			Play(DeathAnimation);
+	// 	if(Health <= 0)
+	// 	{
+	// 		Play(DeathAnimation);
 			
-		}
-		GD.Print(Health);
+	// 	}
+	// 	GD.Print(Health);
+	// }
+
+	public void AttackAnimation()
+	{
+		Play(ATKANIMATION);
 	}
 
-	private async void DamagedEffect()
+	public void DamageAnimation()
 	{
-		Material = DamageShader;
+		Play(DAMAGEDANIMATION);
+		DamageFlashEffect();
+	}
 
-		Play(DamagedAnimation);
+	public void DeathAnimation()
+	{
+		Play(DEATHANIMATION);
+		DamageFlashEffect();
+	}
+
+
+	private const int FLASHTIMES = 2;
+	private const float FLASHMAX = 1.0f;
+	private const float FLASHSPEED = 0.25f;
+	private void DamageFlashEffect()
+	{
+		Play(DAMAGEDANIMATION);
 
 		Tween tween = GetTree().CreateTween();
 		tween.BindNode(this);
-		tween.SetLoops(0);
-		tween.TweenProperty(Material, "shader_parameter/flash_amount", 1.0f, 0.25f);
-		tween.TweenProperty(Material, "shader_parameter/flash_amount", 0.0f, 0.25f);
-
-		await ToSignal(this, AnimatedSprite2D.SignalName.AnimationFinished);
-		if(!IsInstanceValid(instance:this)) return;
-
-		tween.Kill();
-		Material = null;
-		RaiseDamageOver();
+		tween.SetLoops(FLASHTIMES);
+		tween.TweenProperty(Material, "shader_parameter/flash_amount", FLASHMAX, FLASHSPEED);
+		tween.TweenProperty(Material, "shader_parameter/flash_amount", 0.0f, FLASHSPEED);
+		
+		
 	}
 
 	public void HandleAnimaitionFinished()
 	{
-		if (Animation == DeathAnimation)
+		//This guard prevents the sprite from going back to the idle animation after the death animation. 
+		if (Animation == DEATHANIMATION) return;
+		if (Animation == DAMAGEDANIMATION)
 		{
-			RaiseCharacterDeath();
-			return;
+			if(Material is ShaderMaterial mat)mat.SetShaderParameter("flash_amount",0f);
+			RaiseDamageOver();
 		}
-		Play(IdleAnimation);
+		
+		Play(IDLEANIMATION);
 
 		
 	}
