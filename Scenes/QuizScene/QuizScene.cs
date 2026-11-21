@@ -9,6 +9,8 @@ public partial class QuizScene : Control
 	[Export] private Button ButtonD;
 	[Export] private RichTextLabel QuestionLabel;
 
+	[Export] private Timer combatTimer;
+
 	private QuestionData currentQuestion;
 	private QuestionData[] questionArray;
 	private int questionNumber = 0; //何問やったか管理するために使う
@@ -41,11 +43,8 @@ public partial class QuizScene : Control
 		ButtonD.Pressed += HandleButtonDPressed;
 
         combatScene.CombatOver += HandleCombatOver;
-        combatScene.ProcessOver += HandleProcessOver;
 
-		
 		combatScene.Init(testCharacterData,testCharacterData);
-		
 
 	}
 
@@ -153,6 +152,8 @@ public partial class QuizScene : Control
 				EndQuiz();
 			}
 		}
+
+		DisableAnswerButtons(false);
 	}
 
 	private void EndQuiz()
@@ -170,12 +171,7 @@ public partial class QuizScene : Control
         EndQuiz();
     }
 
-    public void HandleProcessOver()
-    {
-        ToggleButtons(false);
-    }
-
-	private void ToggleButtons(bool disabled)
+	private void DisableAnswerButtons(bool disabled)
 	{
 		//true turns the button off and false turns them on
 		ButtonA.Disabled = disabled;
@@ -191,46 +187,44 @@ public partial class QuizScene : Control
 	private const int ButtonDValue = 3;
 
 
-	private void CheckAnswer(int answerIndex)
+	private  async void CheckAnswer(int answerIndex)
 	{
-        ToggleButtons(true);
+        DisableAnswerButtons(true);
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
 			RaiseCorrectAnswer();
-            scoreManager.addScore(combatScene.PlayerAttack());
+            scoreManager.addScore( await combatScene.PlayerAttack());
 		}
 		else
 		{
 			GD.Print("不正解");
 			RaiseWrongAnswer();
-            scoreManager.addScore(combatScene.EnemyAttack());
+            scoreManager.addScore( await combatScene.EnemyAttack());
 		}
+
+		NextQuestion();
         
 	}
 
 	private void HandleButtonAPressed()
 	{
 		CheckAnswer(ButtonAValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonBPressed()
 	{
 		CheckAnswer(ButtonBValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonCPressed()
 	{
 		CheckAnswer(ButtonCValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonDPressed()
 	{
 		CheckAnswer(ButtonDValue);
-		NextQuestion();
 	}
 
 	

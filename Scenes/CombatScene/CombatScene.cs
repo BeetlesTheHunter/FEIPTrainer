@@ -1,85 +1,70 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class CombatScene : Node2D
 {
-	[Export] private Character playerCharacter;
-	private CharacterData playerCharacterData;
-	private int playerHealth;
+	[Export] private CharacterNode playerNode;
+	private Character player;
+	[Export] private CharacterNode enemyNode;
+	private Character enemy;
+	public event Action CombatOver; //TODO call this when one of the characters die
 
-	[Export] private Character enemyCharacter;
-	private CharacterData enemyCharacterData;
-	private int enemyHealth;
-
-	public event Action CombatOver;
-	private void RaiseCombatOver() => CombatOver?.Invoke();
-
-	public event Action ProcessOver;
-	private void RaiseProcessOver() => ProcessOver?.Invoke();
-
-	public void Init(CharacterData player, CharacterData enemy)
+	public void Init(CharacterData playerData, CharacterData enemyData)
 	{
-		playerCharacter.CharacterData = player;
-		playerHealth = player.Health;
-
-		enemyCharacter.CharacterData = enemy;
-		enemyHealth = enemy.Health;
-	}
-	public override void _Ready()
-	{
-		playerCharacter.OnDamageOver += RaiseProcessOver;
-		enemyCharacter.OnDamageOver +=  RaiseProcessOver;
-		
+		player = new Character(playerNode,playerData);
+		enemy = new Character(enemyNode, enemyData);
 	}
 
-	public int PlayerAttack()
+	public async Task<int> PlayerAttack()
+	{
+		return await DamageCharacter(player,enemy);
+	}
+
+	public async Task<int> EnemyAttack()
+	{
+		return await DamageCharacter(enemy,player);
+	}
+
+	private int minimumDamage = 1;
+	private async Task<int> DamageCharacter(Character attacker, Character defender)
 	{
 		int value;
 
-		value = playerCharacterData.Strength - enemyCharacterData.Defense;
-		if(value <= 0) value = 1;
+		int damageAmount = attacker.CharacterData.Strength - defender.CharacterData.Defense;
+		if(damageAmount <= 0) damageAmount = minimumDamage; 
 
-		playerCharacter.AttackAnimation();
-		enemyCharacter.DamageAnimation();
+		defender.CharacterHealth -= damageAmount;
+		value = damageAmount;
+
+		attacker.CharacterNode.AttackAnimation();
+
+		if(defender.CharacterHealth > 0) defender.CharacterNode.DamageAnimation();
+		else defender.CharacterNode.DeathAnimation();
+
+		await ToSignal(defender.CharacterNode, AnimatedSprite2D.SignalName.AnimationFinished);
+		
 
 		return value;
 	}
 
-	public int EnemyAttack()
+	private sealed class Character
 	{
-		int value;
+		public CharacterNode CharacterNode {get; private set;}
+		public CharacterData CharacterData {get; private set;}
+		public int CharacterHealth {get; set;}
 
-		value = playerCharacterData.Defense - enemyCharacterData.Strength;
-		if(value >= 0) value = 0;
-		
+		public Character(CharacterNode character, CharacterData data)
+		{
+			CharacterNode = character;
+			CharacterData = data;
+			CharacterHealth = data.Health;
 
-		enemyCharacter.AttackAnimation();
-		playerCharacter.DamageAnimation();
-
-		return value;
+			CharacterNode.CharacterData = data;
+		}
 	}
-
-	//Code that has been taken out of the Character Scene that should be moved to this class
-	//Allowing the Character class to only manage visuals while this class can control the game logic
-
-	//This should be moved to the combatscene
-	// public void Damage(int damageValue)
-	// {
-	// 	damageValue -= Defense;
-	// 	if(damageValue <= 0) damageValue = 1;
-
-	// 	Health -= damageValue;
-	// 	DamagedEffect();
-
-	// 	if(Health <= 0)
-	// 	{
-	// 		Play(DeathAnimation);
-			
-	// 	}
-	// 	GD.Print(Health);
-	// }
-
-
 
 	
 }
+
+

@@ -4,7 +4,7 @@ using System;
 
 
 [Tool]
-public partial class Character : AnimatedSprite2D
+public partial class CharacterNode : AnimatedSprite2D
 {
 	private const string IDLEANIMATION = "idle";
 	private const string ATKANIMATION = "attack";
@@ -15,8 +15,8 @@ public partial class Character : AnimatedSprite2D
 	private const string DAMAGESHADERUID = "uid://q327ahvrhn3o";
 	private ShaderMaterial DamageShader;
 
-	public event Action OnDamageOver;
-	public void RaiseDamageOver() => OnDamageOver?.Invoke();
+	public event Action DamageOver;
+	public void RaiseDamageOver() => DamageOver?.Invoke();
 
 
 	[Export] public CharacterData CharacterData{ 
@@ -88,7 +88,6 @@ public partial class Character : AnimatedSprite2D
 		tween.SetLoops(FLASHTIMES);
 		tween.TweenProperty(Material, "shader_parameter/flash_amount", FLASHMAX, FLASHSPEED);
 		tween.TweenProperty(Material, "shader_parameter/flash_amount", 0.0f, FLASHSPEED);
-		
 		
 	}
 
