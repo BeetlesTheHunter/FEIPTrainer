@@ -34,10 +34,10 @@ The `GameManager` class is a partial class in the Godot Engine that manages the 
    - Description: An instance of `UserDataManager` initialized from `userDataManagerScene`.
 
 10. **gameManager (GameManager)**
-    - Description: A reference to the current `GameManager` instance.
+	- Description: A reference to the current `GameManager` instance.
 
 11. **currentLoadedScene (Node)**
-    - Description: The currently loaded scene.
+	- Description: The currently loaded scene.
 
 ### Methods
 
@@ -65,7 +65,7 @@ The `GameManager` class is a partial class in the Godot Engine that manages the 
 8. **ReplaceScene(Node scene)**
    - Description: Replaces the current scene with the provided scene. Frees the old scene and adds the new scene to the scene tree.
    - Parameters:
-     - `scene (Node)`: The new scene to be loaded.
+	 - `scene (Node)`: The new scene to be loaded.
 
 ## Notes
 
