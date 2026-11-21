@@ -32,6 +32,7 @@ public partial class QuizScene : Control
 	public event Action WrongAnswer;
 	private void RaiseWrongAnswer() => WrongAnswer?.Invoke();
 
+	[Export] private CharacterData testCharacterData;
 	public override void _Ready()
 	{
 		ButtonA.Pressed += HandleButtonAPressed;
@@ -41,6 +42,9 @@ public partial class QuizScene : Control
 
         combatScene.CombatOver += HandleCombatOver;
         combatScene.ProcessOver += HandleProcessOver;
+
+		
+		combatScene.Init(testCharacterData,testCharacterData);
 		
 
 	}
