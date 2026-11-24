@@ -15,10 +15,6 @@ public partial class CharacterNode : AnimatedSprite2D
 	private const string DAMAGESHADERUID = "uid://q327ahvrhn3o";
 	private ShaderMaterial DamageShader;
 
-	public event Action DamageOver;
-	public void RaiseDamageOver() => DamageOver?.Invoke();
-
-
 	[Export] public CharacterData CharacterData{ 
 		get => _characterData;
 		set
@@ -96,7 +92,6 @@ public partial class CharacterNode : AnimatedSprite2D
 		if (Animation == DAMAGEDANIMATION)
 		{
 			if(Material is ShaderMaterial mat)mat.SetShaderParameter("flash_amount",0f);
-			RaiseDamageOver();
 		}
 		
 		Play(IDLEANIMATION);

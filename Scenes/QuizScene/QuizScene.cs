@@ -16,8 +16,6 @@ public partial class QuizScene : Control
 	[Export] private Button ButtonD;
 	[Export] private RichTextLabel QuestionLabel;
 
-	[Export] private Timer combatTimer;
-
 	private QuestionData currentQuestion;
 	private QuestionData[] questionArray;
 	private int questionNumber = 0; //何問やったか管理するために使う
@@ -52,6 +50,7 @@ public partial class QuizScene : Control
         //combatScene.CombatOver += HandleCombatOver;
 
 		combatScene.Init(testCharacterData,testCharacterData);
+		combatScene.CombatOver += HandleCombatOver;
 
 	}
 
@@ -208,8 +207,7 @@ public partial class QuizScene : Control
 			combatScene.EnemyAttack();
 			
 		}
-		NextQuestion();
-        
+		
 	}
 
 	private void HandleButtonAPressed()
@@ -230,6 +228,22 @@ public partial class QuizScene : Control
 	private void HandleButtonDPressed()
 	{
 		CheckAnswer(ButtonDValue);
+	}
+
+	private void HandleCombatOver(CombatScene.CombatResult result, int score)
+	{
+		scoreManager.addScore(score);
+
+		if(result == CombatScene.CombatResult.Continue)
+		{
+			NextQuestion();
+		}
+
+		if(result == CombatScene.CombatResult.CombatOver)
+		{
+			EndQuiz();
+			return;
+		}
 	}
 
 	
