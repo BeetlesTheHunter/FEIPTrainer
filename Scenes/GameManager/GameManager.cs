@@ -6,6 +6,7 @@ public partial class GameManager : Node
     [Export] private PackedScene quizScene;
     [Export] private PackedScene resultsScene;
     [Export] private PackedScene startScene;
+    [Export] private PackedScene loginScene;
 
     [Export] private PackedScene ESCMenuOverlay;
     
@@ -33,7 +34,7 @@ public partial class GameManager : Node
 
         gameManager = this;
 
-        StartScreen();
+        LoginScreen();
         ESCMenuScreen();
 
 
@@ -60,6 +61,13 @@ public partial class GameManager : Node
         scene.Init(gameManager, questionDataManager, array:null);
         ReplaceScene(scene);
 
+    }
+    public void LoginScreen()
+    {
+        Login scene = loginScene.Instantiate() as Login;
+        scene.Init(gameManager, userDataManager);
+        ReplaceScene(scene);
+        
     }
 
     public void ResultScreen(int score, int rate)
