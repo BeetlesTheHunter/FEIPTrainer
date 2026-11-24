@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://2nra7krk0cw6" path="res://Assets/Characters/Player/Kicking/Kicking_003.png" id="17_6is37"]
 [ext_resource type="Texture2D" uid="uid://dbufygt42hcp0" path="res://Assets/Characters/Player/Kicking/Kicking_004.png" id="18_dpnbi"]
 [ext_resource type="Texture2D" uid="uid://bcl82lpyfif6m" path="res://Assets/Characters/Player/Kicking/Kicking_005.png" id="19_m5x7o"]
-[ext_resource type="Script" uid="uid://b5y3pcc3h05y6" path="res://Scenes/Character/Character.cs" id="19_qtlab"]
 [ext_resource type="Texture2D" uid="uid://balrf45spohh0" path="res://Assets/Characters/Player/Kicking/Kicking_006.png" id="20_15qgk"]
 [ext_resource type="Texture2D" uid="uid://bcp6pex4enfu1" path="res://Assets/Characters/Player/Kicking/Kicking_007.png" id="21_sl06x"]
 [ext_resource type="Texture2D" uid="uid://km2v72wmdul" path="res://Assets/Characters/Player/Kicking/Kicking_008.png" id="22_mkalw"]
@@ -71,7 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://bl114tn0l7r0c" path="res://Assets/Characters/Player/Running/Running_009.png" id="68_tf41i"]
 [ext_resource type="Texture2D" uid="uid://c7fsgrw16vtxm" path="res://Assets/Characters/Player/Running/Running_010.png" id="69_syb1e"]
 [ext_resource type="Texture2D" uid="uid://ce3ssa0re2lpw" path="res://Assets/Characters/Player/Running/Running_011.png" id="70_cfgch"]
-[ext_resource type="Resource" uid="uid://cajrrmld5op6n" path="res://Data/Characters/Testotron.tres" id="72_mhfmr"]
+[ext_resource type="Script" uid="uid://c6kckx0b3sao4" path="res://Scenes/Character/CharacterNode.cs" id="71_15lt5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_telnw"]
 animations = [{
@@ -313,9 +312,5 @@ material = ExtResource("1_fxf8n")
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_telnw")
 animation = &"idle"
-frame_progress = 0.5106256
-script = ExtResource("19_qtlab")
-CharacterData = ExtResource("72_mhfmr")
-CharacterName = "Testotron"
-Health = 10
-Strength = 3
+frame_progress = 0.7137494
+script = ExtResource("71_15lt5")

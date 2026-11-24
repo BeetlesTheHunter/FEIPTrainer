@@ -1,71 +1,129 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class CombatScene : Node2D
 {
-	[Export] private Character playerCharacter;
-	private CharacterData playerCharacterData;
-	private int playerHealth;
+	[Export] private CharacterNode playerNode;
+	private Character player;
+	[Export] private CharacterNode enemyNode;
+	private Character enemy;
 
-	[Export] private Character enemyCharacter;
-	private CharacterData enemyCharacterData;
-	private int enemyHealth;
-
-	public event Action CombatOver;
-	private void RaiseCombatOver() => CombatOver?.Invoke();
-
-	public event Action ProcessOver;
-	private void RaiseProcessOver() => ProcessOver?.Invoke();
-
-	public void Init(CharacterData player, CharacterData enemy)
-	{
-		playerCharacter.CharacterData = player;
-		playerHealth = player.Health;
-
-		enemyCharacter.CharacterData = enemy;
-		enemyHealth = enemy.Health;
+	public enum CombatResult{
+		Continue,
+		CombatOver,
+		// Bottom two can be used to tell quiz scene who won the battle if necessary in the future
+		PlayerVictory,
+		EnemyVictory
 	}
-	public override void _Ready()
-	{
-		
-		playerCharacter.OnCharacterDeath += RaiseCombatOver;
-		enemyCharacter.OnCharacterDeath +=  RaiseCombatOver;
+	public event Action<CombatResult,int> CombatOver; 
+	private void RaiseCombatOver(CombatResult result, int score) => CombatOver?.Invoke(result,score);
 
-		playerCharacter.OnDamageOver += RaiseProcessOver;
-		enemyCharacter.OnDamageOver +=  RaiseProcessOver;
-		
+	public void Init(CharacterData playerData, CharacterData enemyData)
+	{
+		player = new Character(playerNode,playerData);
+		enemy = new Character(enemyNode, enemyData);
 	}
 
-	public int PlayerAttack()
+	public async void PlayerAttack()
+	{
+		if(!IsInstanceValid(this) || !IsInsideTree()) return;
+		
+		try
+		{
+			await DamageCharacter(player,enemy);
+		}
+		catch(OperationCanceledException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch(ObjectDisposedException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr($"PlayerAttack failed: {ex}");
+		}
+	}
+
+	public async void EnemyAttack()
+	{
+		if(!IsInstanceValid(this) || !IsInsideTree()) return;
+		
+		try
+		{
+			await DamageCharacter(enemy,player);
+		}
+		catch(OperationCanceledException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch(ObjectDisposedException e)
+		{
+			GD.PrintErr(e);
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr($"EnemyAttack failed: {ex}");
+		}
+	}
+
+	private int minimumDamage = 1;
+	private const int MAXFALLBACKSECONDS = 3;
+	private static async Task WaitSignal(SignalAwaiter awaiter) => await awaiter;
+	private async Task DamageCharacter(Character attacker, Character defender)
 	{
 		int value;
 
-		value = playerCharacterData.Strength - enemyCharacterData.Defense;
-		if(value <= 0) value = 1;
-
-		playerCharacter.AttackAnimation();
-		enemyCharacter.DamageAnimation();
-		//EnemyCharacter.Damage(PlayerCharacter.Strength);
-
-		return value;
-	}
-
-	public int EnemyAttack()
-	{
-		int value;
-
-		value = playerCharacterData.Defense - enemyCharacterData.Strength;
-		if(value >= 0) value = 0;
+		int damageAmount = attacker.CharacterData.Strength - defender.CharacterData.Defense;
+		if(damageAmount <= 0) damageAmount = minimumDamage; 
 		
+		defender.CharacterHealth -= damageAmount;
+		value = damageAmount;
 
-		enemyCharacter.AttackAnimation();
-		playerCharacter.DamageAnimation();
-		//PlayerCharacter.Damage(EnemyCharacter.Strength);
+		attacker.CharacterNode.AttackAnimation();
 
-		return value;
+		if(defender.CharacterHealth > 0){ defender.CharacterNode.DamageAnimation();}
+		else defender.CharacterNode.DeathAnimation();
+		
+		var animTask = ToSignal(defender.CharacterNode, AnimatedSprite2D.SignalName.AnimationFinished);
+		var timeOutTask = ToSignal(GetTree().CreateTimer(MAXFALLBACKSECONDS), SceneTreeTimer.SignalName.Timeout);
+
+		await Task.WhenAny(
+			WaitSignal(animTask),
+			WaitSignal(timeOutTask)
+		);
+
+		if(!IsInstanceValid(this) || !IsInsideTree()) throw new OperationCanceledException();
+		
+		if(defender.CharacterHealth <= 0)
+		{
+			RaiseCombatOver(CombatResult.CombatOver, value);
+			return;
+		} 
+
+		RaiseCombatOver(CombatResult.Continue, value);
+		
 	}
 
+	private sealed class Character
+	{
+		public CharacterNode CharacterNode {get; private set;}
+		public CharacterData CharacterData {get; private set;}
+		public int CharacterHealth {get; set;}
 
+		public Character(CharacterNode character, CharacterData data)
+		{
+			CharacterNode = character;
+			CharacterData = data;
+			CharacterHealth = data.Health;
+
+			CharacterNode.CharacterData = data;
+		}
+	}
 
 	
 }
+
+

@@ -1,6 +1,13 @@
 using Godot;
 using System;
 
+/*
+	TO-DO
+	sub to CombatOver signal 
+	The signal can emit a enum if its CombatResult.Continue Continue the quiz 
+	else end it.
+
+*/
 public partial class QuizScene : Control
 {
 	[Export] private Button ButtonA;
@@ -40,12 +47,10 @@ public partial class QuizScene : Control
 		ButtonC.Pressed += HandleButtonCPressed;
 		ButtonD.Pressed += HandleButtonDPressed;
 
-        combatScene.CombatOver += HandleCombatOver;
-        combatScene.ProcessOver += HandleProcessOver;
+        //combatScene.CombatOver += HandleCombatOver;
 
-		
 		combatScene.Init(testCharacterData,testCharacterData);
-		
+		combatScene.CombatOver += HandleCombatOver;
 
 	}
 
@@ -92,8 +97,6 @@ public partial class QuizScene : Control
 			UpdateQuestionUI();
 		}
 	}
-
-   
 
 	private void UpdateQuestionUI()
 	{
@@ -153,6 +156,8 @@ public partial class QuizScene : Control
 				EndQuiz();
 			}
 		}
+
+		DisableAnswerButtons(false);
 	}
 
 	private void EndQuiz()
@@ -170,12 +175,7 @@ public partial class QuizScene : Control
         EndQuiz();
     }
 
-    public void HandleProcessOver()
-    {
-        ToggleButtons(false);
-    }
-
-	private void ToggleButtons(bool disabled)
+	private void DisableAnswerButtons(bool disabled)
 	{
 		//true turns the button off and false turns them on
 		ButtonA.Disabled = disabled;
@@ -193,44 +193,57 @@ public partial class QuizScene : Control
 
 	private void CheckAnswer(int answerIndex)
 	{
-        ToggleButtons(true);
+        DisableAnswerButtons(true);
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
 			RaiseCorrectAnswer();
-            scoreManager.addScore(combatScene.PlayerAttack());
+			combatScene.PlayerAttack();
 		}
 		else
 		{
 			GD.Print("不正解");
 			RaiseWrongAnswer();
-            scoreManager.addScore(combatScene.EnemyAttack());
+			combatScene.EnemyAttack();
+			
 		}
-        
+		
 	}
 
 	private void HandleButtonAPressed()
 	{
 		CheckAnswer(ButtonAValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonBPressed()
 	{
 		CheckAnswer(ButtonBValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonCPressed()
 	{
 		CheckAnswer(ButtonCValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonDPressed()
 	{
 		CheckAnswer(ButtonDValue);
-		NextQuestion();
+	}
+
+	private void HandleCombatOver(CombatScene.CombatResult result, int score)
+	{
+		scoreManager.addScore(score);
+
+		if(result == CombatScene.CombatResult.Continue)
+		{
+			NextQuestion();
+		}
+
+		if(result == CombatScene.CombatResult.CombatOver)
+		{
+			EndQuiz();
+			return;
+		}
 	}
 
 	
