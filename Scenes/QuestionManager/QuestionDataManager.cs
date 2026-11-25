@@ -27,8 +27,13 @@ public partial class QuestionDataManager : Node
 
 	public QuestionData GetRandomQuestion()
 	{
-		int value = Random.Shared.Next(1, questionDictionary.Count());
-		return GetQuestionById(value);
+		if (questionDictionary.Count == 0)
+		{
+			GD.PrintErr("No questions are loaded.");
+			return null;
+		}
+
+		return questionDictionary.Values.ElementAt(Random.Shared.Next(questionDictionary.Count));
 	}
 
 
