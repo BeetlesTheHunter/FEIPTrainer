@@ -50,6 +50,7 @@ public partial class DashBoard : Control
     {
         GD.Print("DailyStageBottonPressed");
         userDataManager.DoneDaily();
+        gameManager.DailyQuizScene();
         
     }
 
