@@ -56,7 +56,7 @@ public partial class GameManager : Node
     public void DashBoardScreen()
     {
         DashBoard scene = dashBoardScene.Instantiate() as DashBoard;
-        scene.Init(gameManager, userDataManager);
+        scene.Init(gameManager, userDataManager, databaseManager);
         ReplaceScene(scene);
     }
 

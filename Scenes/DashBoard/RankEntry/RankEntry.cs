@@ -19,5 +19,20 @@ public partial class RankEntry : Control
 		nameLabel.Text = name;
 		scoreLabel.Text = score.ToString();
 	}
+
+	public void SetData(int rank, string userName, long totalScore)
+    {
+        rankLabel.Text = $"{rank}位";
+        nameLabel.Text = userName;
+        scoreLabel.Text = totalScore.ToString();
+    }
+
+    // ユーザーが5人未満のときの空枠表示用
+    public void SetEmpty(int rank)
+    {
+        rankLabel.Text = $"{rank}位";
+        nameLabel.Text = "---";
+        scoreLabel.Text = "-";
+    }
 	
 }

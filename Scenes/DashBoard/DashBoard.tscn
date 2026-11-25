@@ -5,12 +5,13 @@
 [ext_resource type="Shader" uid="uid://23bo4s3anyck" path="res://Scripts/Shaders/BackgroundBlur.gdshader" id="3_7b2hk"]
 [ext_resource type="Texture2D" uid="uid://dt752jjjxyp7f" path="res://Assets/Backgrounds/DashBoardBackground.jpg" id="3_goquy"]
 [ext_resource type="StyleBox" uid="uid://rsxmn6etr65e" path="res://UIStyles/Panels/NailedPanel.tres" id="3_ivox8"]
+[ext_resource type="PackedScene" uid="uid://c2tc02rp6vwsx" path="res://Scenes/DashBoard/RankEntry/RankEntry.tscn" id="6_56vts"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivox8"]
 shader = ExtResource("3_7b2hk")
 shader_parameter/blur_amount = 4.00000019
 
-[node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton", "NameLabel", "ScoreLabel", "RankLabel", "LoginDaysLabel")]
+[node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton", "NameLabel", "ScoreLabel", "RankLabel", "LoginDaysLabel", "RankEntries", "RankEntryUser")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +27,8 @@ NameLabel = NodePath("PlayerInfoPanel/VBoxContainer2/NameLabel")
 ScoreLabel = NodePath("PlayerInfoPanel/VBoxContainer2/ScoreLabel")
 RankLabel = NodePath("PlayerInfoPanel/VBoxContainer2/RankLabel")
 LoginDaysLabel = NodePath("PlayerInfoPanel/VBoxContainer2/LoginDaysLabel")
+RankEntries = [NodePath("RankingPanel/VBoxContainer/RankEntry1"), NodePath("RankingPanel/VBoxContainer/RankEntry2"), NodePath("RankingPanel/VBoxContainer/RankEntry3"), NodePath("RankingPanel/VBoxContainer/RankEntry4"), NodePath("RankingPanel/VBoxContainer/RankEntry5")]
+RankEntryUser = NodePath("RankingPanel/VBoxContainer/RankEntryUser")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1005612483]
 z_index = -1
@@ -74,10 +77,26 @@ offset_top = 78.0
 offset_right = 1118.0
 offset_bottom = 612.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="RankingPanel" unique_id=310574960]
+[node name="VBoxContainer" type="VBoxContainer" parent="RankingPanel" unique_id=1652314255]
+layout_mode = 2
+theme_override_constants/separation = 78
+
+[node name="RankEntry1" parent="RankingPanel/VBoxContainer" unique_id=115853957 instance=ExtResource("6_56vts")]
 layout_mode = 2
 
-[node name="RankingContainer" type="VBoxContainer" parent="RankingPanel/ScrollContainer" unique_id=287539411]
+[node name="RankEntry2" parent="RankingPanel/VBoxContainer" unique_id=142503405 instance=ExtResource("6_56vts")]
+layout_mode = 2
+
+[node name="RankEntry3" parent="RankingPanel/VBoxContainer" unique_id=697373839 instance=ExtResource("6_56vts")]
+layout_mode = 2
+
+[node name="RankEntry4" parent="RankingPanel/VBoxContainer" unique_id=1117988559 instance=ExtResource("6_56vts")]
+layout_mode = 2
+
+[node name="RankEntry5" parent="RankingPanel/VBoxContainer" unique_id=1914437869 instance=ExtResource("6_56vts")]
+layout_mode = 2
+
+[node name="RankEntryUser" parent="RankingPanel/VBoxContainer" unique_id=450143463 instance=ExtResource("6_56vts")]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=705720969]
