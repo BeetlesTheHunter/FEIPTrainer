@@ -38,7 +38,13 @@ public partial class GameManager : Node
         ESCMenuScreen();
 
     }
-
+    public void LoginScreen()
+    {
+        Login scene = loginScene.Instantiate() as Login;
+        scene.Init(gameManager, userDataManager, databaseManager);
+        ReplaceScene(scene);
+        
+    }
     public void StartScreen()
     {
         StartScreen scene = startScene.Instantiate() as StartScreen;
@@ -57,22 +63,16 @@ public partial class GameManager : Node
     public void QuizScreen()
     {
         QuizScene scene = quizScene.Instantiate() as QuizScene;
-        scene.Init(gameManager, questionDataManager, numQuestions:100, userDataManager); //100 will be passed for the sake of the presentation, number limit on randomquestion should be a toggle
+        scene.Init(gameManager, questionDataManager, numQuestions:100, userDataManager, databaseManager); //100 will be passed for the sake of the presentation, number limit on randomquestion should be a toggle
         ReplaceScene(scene);
 
     }
-    public void LoginScreen()
-    {
-        Login scene = loginScene.Instantiate() as Login;
-        scene.Init(gameManager, userDataManager, databaseManager);
-        ReplaceScene(scene);
-        
-    }
+    
 
     public void DailyQuizScene()
     {
         QuizScene scene = quizScene.Instantiate() as QuizScene;
-        scene.Init(gameManager, questionDataManager, numQuestions:5, userDataManager);
+        scene.Init(gameManager, questionDataManager, numQuestions:5, userDataManager, databaseManager);
         ReplaceScene(scene);
     }
 
