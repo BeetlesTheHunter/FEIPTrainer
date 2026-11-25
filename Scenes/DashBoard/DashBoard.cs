@@ -4,7 +4,7 @@ using System;
 public partial class DashBoard : Control
 {
 	// Called when the node enters the scene tree for the first time.
-	[Export] private Button DailyStageButton;
+    [Export] private Button DailyStageButton;
     [Export] private Button NomalStageButton;
     [Export] private Button ReviewStageButton;
     [Export] private Label NameLabel;
@@ -15,6 +15,11 @@ public partial class DashBoard : Control
     private UserDataManager userDataManager;
     private GameManager gameManager;
 
+    public void Init(GameManager gameManager, UserDataManager userDataManager)
+    {
+        this.gameManager = gameManager;
+        this.userDataManager = userDataManager;
+    }
 
     public override void _Ready()
 	{
@@ -25,11 +30,7 @@ public partial class DashBoard : Control
         UpdatePlayerInfo();
     }
 
-    public void Init(GameManager gm, UserDataManager udm)
-    {
-        gameManager = gm;
-        userDataManager = udm;
-    }
+    
     private void UpdatePlayerInfo()
     {
         if (userDataManager == null) return;
@@ -49,6 +50,8 @@ public partial class DashBoard : Control
     {
         GD.Print("DailyStageBottonPressed");
         userDataManager.DoneDaily();
+        gameManager.DailyQuizScene();
+        
     }
 
     public void HandleNomalStageButtonPressed()

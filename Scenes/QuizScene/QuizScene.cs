@@ -1,6 +1,13 @@
 using Godot;
 using System;
 
+/*
+	TO-DO
+	sub to CombatOver signal 
+	The signal can emit a enum if its CombatResult.Continue Continue the quiz 
+	else end it.
+
+*/
 public partial class QuizScene : Control
 {
 	[Export] private Button ButtonA;
@@ -14,7 +21,8 @@ public partial class QuizScene : Control
 	private int questionNumber = 0; //何問やったか管理するために使う
 	private int randomQuestionNumberMax = 0;
 	
-	[Export] public ScoreManager scoreManager {get; private set;}
+	[Export] private ScoreManager scoreManager;
+    [Export] private CombatScene combatScene;
 	private QuestionDataManager questionDataManager;
 	private GameManager gameManager;
 
@@ -31,17 +39,22 @@ public partial class QuizScene : Control
 	public event Action WrongAnswer;
 	private void RaiseWrongAnswer() => WrongAnswer?.Invoke();
 
+	[Export] private CharacterData testCharacterData;
 	public override void _Ready()
 	{
 		ButtonA.Pressed += HandleButtonAPressed;
 		ButtonB.Pressed += HandleButtonBPressed;
 		ButtonC.Pressed += HandleButtonCPressed;
 		ButtonD.Pressed += HandleButtonDPressed;
-		
+
+        //combatScene.CombatOver += HandleCombatOver;
+
+		combatScene.Init(testCharacterData,testCharacterData);
+		combatScene.CombatOver += HandleCombatOver;
 
 	}
 
-	public void Init(GameManager gm, QuestionDataManager qdm, int numberOfQuestions)
+	public void Init(GameManager gm, QuestionDataManager qdm, int numQuestions)
 	{
 		gameManager = gm;
 		quizMode = QuizMode.Randomized;
@@ -49,7 +62,7 @@ public partial class QuizScene : Control
 		questionDataManager = qdm;
 
 		questionNumber = 0;
-		randomQuestionNumberMax = numberOfQuestions;
+		randomQuestionNumberMax = numQuestions;
 
 		currentQuestion = questionDataManager.GetRandomQuestion();
 		UpdateQuestionUI();
@@ -84,8 +97,6 @@ public partial class QuizScene : Control
 			UpdateQuestionUI();
 		}
 	}
-
-   
 
 	private void UpdateQuestionUI()
 	{
@@ -123,7 +134,7 @@ public partial class QuizScene : Control
  
 		if(quizMode == QuizMode.Randomized)
 		{
-			if(questionNumber <= randomQuestionNumberMax)
+			if(questionNumber < randomQuestionNumberMax)
 			{
 				currentQuestion = questionDataManager.GetRandomQuestion();
 				UpdateQuestionUI();
@@ -131,6 +142,7 @@ public partial class QuizScene : Control
 			else
 			{
 				EndQuiz();
+				return;
 			}
 		}
 		else if(quizMode == QuizMode.ArrayQustion)
@@ -143,8 +155,13 @@ public partial class QuizScene : Control
 			else
 			{
 				EndQuiz();
+				return;
 			}
 		}
+
+		DisableAnswerButtons(false);
+		ResetButtonColors();
+		
 	}
 
 	private void EndQuiz()
@@ -157,7 +174,12 @@ public partial class QuizScene : Control
 		gameManager.ResultScreen(scoreManager.Score, rate);
 	}
 
-	private void ToggleButtons(bool disabled)
+    public void HandleCombatOver()
+    {
+        EndQuiz();
+    }
+
+	private void DisableAnswerButtons(bool disabled)
 	{
 		//true turns the button off and false turns them on
 		ButtonA.Disabled = disabled;
@@ -173,42 +195,92 @@ public partial class QuizScene : Control
 	private const int ButtonDValue = 3;
 
 
-	private void CheckAnswer(int answerIndex)
+	private async void CheckAnswer(int answerIndex)
 	{
+		DisableAnswerButtons(true);
+
+		Button correctButton = GetAnswerButton(currentQuestion.AnswerIndex);
+		correctButton.Modulate = Colors.Green;
+
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
 			RaiseCorrectAnswer();
+			combatScene.PlayerAttack();
 		}
 		else
 		{
 			GD.Print("不正解");
+
+			Button wrongButton = GetAnswerButton(answerIndex);
+			wrongButton.Modulate = Colors.Red;
+
 			RaiseWrongAnswer();
+			combatScene.EnemyAttack();
+			
 		}
+		
 	}
+	private Button GetAnswerButton(int index)
+	{
+		switch (index)
+		{
+			case ButtonAValue:
+				return ButtonA;
+			case ButtonBValue:
+				return ButtonB;
+			case ButtonCValue:
+				return ButtonC;
+			case ButtonDValue:
+				return ButtonD;
+			default:
+            throw new ArgumentOutOfRangeException(nameof(index));
+				
+		};
+	}
+
+	private void ResetButtonColors()
+{
+    ButtonA.Modulate = Colors.White;
+    ButtonB.Modulate = Colors.White;
+    ButtonC.Modulate = Colors.White;
+    ButtonD.Modulate = Colors.White;
+}
 
 	private void HandleButtonAPressed()
 	{
 		CheckAnswer(ButtonAValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonBPressed()
 	{
 		CheckAnswer(ButtonBValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonCPressed()
 	{
 		CheckAnswer(ButtonCValue);
-		NextQuestion();
 	}
 
 	private void HandleButtonDPressed()
 	{
 		CheckAnswer(ButtonDValue);
-		NextQuestion();
+	}
+
+	private void HandleCombatOver(CombatScene.CombatResult result, int score)
+	{
+		scoreManager.addScore(score);
+
+		if(result == CombatScene.CombatResult.Continue)
+		{
+			NextQuestion();
+		}
+
+		if(result == CombatScene.CombatResult.CombatOver)
+		{
+			EndQuiz();
+			return;
+		}
 	}
 
 	

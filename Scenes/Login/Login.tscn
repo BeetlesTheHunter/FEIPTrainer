@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://c46eobayfoap2"]
 
-[ext_resource type="Texture2D" uid="uid://cmp74aib55wr7" path="res://Assets/PlaceHolderAssets/button_rectangle_depth_flat.png" id="1_0xjc8"]
 [ext_resource type="Script" uid="uid://brcye20y4gn5p" path="res://Scenes/Login/Login.cs" id="1_h4wbb"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h4wbb"]
-texture = ExtResource("1_0xjc8")
+[ext_resource type="Theme" uid="uid://cmyifl6cvm1qi" path="res://UIStyles/Themes/DefualtTheme.tres" id="2_h4wbb"]
 
 [node name="Login" type="Control" unique_id=1348788486 node_paths=PackedStringArray("loginBotan")]
 layout_mode = 3
@@ -75,7 +72,6 @@ offset_left = -0.2590027
 offset_top = -0.054016113
 offset_right = -0.10601807
 offset_bottom = -0.22003174
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("2_h4wbb")
 theme_override_font_sizes/font_size = 34
-theme_override_styles/normal = SubResource("StyleBoxTexture_h4wbb")
 text = "ログイン"
