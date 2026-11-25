@@ -26,6 +26,8 @@ public partial class DashBoard : Control
 		DailyStageButton.Pressed += HandleDailyStageButtonPressed;
         NomalStageButton.Pressed += HandleNomalStageButtonPressed;
         ReviewStageButton.Pressed += HandleReviewStageButtonPressed;
+        DailyStageButton.Disabled = userDataManager.IsDailyDone();
+
         
         UpdatePlayerInfo();
     }

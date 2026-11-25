@@ -59,6 +59,10 @@ public partial class UserDataManager : Node
 		}
 		
 	}
+	public bool IsDailyDone()
+	{
+		return CheckLastLoginStatus() == LoginDateStatus.Today;
+	}
 
 
 	
