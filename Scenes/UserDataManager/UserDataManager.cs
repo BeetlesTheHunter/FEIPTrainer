@@ -64,6 +64,11 @@ public partial class UserDataManager : Node
 		return CheckLastLoginStatus() == LoginDateStatus.Today;
 	}
 
+	public void AddScore(int score)
+	{
+		userData.totalScore += score;
+	}
+
 
 	
 

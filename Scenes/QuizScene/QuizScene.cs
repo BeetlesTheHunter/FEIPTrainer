@@ -25,6 +25,7 @@ public partial class QuizScene : Control
     [Export] private CombatScene combatScene;
 	private QuestionDataManager questionDataManager;
 	private GameManager gameManager;
+	private UserDataManager userDataManager;
 
 	public enum QuizMode
 	{
@@ -54,9 +55,10 @@ public partial class QuizScene : Control
 
 	}
 
-	public void Init(GameManager gm, QuestionDataManager qdm, int numQuestions)
+	public void Init(GameManager gm, QuestionDataManager qdm, int numQuestions, UserDataManager udm)
 	{
 		gameManager = gm;
+		userDataManager = udm;
 		quizMode = QuizMode.Randomized;
 
 		questionDataManager = qdm;
@@ -171,6 +173,7 @@ public partial class QuizScene : Control
 			? Mathf.RoundToInt(scoreManager.NumbersCorrect * 100f / questionNumber)
 			: 0;
 
+		userDataManager.AddScore(scoreManager.Score);
 		gameManager.ResultScreen(scoreManager.Score, rate);
 	}
 
