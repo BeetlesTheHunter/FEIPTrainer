@@ -18,11 +18,13 @@ public partial class Login : Control
 
     private UserDataManager _userDataManager;
     private GameManager _gameManager;
+    private DatabaseManager _databaseManager;
 
-    public void Init(GameManager gm, UserDataManager udm)
+    public void Init(GameManager gm, UserDataManager udm, DatabaseManager dbm)
     {
         _gameManager = gm;
         _userDataManager = udm;
+        _databaseManager = dbm;
     }
 
     public override async void _Ready()
@@ -154,11 +156,11 @@ public partial class Login : Control
                 name = userName.ToString();
         }
 
-        var dbManager = GetNode<DatabaseManager>("/root/DatabaseManager");
-        dbManager.SetAccessToken(session.AccessToken);
+        
+        _databaseManager.SetAccessToken(session.AccessToken);
 
         // 1. まずSupabaseから自分のデータを読み込んでみる
-        UserData userData = await dbManager.LoadUserDataAsync(uid);
+        UserData userData = await _databaseManager.LoadUserDataAsync(uid);
 
         // 2. データがまだ無ければ（初回ログイン）、新しく作って保存する
         if (userData == null)
@@ -169,7 +171,7 @@ public partial class Login : Control
                 userId = uid,
                 userName = name
             };
-            await dbManager.SaveUserDataAsync(userData);
+            await _databaseManager.SaveUserDataAsync(userData);
         }
         else
         {

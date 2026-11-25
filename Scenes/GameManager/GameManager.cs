@@ -65,7 +65,7 @@ public partial class GameManager : Node
     public void LoginScreen()
     {
         Login scene = loginScene.Instantiate() as Login;
-        scene.Init(gameManager, userDataManager);
+        scene.Init(gameManager, userDataManager, databaseManager);
         ReplaceScene(scene);
         
     }

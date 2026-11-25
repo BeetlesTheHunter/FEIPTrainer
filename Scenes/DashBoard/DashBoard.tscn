@@ -10,7 +10,7 @@
 shader = ExtResource("3_7b2hk")
 shader_parameter/blur_amount = 4.00000019
 
-[node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton")]
+[node name="DashBoard" type="Control" unique_id=1198593103 node_paths=PackedStringArray("DailyStageButton", "NomalStageButton", "ReviewStageButton", "NameLabel", "ScoreLabel", "RankLabel", "LoginDaysLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +22,10 @@ script = ExtResource("1_ayeso")
 DailyStageButton = NodePath("VBoxContainer/DailyStageButton")
 NomalStageButton = NodePath("VBoxContainer/HBoxContainer/NomalStageButton")
 ReviewStageButton = NodePath("VBoxContainer/HBoxContainer/ReviewStageButton")
+NameLabel = NodePath("PlayerInfoPanel/VBoxContainer2/NameLabel")
+ScoreLabel = NodePath("PlayerInfoPanel/VBoxContainer2/ScoreLabel")
+RankLabel = NodePath("PlayerInfoPanel/VBoxContainer2/RankLabel")
+LoginDaysLabel = NodePath("PlayerInfoPanel/VBoxContainer2/LoginDaysLabel")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1005612483]
 z_index = -1
