@@ -178,6 +178,7 @@ public partial class Login : Control
         GD.Print($"既存データを読み込みました！ 名前: {userData.userName} / スコア: {userData.totalScore}");
         }
         _userDataManager.SetUserData(userData); // UserDataManagerにデータを渡す
+        _userDataManager.UpdateConsecutiveLoginNumber();
         _gameManager.StartScreen(); // そのあとダッシュボードシーンへ移動する
 
     // ※そのあとダッシュボードシーンへ移動する

@@ -48,6 +48,7 @@ public partial class DashBoard : Control
     public void HandleDailyStageButtonPressed()
     {
         GD.Print("DailyStageBottonPressed");
+        userDataManager.DoneDaily();
     }
 
     public void HandleNomalStageButtonPressed()

@@ -45,10 +45,19 @@ public partial class UserDataManager : Node
     	}
 	}
 	
-	public void UpdateLastLoginDate()
+	public void DoneDaily()
 	{
-    	if (userData == null) return;
     	userData.lastLoginDate = GetTodayDateInt();
+		userData.consecutiveLoginNumber++;
+	}
+	public void UpdateConsecutiveLoginNumber()
+	{
+		LoginDateStatus status = CheckLastLoginStatus();
+		if (status == LoginDateStatus.Other)
+		{
+			userData.consecutiveLoginNumber = 0;
+		}
+		
 	}
 
 
