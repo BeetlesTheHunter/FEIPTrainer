@@ -106,4 +106,57 @@ public partial class DatabaseManager : Node
             return null;
         }
     }
+
+    // ① 上位5人を取る
+    public async Task<List<UserData>> GetTopRankingAsync(int limit = 5)
+    {
+        try
+        {
+            string url = $"{SupabaseUrl}/rest/v1/user_data?select=user_id,user_name,total_score&order=total_score.desc&limit={limit}";
+            HttpResponseMessage response = await _client.GetAsync(url);
+
+            if (!response.IsSuccessStatusCode) return new List<UserData>();
+
+            string json = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<List<UserData>>(json) ?? new List<UserData>();
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"ランキング取得エラー: {ex.Message}");
+            return new List<UserData>();
+        }
+    }
+
+// ② 自分の順位を取る
+    public async Task<int> GetUserRankAsync(long myScore)
+    {
+        try
+        {
+            string url = $"{SupabaseUrl}/rest/v1/user_data?select=user_id&total_score=gt.{myScore}";
+            using var request = new HttpRequestMessage(HttpMethod.Head, url);
+            request.Headers.Add("Prefer", "count=exact");
+
+            HttpResponseMessage response = await _client.SendAsync(request);
+            if (!response.IsSuccessStatusCode) return -1;
+
+            if (response.Content.Headers.TryGetValues("Content-Range", out var values))
+            {
+                string contentRange = string.Join("", values);
+                int slashIndex = contentRange.IndexOf('/');
+                if (slashIndex >= 0 && int.TryParse(contentRange.Substring(slashIndex + 1), out int higherCount))
+                {
+                    return higherCount + 1;
+                }
+            }
+            return 1;
+        }
+        catch (Exception ex)
+        {
+            GD.PrintErr($"順位取得エラー: {ex.Message}");
+            return -1;
+        }
+    }
+    
+    
+
 }
