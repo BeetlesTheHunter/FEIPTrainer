@@ -134,7 +134,7 @@ public partial class QuizScene : Control
  
 		if(quizMode == QuizMode.Randomized)
 		{
-			if(questionNumber <= randomQuestionNumberMax)
+			if(questionNumber < randomQuestionNumberMax)
 			{
 				currentQuestion = questionDataManager.GetRandomQuestion();
 				UpdateQuestionUI();
@@ -142,6 +142,7 @@ public partial class QuizScene : Control
 			else
 			{
 				EndQuiz();
+				return;
 			}
 		}
 		else if(quizMode == QuizMode.ArrayQustion)
@@ -154,10 +155,13 @@ public partial class QuizScene : Control
 			else
 			{
 				EndQuiz();
+				return;
 			}
 		}
 
 		DisableAnswerButtons(false);
+		ResetButtonColors();
+		
 	}
 
 	private void EndQuiz()
@@ -191,9 +195,13 @@ public partial class QuizScene : Control
 	private const int ButtonDValue = 3;
 
 
-	private void CheckAnswer(int answerIndex)
+	private async void CheckAnswer(int answerIndex)
 	{
-        DisableAnswerButtons(true);
+		DisableAnswerButtons(true);
+
+		Button correctButton = GetAnswerButton(currentQuestion.AnswerIndex);
+		correctButton.Modulate = Colors.Green;
+
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
@@ -203,12 +211,41 @@ public partial class QuizScene : Control
 		else
 		{
 			GD.Print("不正解");
+
+			Button wrongButton = GetAnswerButton(answerIndex);
+			wrongButton.Modulate = Colors.Red;
+
 			RaiseWrongAnswer();
 			combatScene.EnemyAttack();
 			
 		}
 		
 	}
+	private Button GetAnswerButton(int index)
+	{
+		switch (index)
+		{
+			case ButtonAValue:
+				return ButtonA;
+			case ButtonBValue:
+				return ButtonB;
+			case ButtonCValue:
+				return ButtonC;
+			case ButtonDValue:
+				return ButtonD;
+			default:
+            throw new ArgumentOutOfRangeException(nameof(index));
+				
+		};
+	}
+
+	private void ResetButtonColors()
+{
+    ButtonA.Modulate = Colors.White;
+    ButtonB.Modulate = Colors.White;
+    ButtonC.Modulate = Colors.White;
+    ButtonD.Modulate = Colors.White;
+}
 
 	private void HandleButtonAPressed()
 	{
