@@ -37,7 +37,7 @@ public partial class DatabaseManager : Node
     /// <summary>
     /// データを保存する（新規作成 or 上書き更新）
     /// </summary>
-    public async Task<bool> SaveUserDataAsync(UserData data)
+    public async void SaveUserData(UserData data)
     {
         GD.Print("UserDataのデータベースへの保存をを開始します...");
 		string url = $"{SupabaseUrl}/rest/v1/user_data";
@@ -45,7 +45,7 @@ public partial class DatabaseManager : Node
         string json = JsonSerializer.Serialize(data);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        using var request = new HttpRequestMessage(HttpMethod.Post, url);
+        using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, url);
         request.Content = content;
         // 同じuser_idがあれば上書き（UPDATE）、無ければ新規作成（INSERT）する設定
         request.Headers.Add("Prefer", "resolution=merge-duplicates");
@@ -56,17 +56,17 @@ public partial class DatabaseManager : Node
             if (response.IsSuccessStatusCode)
             {
                 GD.Print("保存成功！");
-                return true;
+                return ;
             }
 
             string error = await response.Content.ReadAsStringAsync();
             GD.PrintErr($"保存失敗: {response.StatusCode} / {error}");
-            return false;
+            return ;
         }
         catch (Exception e)
         {
             GD.PrintErr($"通信エラー: {e.Message}");
-            return false;
+            return ;
         }
     }
 

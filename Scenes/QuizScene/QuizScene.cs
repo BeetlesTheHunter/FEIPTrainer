@@ -26,6 +26,7 @@ public partial class QuizScene : Control
 	private QuestionDataManager questionDataManager;
 	private GameManager gameManager;
 	private UserDataManager userDataManager;
+	private DatabaseManager databaseManager;
 
 	public enum QuizMode
 	{
@@ -55,10 +56,11 @@ public partial class QuizScene : Control
 
 	}
 
-	public void Init(GameManager gm, QuestionDataManager qdm, int numQuestions, UserDataManager udm)
+	public void Init(GameManager gm, QuestionDataManager qdm, int numQuestions, UserDataManager udm, DatabaseManager dbm)
 	{
 		gameManager = gm;
 		userDataManager = udm;
+		databaseManager = dbm;
 		quizMode = QuizMode.Randomized;
 
 		questionDataManager = qdm;
@@ -70,9 +72,11 @@ public partial class QuizScene : Control
 		UpdateQuestionUI();
 	}
 
-	public void Init(GameManager gm, QuestionDataManager qdm, QuestionData[] array)
+	public void Init(GameManager gm, QuestionDataManager qdm, UserDataManager udm, DatabaseManager dbm, QuestionData[] array)
 	{
 		gameManager = gm;
+		userDataManager = udm;
+		databaseManager = dbm;
 		quizMode = QuizMode.ArrayQustion;
 		questionNumber = 0;
 		
@@ -174,6 +178,15 @@ public partial class QuizScene : Control
 			: 0;
 
 		userDataManager.AddScore(scoreManager.Score);
+		try
+		{
+			databaseManager.SaveUserData(userDataManager.userData);
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr($"ユーザーデータの保存に失敗しました: {ex.Message}");
+		}
+		
 		gameManager.ResultScreen(scoreManager.Score, rate);
 	}
 

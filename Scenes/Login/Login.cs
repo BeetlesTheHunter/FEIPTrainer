@@ -171,7 +171,16 @@ public partial class Login : Control
                 userId = uid,
                 userName = name
             };
-            await _databaseManager.SaveUserDataAsync(userData);
+            try{
+                _databaseManager.SaveUserData(userData);
+            }
+            catch (Exception ex)
+            {
+                GD.PrintErr($"ユーザーデータの保存に失敗しました: {ex.Message}");
+                OnLoginFailed("ユーザーデータの保存に失敗しました。");
+                return;
+            }
+            
         }
         else
         {
