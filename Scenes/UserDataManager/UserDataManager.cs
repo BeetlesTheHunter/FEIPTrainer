@@ -1,44 +1,67 @@
 using Godot;
 using System;
-using System.Security.Cryptography.X509Certificates;
 
 public partial class UserDataManager : Node
 {
-	public static UserDataManager Instance { get; private set; }
+	
 
-	private UserData userData;
+	public UserData userData{ get; private set; }
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public void SetUserData(UserData data)
 	{
-		userData= new UserData();
+		userData = data;
 	}
-
-	public void setUserId(int userId)
+	public enum LoginDateStatus
 	{
-		userData.userId = userId;
-    }
-	public void setSolvedCount(int solvedCount)
-	{
-		userData.solvedCount = solvedCount;
+		Today,
+		Yesterday,
+		Other
 	}
-	public void setCorrectCount(int correctCount)
+	public int GetTodayDateInt()
 	{
-		userData.correctCount = correctCount; 
+    	DateTime today = DateTime.Today;
+    	return today.Year * 10000 + today.Month * 100 + today.Day;
 	}
 
-	public int getUserId()
+	public LoginDateStatus CheckLastLoginStatus()
 	{
-		return userData.userId;
+	    if (userData == null) return LoginDateStatus.Other;
+    	int todayInt = GetTodayDateInt();
+		
+    	DateTime yesterday = DateTime.Today.AddDays(-1);
+    	int yesterdayInt = yesterday.Year * 10000 + yesterday.Month * 100 + yesterday.Day;
+
+    	if (userData.lastLoginDate == todayInt)
+    	{
+        	return LoginDateStatus.Today;
+    	}
+    	else if (userData.lastLoginDate == yesterdayInt)
+    	{
+        	return LoginDateStatus.Yesterday;
+    	}
+    	else
+    	{
+        	return LoginDateStatus.Other;
+    	}
 	}
-	public int getSolvedCount()
+	
+	public void DoneDaily()
 	{
-		return userData.solvedCount;
+    	userData.lastLoginDate = GetTodayDateInt();
+		userData.consecutiveLoginNumber++;
 	}
-	public int getCorrectCount()
+	public void UpdateConsecutiveLoginNumber()
 	{
-		return userData.correctCount;
+		LoginDateStatus status = CheckLastLoginStatus();
+		if (status == LoginDateStatus.Other)
+		{
+			userData.consecutiveLoginNumber = 0;
+		}
+		
 	}
+
+
+	
 
 	
 

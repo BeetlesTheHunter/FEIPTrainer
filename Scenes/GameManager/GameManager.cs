@@ -6,6 +6,7 @@ public partial class GameManager : Node
     [Export] private PackedScene quizScene;
     [Export] private PackedScene resultsScene;
     [Export] private PackedScene startScene;
+    [Export] private PackedScene loginScene;
 
     [Export] private PackedScene ESCMenuOverlay;
     
@@ -33,7 +34,7 @@ public partial class GameManager : Node
 
         gameManager = this;
 
-        StartScreen();
+        LoginScreen();
         ESCMenuScreen();
 
     }
@@ -59,6 +60,13 @@ public partial class GameManager : Node
         scene.Init(gameManager, questionDataManager, numQuestions:100); //100 will be passed for the sake of the presentation, number limit on randomquestion should be a toggle
         ReplaceScene(scene);
 
+    }
+    public void LoginScreen()
+    {
+        Login scene = loginScene.Instantiate() as Login;
+        scene.Init(gameManager, userDataManager, databaseManager);
+        ReplaceScene(scene);
+        
     }
 
     public void DailyQuizScene()
