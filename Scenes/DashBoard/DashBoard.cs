@@ -7,6 +7,7 @@ public partial class DashBoard : Control
 	[Export] private Button DailyStageButton;
     [Export] private Button NomalStageButton;
     [Export] private Button ReviewStageButton;
+	[Export] private Label ScoreLabel;
 
     private UserDataManager userDataManager;
     private GameManager gameManager;
@@ -19,6 +20,7 @@ public partial class DashBoard : Control
 
     public override void _Ready()
 	{
+        ScoreLabel.Text = $"総スコア：{userDataManager.getTotalScore()}";
 		DailyStageButton.Pressed += HandleDailyStageButtonPressed;
         NomalStageButton.Pressed += HandleNomalStageButtonPressed;
         ReviewStageButton.Pressed += HandleReviewStageButtonPressed;

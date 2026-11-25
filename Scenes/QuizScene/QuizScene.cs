@@ -20,6 +20,8 @@ public partial class QuizScene : Control
 	private QuestionData[] questionArray;
 	private int questionNumber = 0; //何問やったか管理するために使う
 	private int randomQuestionNumberMax = 0;
+	private bool quizEnded;
+	private bool lastAnswerWasCorrect;
 	
 	[Export] private ScoreManager scoreManager;
     [Export] private CombatScene combatScene;
@@ -62,6 +64,8 @@ public partial class QuizScene : Control
 		questionDataManager = qdm;
 
 		questionNumber = 0;
+		quizEnded = false;
+		lastAnswerWasCorrect = false;
 		randomQuestionNumberMax = numQuestions;
 
 		currentQuestion = questionDataManager.GetRandomQuestion();
@@ -73,6 +77,8 @@ public partial class QuizScene : Control
 		gameManager = gm;
 		quizMode = QuizMode.ArrayQustion;
 		questionNumber = 0;
+		quizEnded = false;
+		lastAnswerWasCorrect = false;
 		
 
 		if(array == null)
@@ -166,6 +172,13 @@ public partial class QuizScene : Control
 
 	private void EndQuiz()
 	{
+		if (quizEnded)
+		{
+			return;
+		}
+
+		quizEnded = true;
+
 		// この時点で questionNumber = 答えた問題数(Randomized / ArrayQustion どちらも同じ)
 		int rate = questionNumber > 0
 			? Mathf.RoundToInt(scoreManager.NumbersCorrect * 100f / questionNumber)
@@ -205,12 +218,14 @@ public partial class QuizScene : Control
 		if (currentQuestion.AnswerIndex == answerIndex)
 		{
 			GD.Print("正解");
+			lastAnswerWasCorrect = true;
 			RaiseCorrectAnswer();
 			combatScene.PlayerAttack();
 		}
 		else
 		{
 			GD.Print("不正解");
+			lastAnswerWasCorrect = false;
 
 			Button wrongButton = GetAnswerButton(answerIndex);
 			wrongButton.Modulate = Colors.Red;
@@ -269,7 +284,11 @@ public partial class QuizScene : Control
 
 	private void HandleCombatOver(CombatScene.CombatResult result, int score)
 	{
-		scoreManager.addScore(score);
+		if (lastAnswerWasCorrect)
+		{
+			scoreManager.addScore(score);
+		}
+		lastAnswerWasCorrect = false;
 
 		if(result == CombatScene.CombatResult.Continue)
 		{

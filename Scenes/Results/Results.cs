@@ -21,7 +21,7 @@ public partial class Results : Control
     {
         gameManager = gm;
 
-        score.Text = $"獲得スコア:{scoreValue * 1000}";
+        score.Text = $"獲得スコア:{scoreValue}";
 
         CorrectAnswerRate.Text = $"正答率:{rate}%";
     }

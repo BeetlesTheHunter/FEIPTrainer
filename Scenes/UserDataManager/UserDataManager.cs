@@ -1,17 +1,73 @@
 using Godot;
 using System;
-using System.Security.Cryptography.X509Certificates;
 
 public partial class UserDataManager : Node
 {
 	public static UserDataManager Instance { get; private set; }
 
+	private const string ProfilePath = "user://profile.cfg";
+	private const string ProfileSection = "profile";
+	private const string TotalScoreKey = "total_score";
 	private UserData userData;
 
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		userData= new UserData();
+		Instance = this;
+		userData = new UserData();
+
+		ConfigFile profile = new ConfigFile();
+		Error loadError = profile.Load(ProfilePath);
+		if (loadError != Error.Ok && loadError != Error.FileNotFound)
+		{
+			GD.PushError($"Could not load player profile before resetting score: {loadError}");
+			return;
+		}
+
+		profile.SetValue(ProfileSection, TotalScoreKey, 0);
+		Error saveError = profile.Save(ProfilePath);
+		if (saveError != Error.Ok)
+		{
+			GD.PushError($"Could not reset player profile score: {saveError}");
+		}
+	}
+
+	public bool AddScore(int score)
+	{
+		if (score < 0)
+		{
+			GD.PushError("Cannot add a negative score to the player profile.");
+			return false;
+		}
+
+		int updatedTotal;
+		try
+		{
+			updatedTotal = checked(userData.totalScore + score);
+		}
+		catch (OverflowException)
+		{
+			GD.PushError("Could not save player profile: total score exceeds the supported range.");
+			return false;
+		}
+
+		ConfigFile profile = new ConfigFile();
+		Error loadError = profile.Load(ProfilePath);
+		if (loadError != Error.Ok && loadError != Error.FileNotFound)
+		{
+			GD.PushError($"Could not load player profile before saving: {loadError}");
+			return false;
+		}
+
+		profile.SetValue(ProfileSection, TotalScoreKey, updatedTotal);
+		Error saveError = profile.Save(ProfilePath);
+		if (saveError != Error.Ok)
+		{
+			GD.PushError($"Could not save player profile: {saveError}");
+			return false;
+		}
+
+		userData.totalScore = updatedTotal;
+		return true;
 	}
 
 	public void setUserId(int userId)
@@ -40,6 +96,9 @@ public partial class UserDataManager : Node
 		return userData.correctCount;
 	}
 
-	
+	public int getTotalScore()
+	{
+		return userData.totalScore;
+	}
 
 }

@@ -70,8 +70,11 @@ public partial class GameManager : Node
 
     public void ResultScreen(int score, int rate)
     {
+        int earnedScore = score * 1000;
+        userDataManager.AddScore(earnedScore);
+
         Results scene = resultsScene.Instantiate() as Results;
-        scene.Init(gameManager, score, rate);
+        scene.Init(gameManager, earnedScore, rate);
         ReplaceScene(scene);
     }
 
